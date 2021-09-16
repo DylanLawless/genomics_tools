@@ -13,3 +13,10 @@ The name is becuase I used this to create a html header on a webpage.
 2. Input - [MSA sequence only](fasta2header/data/fasta_header) 10 sample of protein length 1272aa. Line set to break at length 159
 3. Output - [MSA line-by-line](fasta2header/data/split/fasta_header_split.txt) Prited out line-by-line.
 
+## gene panel
+1. Gene names source from reputable source <https://panelapp.genomicsengland.co.uk/panels/>
+2. Gene names mapped to coordinates using http://www.ensembl.org/biomart for reference genome build.
+3. The biomart output converted to bed with [make_bed.sh](gene_list/genomics_england_panel_app/make_bed.sh)
+
+## glm shiny
+Unfinish app for custom genotype glm models.
