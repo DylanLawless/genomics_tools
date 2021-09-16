@@ -17,6 +17,7 @@ The name is becuase I used this to create a html header on a webpage.
 1. Gene names source from reputable source <https://panelapp.genomicsengland.co.uk/panels/>
 2. Gene names mapped to coordinates using http://www.ensembl.org/biomart for reference genome build.
 3. The biomart output converted to bed with [make_bed.sh](gene_list/genomics_england_panel_app/make_bed.sh)
+4. The bed can then be used as shown in [virtual_panel.sh](gene_list/genomics_england_panel_app/virtual_panel.sh)
 
 ## glm shiny
 Unfinish app for custom genotype glm models.

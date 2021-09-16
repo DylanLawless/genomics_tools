@@ -11,4 +11,23 @@ cat $file.tsv | \
 	tail -n +2 | \
 	sort -nk1,1 -nk2,2 \
 	> $file.bed
+	
+# convert to GRCh38 notation "chr"
+
+cat $file.bed | grep -v "^CHR" > main
+cat main | grep -v "^X" > numeric
+cat main | grep "^X" > chrx
+
+cat numeric chrx > ordered 
+
+cat ordered | \
+	sed 's/^/chr/' | \
+	awk '{print $1":"$2"-"$3}' \
+	> $file.bed
+
+
+rm main numeric chrx ordered
+
+
+
 

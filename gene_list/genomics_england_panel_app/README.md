@@ -15,3 +15,9 @@ Gene stable ID, gene name, chromosome/scaffold name, gene start, gene end.
 filename: 
 ge_panel_app_Primary_immunodeficiency_v2.1_20200224_coordinate_grch38p13.tsv
 
+Since the coordinate come from biomart enseml, we need to change the predix to include "chr":
+"Using the Ensembl version is discouraged due to its chromosome naming. We more often use "chr1" instead of "1" for GRCh38. At one point, Ensembl actually agreed to use "chr1" as well, but didn't make that happen due to technical issues..."
+The make_bed.sh script output the bed in this format, but it is worth checking the output genes match the input gene list. 
+
+The bed can be used to then filter vcf as shown in:
+virtual_panel.sh
