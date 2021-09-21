@@ -21,3 +21,10 @@ The name is becuase I used this to create a html header on a webpage.
 
 ## glm shiny
 Unfinish app for custom genotype glm models.
+
+## Other links
+This samtools repo contains useful data including VCF
+<https://github.com/samtools/hts-specs>
+including specs for [VCFv4.2.pdf](https://github.com/samtools/hts-specs/blob/master/VCFv4.2.pdf)
+and [CRAMv3.pdf](https://github.com/samtools/hts-specs/blob/master/CRAMv3.pdf).
+
