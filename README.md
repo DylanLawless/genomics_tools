@@ -21,9 +21,10 @@ The name is becuase I used this to create a html header on a webpage.
 
 ## R vep consequence filter
 1. Filter a VCF as a dataframe based on VEP conseqience annotation [vep_consequence_table.R](vep_consequence_filter/scr/vep_consequence_table.R)
-* Script in: <./vep_consequence_table/scr/>
-* An example dataset is provided after vcf2tsv conversion in: <./vep_consequence_table/data/>
-* The vep_consequence_table.tsv file has been prepared for query matching your dataset: <./vep_consequence_table/data/>
+* Script in: [vep_consequence_table/scr](https://github.com/DylanLawless/genomics_tools/tree/master/vep_consequence_filter)
+* An example dataset is provided after vcf2tsv conversion in: 
+[vep_consequence_table/data](https://github.com/DylanLawless/genomics_tools/tree/master/vep_consequence_filter)
+* The vep_consequence_table.tsv file has been prepared for query matching your dataset: [vep_consequence_table/data](https://github.com/DylanLawless/genomics_tools/tree/master/vep_consequence_filter)
 
 ## glm shiny
 Unfinish app for custom genotype glm models.
