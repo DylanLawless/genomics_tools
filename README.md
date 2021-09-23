@@ -19,6 +19,11 @@ The name is becuase I used this to create a html header on a webpage.
 3. The biomart output converted to bed with [make_bed.sh](gene_list/genomics_england_panel_app/make_bed.sh)
 4. The bed can then be used as shown in [virtual_panel.sh](gene_list/genomics_england_panel_app/virtual_panel.sh)
 
+## R vep consequence filter
+1. Filter a VCF as a dataframe based on VEP conseqience annotation [vep_consequence_table.R](vep_consequence_filter/scr/vep_consequence_table.R)
+An example dataset is provided after vcf2tsv conversion.
+The vep_consequence_table.tsv file has been prepared for query matching your dataset.
+
 ## glm shiny
 Unfinish app for custom genotype glm models.
 
