@@ -29,6 +29,19 @@ The name is becuase I used this to create a html header on a webpage.
 ## glm shiny
 Unfinish app for custom genotype glm models.
 
+## Variant testing
+[variant_testing](https://github.com/DylanLawless/genomics_tools/tree/master/variant_testing)
+Example of case/control enrichment of variant
+The toy_examlple:
+* dataset - multiple alignment sequence of amino acids
+* Logistic regression - on single variant or whole gene
+* Fisher exact test
+* ODDs ratio and confidence interval
+
+Excell format files are shown as an example of what data may look like.
+
+How do we test something like SKAT-O or linear regression such that we can see the effect of single variants or multiple variants in single samples, or variants shared in several samples?
+
 ## Other links
 This samtools repo contains useful data including VCF
 <https://github.com/samtools/hts-specs>

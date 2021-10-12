@@ -41,6 +41,7 @@ rank <- count %>%
   arrange(rank)
 
 # Name the most frequent residue as REF.
+# Name the less frequent residue as ALT
 rank$binary <- rank$rank
 rank$binary[rank$rank == "1"] <- "REF"
 rank$binary[rank$rank > "1"] <- "ALT"
@@ -50,14 +51,25 @@ rank$value[rank$rank == "1"] <- "0"
 rank$value[rank$rank > "1"] <- "1"
 rank$value <- as.numeric(rank$value)
 
-df2 <- merge(df_long, (rank %>% select(var_pos, var, value))) %>% 
+# Add this new annotation back onto the dataset
+df_long <- merge(df_long, (rank %>% select(var_pos, var, value))) %>% 
   select(var_pos, labels, value)
 
-genotypes <- spread(df2, var_pos, value)
+# set lables as number so that they are in order instead of alphabetic
+df_long$labels <- as.numeric(df_long$labels)
+
+# convert long to wide format
+genotypes <- spread(df_long, var_pos, value)
 rownames(genotypes) <- genotypes$labels
 genotypes <- genotypes %>% select(-labels)
 
-rm(df, df_long, df2, count, rank)
+rm(df, count, rank)
+
+require(ggplot2)
+# Plot the variants
+df_long %>%
+  ggplot(aes(y=labels, x=var_pos))+
+  geom_tile(aes( fill=as.factor(value) ), color="black")
 
 # set the matrix orientation : PCA for variant or for sample
 genotypes <- t(genotypes)
@@ -131,8 +143,88 @@ pca_res_long %>%
 
 
 
+# run assoc test on each SNP.
+# compare cases to control.
 
 
+# test 1 SNP
+df_pos1 <- 
+  df_long %>% 
+  filter(var_pos == 10)
+
+df_pos1_case <- df_pos1[1:15, 1:3]
+df_pos1_control <- df_pos1[16:30, 1:3]
+
+df_pos1_case$status <- "case"
+df_pos1_control$status <- "control"
+
+df_pos_status <- rbind(df_pos1_case, df_pos1_control)
+
+df_pos_status
+df_pos_status$status <- as.factor(df_pos_status$status)
+
+logistic.model <- glm(status ~ value, family = "binomial", data = df_pos_status)
+summary(logistic.model)
+
+# Odds ratio and CI
+exp(cbind(coef(logistic.model), confint(logistic.model))) 
+
+
+
+
+
+# test whole gene
+
+status <- df_pos_status %>% select(status, labels)
+
+df_long_status <- merge(status, y=df_long, by="labels" )
+
+df_long_status$status <- as.factor(df_long_status$status)
+
+logistic.model <- glm(status ~ value, family = "binomial", data = df_long_status)
+summary(logistic.model)
+
+# Odds ratio and CI
+exp(cbind(coef(logistic.model), confint(logistic.model))) 
+
+# Now accounting for individual SNPs
+
+logistic.model <- glm(status ~ value + var_pos, family = "binomial", data = df_long_status)
+summary(logistic.model)
+
+# compare result
+model1 = 0.000502 ***
+model2 = 0.000427 ***
+
+# example where sig assoc may be due to a batch effect
+# case  5
+# control 10
+
+# case A 0
+# control A 0
+
+# case B 5
+# control B 10
+
+
+remove var if < 0.05 (5%) population has it
+
+# CMC test threshold say if a variant is rare, then merge all those variants into one 
+# If variant is common then test this snp alone.
+
+# if only a single person has each SNP, then CMC detect this better.
+# SKAT can better detect complex situations. 
+# e.g. one SNP shared in multiple people, or multiple SNPs from single person. 
+# In CMC a sample is labeled as "1" if they have ANY SNP and "0" if none. 
+# CMC is like a simple GWAS with Fisher test, but GWAS can also be run with a linear/logistic model to account for covariates. 
+
+# CMC is based on counts: affected or not.
+# SKAT is based on allele frequency: SNP1 is freq 0.01, and SNP2 is 0.3 then each will have a different "weight" in the model. 
+logistic.model <- glm(status ~ value + var_pos*weight(freq), family = "binomial", data = df_long_status)
+summary(logistic.model)
+
+
+fisher.test(status ~ value)
 
 
 
