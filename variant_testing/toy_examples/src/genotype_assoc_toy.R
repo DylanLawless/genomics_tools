@@ -195,6 +195,10 @@ chisq.test(fisher_mat1)
 fisher.test(fisher_mat1)
 # You may like testing on https://www.socscistatistics.com/tests/
 
+# example with 300 observations per group (30 case, 30 control, 10 positions)
+tally <- c(6,1,294,299)
+matrix(tally ,nrow=2,ncol=2,byrow=F) %>% fisher.test()
+
 # What happens if we swap the order of groups/category?
 # The results are unaffected
 fisher_mat2 <- t(fisher_mat1)
