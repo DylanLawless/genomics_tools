@@ -136,6 +136,30 @@ exp(cbind(coef(logistic.model), confint(logistic.model)))
 
 # Note that if you had zero carriers in controls, like with SNP11, then logistic model would not be fit appropriate and P-value= ~1. Try repeat with filter(var_pos == 11) to see the result). 
 
+
+# //////////////////////////////////////
+# Example coefficient / OR plot
+# //////////////////////////////////////
+
+# install.packages("arm")
+#??coefplot()
+# Functions that plot the coefficients plus and minus 1 and 2 sd from a lm, glm, bugs, and polr fits.
+arm::coefplot(logistic.model, trans=arm::invlogit, title="x")
+
+# Note: Raw coefficients may not always be what you want to see. For example, in case of a logit model, you may want to transform the raw log odds to odds ratios. 
+OR <- as.data.frame( exp(cbind(coef(logistic.model), confint(logistic.model))) )
+
+OR <- OR %>% filter(rownames(x) == "allele") 
+OR$var <- rownames(OR)
+colnames(OR)[colnames(OR) == 'V1'] <- 'Odds_ratio'
+
+OR %>% # filter the row
+ggplot(aes(y=var, x=(Odds_ratio) )) +
+  geom_point( size=3)+
+  geom_errorbar(aes(xmin=`2.5 %`, 
+                    xmax=`97.5 %`), 
+                width=.1)
+
 # //////////////////////////////////////
 ##### Run assoc test on whole gene combined #### 
 # compare cases to control
