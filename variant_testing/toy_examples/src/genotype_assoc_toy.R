@@ -149,7 +149,7 @@ arm::coefplot(logistic.model, trans=arm::invlogit, title="x")
 # Note: Raw coefficients may not always be what you want to see. For example, in case of a logit model, you may want to transform the raw log odds to odds ratios. 
 OR <- as.data.frame( exp(cbind(coef(logistic.model), confint(logistic.model))) )
 
-OR <- OR %>% filter(rownames(x) == "allele") 
+OR <- OR %>% filter(rownames(OR) == "allele") 
 OR$var <- rownames(OR)
 colnames(OR)[colnames(OR) == 'V1'] <- 'Odds_ratio'
 
@@ -159,6 +159,116 @@ ggplot(aes(y=var, x=(Odds_ratio) )) +
   geom_errorbar(aes(xmin=`2.5 %`, 
                     xmax=`97.5 %`), 
                 width=.1)
+
+
+log_OR <- as.data.frame( (cbind(coef(logistic.model), confint(logistic.model))) )
+as.data.frame( (cbind(coef(logistic.model), 
+                      (confint(logistic.model)) 
+                      )) )
+
+log_OR <- log_OR %>% filter(rownames(log_OR) == "allele") 
+log_OR$var <- rownames(log_OR)
+colnames(log_OR)[colnames(log_OR) == 'V1'] <- "log_OR"
+
+log_OR %>% # filter the row
+  ggplot(aes(y=var, x=log_OR )) +
+  geom_point( size=3)+
+  geom_errorbar(aes(xmin=`2.5 %`, 
+                    xmax=`97.5 %`), 
+                width=.1)
+
+# example OR "by hand"
+logistic.model <- glm(status ~ allele, family = "binomial", data = df_pos_status)
+summary(logistic.model)
+
+df_tally<- df_pos_status %>%
+  group_by(status, allele) %>%
+  tally()
+label <- c("a", "b", "c", "d")
+
+df_tally <- cbind(label, df_tally) 
+names(df_tally) <- c("label", "status", "allele", "n")
+
+# tally ----
+df_tally
+
+# |          |  predictor0 | predictor1 |
+# |----------|--------------------|
+# | outcome 0 |   14 (A) |   1 (B) |
+# | outcome 1 |    5 (C) |  10 (D) |
+
+# 1. log OR "by hand" ----
+a <- df_tally[1,3]
+b <- df_tally[2,3]
+c <- df_tally[3,3]
+d <- df_tally[4,3]
+
+# calculate OR
+or <- ((a * d)/(b * c))
+or
+log(or)
+
+# SE ln(OR)
+se <- sqrt(1/a + 1/b + 1/c + 1/d)
+se
+
+# 95% CI for log(OR)
+se_95pc <- log(or) + (1.96 * se)
+se_5pc <- log(or) - (1.96 * se)
+
+# make df
+df_example <- c(log(or), se_5pc, se_95pc)
+names(df_example) <- c("log_OR", "2.5%", "97.5%")
+output_1 <- df_example
+output_1
+
+# 2. log OR from glm fit coef ----
+fit <- glm(outcome ~ predictor, family = "binomial", data = df)
+summary(fit)
+
+# log OR from glm fit
+glm_log_OR <- as.data.frame( (cbind(coef(fit), confint(fit))) )
+output_2 <- glm_log_OR
+output_2
+
+# OR from glm fit
+glm_OR <- as.data.frame( exp(cbind(coef(fit), confint(fit))) )
+output_2b <- glm_OR
+output_2b
+
+# 3. log OR from glm fit with stargazer table ----
+library(stargazer)
+# Table with coefficients (log OR, CI) 
+output_3 <- stargazer(fit, ci = T, single.row = T, type = "text", ci.level = 0.95)
+output_3
+
+# Table with coefficients (OR, CI) 
+OR.vector <- exp(fit$coef)
+CI.vector <- exp(confint(fit))
+p.values <- summary(fit)$coefficients[, 4]
+
+output_3b <- stargazer(fit, coef = list(OR.vector), ci = T, 
+                       ci.custom = list(CI.vector), p = list(p.values), 
+                       single.row = T, type = "text")
+output_3b
+
+# Compare output ----
+output_1 # log OR by hand
+output_2 # log OR from glm
+output_3 # log OR from glm stargazer table
+output_2b # OR from glm
+output_3b # OR from glm stargazer table
+
+# log_OR  2.5% CI   97.5% CI  Method
+# 3.33    1.04      5.63      log OR by hand
+# 3.33    1.37      6.37      log OR from glm  <-- !!!
+# 3.33    1.04      5.63      log OR from glm using stargazer table
+# 
+# OR      2.5% CI   97.5% CI  Method
+# 27.99   3.94      586.83    OR from glm
+# 28.00   3.94      586.83    OR from glm using stargazer table
+
+
 
 # //////////////////////////////////////
 ##### Run assoc test on whole gene combined #### 

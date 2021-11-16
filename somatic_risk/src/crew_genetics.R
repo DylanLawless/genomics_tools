@@ -71,6 +71,34 @@ ly_text(y=events$when, x=30, color=c("red", "blue"),
 plot2
 
 
+df$is_critical <- (!is.na(df$crtitial_care))
+
+library(ggplot2)
+library(plotly)
+
+p1 <- df %>% 
+  ggplot( aes(x=year, y=variant_risk, group = is_critical)) +
+  geom_errorbar(aes(ymin=CI_min, ymax=CI_max),  width = 1, alpha = .2) +
+  geom_point(aes(size = variant_risk, fill = crew_member), shape= 21)
+
+ggplotly(p1)
+
+p2 <- df %>% 
+  ggplot( aes(x=year, y=cumulative_risk, group = is_critical) ) +
+  geom_point(aes(size = variant_risk,
+                 fill=crew_member
+                 )) +
+  geom_line( aes(color=crew_member), alpha = 0.4)+
+  geom_hline(linetype="dotted", yintercept= 1.5, color= "blue") +
+  geom_hline(linetype="dotted", yintercept= 2, color= "red")
+
+ggplotly(p2)
+
+
+fill=alpha(crew_member, 0.2), stroke=0.3
+
+
+
 # Output html ----
 #rbokeh2html(plot1, file = "../output/plot1.html",
 #            pretty = FALSE,
@@ -79,3 +107,6 @@ plot2
 #rbokeh2html(plot2, file = "../output/plot2.html",
 #            pretty = FALSE,
 #            secure = TRUE)
+
+
+
