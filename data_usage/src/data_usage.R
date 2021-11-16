@@ -33,8 +33,8 @@ p <- d %>%
               )) + 
   geom_point(aes( size=log10(size_GB) ),
              position = position_jitter(width = 10, height = 0.5)) +
-  facet_grid(fileuse ~.)
-
+  facet_grid(fileuse ~.) +
+  theme_classic()
 
 p
 
