@@ -120,72 +120,53 @@ highlight(layout(gg_merge, showlegend = TRUE), selected = s)
 
 
 
-# network eg ----
+# network ----
 # Libraries
 library(igraph)
 library(networkD3)
 
-# create a dataset:
-data <- data.frame(
-  from=c("A", "A", "B", "D", "C", "D", "E", "B", "C", "D", "K", "A", "M"),
-  to=c("B", "E", "F", "A", "C", "A", "B", "Z", "A", "C", "A", "B", "K"),
-  value=c("1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1")
-)
 
-# Plot
-p <- simpleNetwork(data, height="100px", width="100px",        
-                   Source = 1,                 # column number of source
-                   Target = 2,                 # column number of target
-                   linkDistance = 10,          # distance between node. Increase this value to have more space between nodes
-                   charge = -900,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
-                   fontSize = 14,               # size of the node names
-                   fontFamily = "serif",       # font og node names
-                   linkColour = "#666",        # colour of edges, MUST be a common colour for the whole graph
-                   nodeColour = "#69b3a2",     # colour of nodes, MUST be a common colour for the whole graph
-                   opacity = 0.9,              # opacity of nodes. 0=transparent. 1=no transparency
-                   zoom = T                    # Can you zoom on the figure?
-)
 
-p
 
 # save the widget
-library(htmlwidgets)
-saveWidget(p, file=paste0( getwd(), "~/Desktop/HtmlWidget/networkInteractive2.html"))
+#library(htmlwidgets)
+#saveWidget(p, file=paste0( getwd(), "~/Desktop/HtmlWidget/networkInteractive2.html"))
+#saveWidget(p, file="~/Desktop/HtmlWidget/networkInteractive2.html")
 
-saveWidget(p, file="~/Desktop/HtmlWidget/networkInteractive2.html")
+project <- df_bind$project
+filename <- df_bind$filename
+datatype <- df_bind$datatype
 
-# network ----
-src <- df_bind$project
-target <- df_bind$filename
+# src = project
+# target = filename
 
-networkData <- data.frame(src, target, stringsAsFactors = FALSE)
+networkData <- data.frame(project, filename, stringsAsFactors = FALSE)
 
-nodes <- data.frame(name = unique(c(src, target)), stringsAsFactors = FALSE)
+nodes <- data.frame(name = unique(c(project, filename)), stringsAsFactors = FALSE)
 nodes$id <- 0:(nrow(nodes) - 1)
 
-# create a data frame of the edges that uses id 0:9 instead of their names
-edges <- networkData %>%
-  left_join(nodes, by = c("src" = "name")) %>%
-  select(-src) %>%
-  rename(source = id) %>%
-  left_join(nodes, by = c("target" = "name")) %>%
-  select(-target) %>%
-  rename(target = id)
-
-edges$width <- 1
-
 # make a grouping variable that will match to colours
-nodes$group <- ifelse(nodes$name %in% src, "dsc", "orion_cygnus")
+#nodes$group <- ifelse(nodes$name %in% project, "dsc", "orion_cygnus")
 
-# simple with default colours
-forceNetwork(Links = edges, Nodes = nodes, 
-             Source = "source",
-             Target = "target",
-             NodeID ="name",
-             Group = "group",
-             Value = "width",
-             opacity = 0.9,
-             zoom = TRUE)
+# create a data frame of the edges that uses id 0:9 instead of their names
+rm(edges)
+edges <- networkData %>%
+  left_join(nodes, by = c("project" = "name")) %>%
+  select(-project) %>%
+  rename(source = id) %>%
+  left_join(nodes, by = c("filename" = "name")) %>%
+  select(-filename) %>%
+  rename(filename = id) 
+
+edges$width <- 10
+
+nodes <- nodes %>%
+  left_join(
+    df_bind %>% select(filename, datatype)
+    , by = c("name" = "filename"),
+    keep=FALSE) %>%
+  unique()
+
 
 # control colours with a JS ordinal scale
 # edited 20 May 2017 with updated code from Renal Chesak's answer:
@@ -193,107 +174,140 @@ ColourScale <- 'd3.scaleOrdinal()
             .domain(["dsc", "orion_cygnus"])
            .range(["#FF6900", "#694489"]);'
 
+ColourScale2 <- 'd3.scaleOrdinal()
+            .domain(["genotype", "genome_sequence", "clinical", "serology", "somatic_genome", "somatic_panel", "immunology", "rna_expression", "orion_cygnus", "dsc" ])
+           .range([ "#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#2986cc", "#F2A21E"]);'
+
+
+
 forceNetwork(Links = edges, Nodes = nodes, 
              linkDistance = 10,
              Source = "source",
-             Target = "target",
+             Target = "filename",
              NodeID ="name",
-             Group = "group",
+             Group = "datatype",
              Value = "width",
              opacity = 0.9,
              zoom = TRUE,
              opacityNoHover = 0,
-             colourScale = JS(ColourScale),
+             colourScale = JS(ColourScale2),
              charge = -100,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
              fontSize = 14,               # size of the node names
              fontFamily = "serif",       # font og node names
              )
 
+# network datatypes ----
+tmp1 <- df_bind %>% select(filename, datatype, project)
+tmp2 <- tmp1 %>%
+  group_by(datatype, project) %>%
+  mutate(filename = as.character(filename)) %>%
+  expand(filename, to = filename) %>% 
+  filter(filename < to) %>% 
+  select(from = filename, to, type = datatype)
+
+tmp2$width <- 1
+tmp2 <- as.data.frame(tmp2)
+
+#nodes: name, id
+#tmp2: from, to, type
+
+edges2 <- tmp2 %>%
+  left_join(nodes, by = c("from" = "name")) %>%
+  select(-from) %>%
+  rename(source = id) %>%
+  left_join(nodes, by = c("to" = "name")) %>%
+  select(-to) %>%
+  rename(filename = id) %>%
+  select(source, filename, width)
+
+edges3 <- rbind(edges, edges2)
+
+# to get node sizes, count how file usage
+#library(tidyr)
+count <- df_bind %>% 
+  group_by(filename) %>% 
+  summarize(number_filename = n())
+
+colnames(count)[colnames(count) == 'filename'] <- 'name'
+
+nodes <- nodes %>%
+  left_join(
+    count, by = c("name" = "name"),
+    keep=FALSE) %>%
+  unique()
+
+# replace missing data
+nodes <- nodes %>% replace_na(list(datatype = "project", number_filename = 1))
+nodes$number_filename_10 <- nodes$number_filename*10
+
+# to get link color, count how many projects a file is used in
+count_project <- df_bind %>% 
+  group_by(filename, project) %>% 
+  summarize(count = n())%>% 
+  group_by(filename) %>%
+  summarize(project_count = n())
+
+colnames(count_project)[colnames(count_project) == 'filename'] <- 'name'
+
+nodes <- nodes %>%
+  left_join(
+    count_project, by = c("name" = "name"),
+    keep=FALSE) %>%
+  unique()
+
+#colors
+#"#edc951"
+#"#eb6841"
+
+link_cols <- c(
+"#00a0b0",
+"#cc2a36",
+"#4f372d")
+
+project_count <- as.numeric( c(1,2,'NA'))
+
+node_link_cols <- data.frame(project_count, link_cols)
+nodes <- merge(nodes, node_link_cols, by = "project_count" )
+
+nodes <- nodes %>%  arrange(id)
+# match filename to edge for color
+
+link_cols_id <- nodes %>% select(link_cols, id)
+link_project_count <- nodes %>% select(project_count, id)
+
+
+edges4 <- edges3 %>% left_join(link_cols_id, by = c("filename" = "id"))
+edges5 <- edges3 %>% left_join(link_project_count, by = c("filename" = "id"))
 
 
 
-# other test
-files <- df_bind %>% 
-  select(project,filename)
+YourColors <- 'd3.scaleOrdinal()
+                  .domain([0, 1, 2])
+                  .range(["#7FFF00", "#A52A2A", "#E6E6FA"])'
 
-files$value <- "1"
+# replace missing data
+edges5 <- edges5 %>% replace_na(list(project_count = "0"))
 
-p <- simpleNetwork(files, #height="100px", width="100px",        
-                   Source = 2,                 # column number of source
-                   Target = 1,                 # column number of target
-                   linkDistance = 10,          # distance between node. Increase this value to have more space between nodes
-                   charge = -900,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
-                   fontSize = 14,               # size of the node names
-                   fontFamily = "serif",       # font og node names
-                   linkColour = "#666",        # colour of edges, MUST be a common colour for the whole graph
-                   nodeColour = "#69b3a2",     # colour of nodes, MUST be a common colour for the whole graph
-                   opacity = 0.9,              # opacity of nodes. 0=transparent. 1=no transparency
-                   zoom = T,                    # Can you zoom on the figure?
-                   #colourScale = JS(ColourScale)
+
+forceNetwork(Links = edges5, Nodes = nodes, 
+             linkDistance = 60,
+             Nodesize = "number_filename",
+             #linkColour = YourColors,
+             linkColour = ifelse(edges5$project_count > 1, "#4f372d", "#00a0b0"),
+        #    linkColour = ifelse(edges5$project_count > 1, "blue","black"),
+             radiusCalculation = JS(" Math.sqrt(d.nodesize)*6"),
+             Source = "source",
+             Target = "filename",
+             NodeID ="name",
+             Group = "datatype",
+             Value = "width",
+             opacity = 0.9,
+             zoom = TRUE,
+             opacityNoHover = 0,
+             colourScale = JS(ColourScale2),
+             charge = -40,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
+             fontSize = 14,               # size of the node names
+             fontFamily = "serif",       # font og node names
 )
-
-p
-
-forceNetwork(Links = edges, Nodes = nodes, 
-             Source = "source",
-             Target = "target",
-             NodeID ="name",
-             Group = "group",
-             Value = "width",
-             opacity = 0.9,
-             zoom = TRUE,
-             colourScale = JS(ColourScale))
-
-
-
-
-
-######################################
-
-edges <- read.table(header = T, text = '
-source target width
-0      1     1
-0      2     1
-0      3     1
-0      4     1
-1      5     1
-1      6     1
-2      7     1
-2      8     1
-3      9     1
-')
-
-nodes <- read.table(header = T, text = '
-name id  group
-A    0   panther
-B    1   leopard
-C    2   tiger
-D    3   lion
-J    4   panthercub
-E    5   leopardcub
-F    6   leopardcub
-G    7   tigercub
-H    8   tigercub
-I    9   lioncub
-')
-
-forceNetwork(Links = edges, Nodes = nodes, 
-             Source = "source",
-             Target = "target",
-             NodeID ="name",
-             Group = "group",
-             Value = "width",
-             opacity = 0.9,
-             zoom = TRUE,
-             fontSize = 20, 
-             fontFamily = "sans-serif",
-             colourScale = JS("d3.scaleOrdinal(d3.schemeCategory10);"))
-
-
-
-
-
-
-
 
 
