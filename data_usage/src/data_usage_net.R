@@ -6,6 +6,23 @@ library(plotly)
 # Data usage tracking
 # caption: Long-term projects use data from many sources. Data may be reused multiple times, and some planned analysis is not required. Data tracking systems can show these analytics and improve multipurpose use.
 
+# df colors ----
+# We require 11 color groups for these plots.
+# The will be used in ggplot or d3; set up for each.
+
+# for d3
+ColourScale <- 'd3.scaleOrdinal()
+.domain(["genotype", "genome_sequence", "clinical", "serology", "somatic_genome", "somatic_panel", "immunology", "rna_expression", "orion_cygnus", "dsc"])
+.range([ "#f2825a", "#c2625a", "#92425a", "#62225a", "#32025a", "#de9d54", "#cf512b", "#36549d","#252381", "#0a0945"]);'
+
+# for ggplot
+ColourScale_label <- c("genotype", "genome_sequence", "clinical", "serology", "somatic_genome", "somatic_panel", "immunology", "rna_expression", "orion_cygnus", "dsc")
+
+ColourScale_hex <- c("#f2825a", "#c2625a", "#92425a", "#62225a", "#32025a", "#de9d54", "#cf512b", "#36549d","#252381", "#0a0945")
+
+ColourScale_groups <- data.frame(ColourScale_label,ColourScale_hex)
+ColourScale_groups <- t(ColourScale_groups) %>% janitor::row_to_names(1)
+rownames(ColourScale_groups)<-NULL
 
 # import ----
 df <- 
@@ -20,7 +37,7 @@ df_2 <-
              sep = "\t", 
              stringsAsFactors = FALSE)
 
-# df 1 ----
+# df 1 and df2 ----
 df$Date <- ymd(df$date)
 df$fileuse <- as.factor(df$fileuse)
 df$fileuse <- factor(df$fileuse, levels = c("Yes","No"))
@@ -31,102 +48,52 @@ df_2$fileuse <- as.factor(df_2$fileuse)
 df_2$fileuse <- factor(df_2$fileuse, levels = c("Yes","No"))
 d_2 <- highlight_key(df_2, ~datatype)
 
-p <- d %>%
-  ggplot( aes(x=Date, 
-              y=log10(size_GB), 
-              fill=datatype,
-              shape=fileuse,
-              label=data_purpose,
-              label2=size_GB
-              )) + 
-  geom_point(aes( size=log10(size_GB) ),
-             position = position_jitter(width = 10, height = 0.5)) +
-  facet_grid(fileuse ~.) +
-  theme_classic()
-
-
-gg <- ggplotly(p, tooltip = c("label2", "label", "fill") ) 
-cols <- (RColorBrewer::brewer.pal(8, "Dark2"))
-
-s <- attrs_selected(
-  showlegend = TRUE,
-  mode = "lines+markers",
-  marker = list(symbol = "x"),
-  color = cols, 
-  dynamic = TRUE
-)
-
-highlight(layout(gg, showlegend = TRUE), selected = s)
-
-# df 2 ----
-p_2 <- d_2 %>%
-  ggplot( aes(x=Date, 
-              y=log10(size_GB), 
-              fill=datatype,
-              shape=fileuse,
-              label=data_purpose,
-              label2=size_GB
-  )) + 
-  geom_point(aes( size=log10(size_GB) ),
-             position = position_jitter(width = 10, height = 0.5)) +
-  facet_grid(fileuse ~.) +
-  theme_classic()
-
-
-gg_2 <- ggplotly(p_2, tooltip = c("label2", "label", "fill") ) 
-cols <- (RColorBrewer::brewer.pal(8, "Dark2"))
-
-s <- attrs_selected(
-  showlegend = TRUE,
-  mode = "lines+markers",
-  marker = list(symbol = "x"),
-  color = cols, 
-  dynamic = TRUE
-)
-
-highlight(layout(gg_2, showlegend = TRUE), selected = s)
-
-
-# df merged ----
+# df merged + group colors ----
 df_bind <- rbind(df, df_2)
 dd <- highlight_key(df_bind, ~datatype)
+rm(df, df_2, d, d_2)
 
-p_merge <- dd %>%
-  ggplot( aes(x=Date, 
-              y=log10(size_GB), 
-              fill=datatype,
-              shape=fileuse,
-              label=data_purpose,
-              label2=size_GB
-  )) + 
+facet.labs <- c("Usage: Yes ", "Usage: No")
+names(facet.labs) <- c("Yes", "No")
+
+p_merge <- dd %>% ggplot( aes(x=Date, y=log10(size_GB), 
+                              fill=datatype,
+                              shape=fileuse,
+                              label=data_purpose,
+                              label2=size_GB,
+                              label3=project
+)) + 
   geom_point(aes( size=log10(size_GB) ),
+             alpha=.8,
              position = position_jitter(width = 10, height = 0.5)) +
-  facet_grid(fileuse ~.) +
-  theme_classic()
+  facet_grid(fileuse ~., labeller = labeller(fileuse = facet.labs)) +
+  theme_classic() +
+  scale_fill_manual(values=ColourScale_groups,
+                    breaks = c("genotype", "genome_sequence", "clinical", "serology", "somatic_genome", "somatic_panel", "immunology", "rna_expression"))
 
+#to set custom tooltips: tooltip = c("label", "fill")
+plot_gg_merge <- ggplotly(p_merge) %>% 
+  layout(#xaxis = list(showticklabels = FALSE),
+    legend = list(orientation = "v",
+                  y = 1, x = -200))
 
-gg_merge <- ggplotly(p_merge, tooltip = c("label2", "label", "fill") ) 
-cols <- (RColorBrewer::brewer.pal(8, "Dark2"))
+#rm(p_merge)
 
 s <- attrs_selected(
   showlegend = TRUE,
   mode = "lines+markers",
   marker = list(symbol = "x"),
-  color = cols, 
+  #colors = colRGB, 
   dynamic = TRUE
 )
 
-highlight(layout(gg_merge, showlegend = TRUE), selected = s)
-
-
+# Fig: 1 main ----
+highlight(plot_gg_merge, selected = s)
 
 # network ----
 # Libraries
 library(igraph)
 library(networkD3)
-
-
-
 
 # save the widget
 #library(htmlwidgets)
@@ -140,14 +107,12 @@ datatype <- df_bind$datatype
 # src = project
 # target = filename
 
-networkData <- data.frame(project, filename, stringsAsFactors = FALSE)
-
+# make nodes
 nodes <- data.frame(name = unique(c(project, filename)), stringsAsFactors = FALSE)
 nodes$id <- 0:(nrow(nodes) - 1)
 
-# make a grouping variable that will match to colours
-#nodes$group <- ifelse(nodes$name %in% project, "dsc", "orion_cygnus")
-
+# make edges
+networkData <- data.frame(project, filename, stringsAsFactors = FALSE)
 # create a data frame of the edges that uses id 0:9 instead of their names
 rm(edges)
 edges <- networkData %>%
@@ -158,6 +123,7 @@ edges <- networkData %>%
   select(-filename) %>%
   rename(filename = id) 
 
+rm(networkData)
 edges$width <- 10
 
 nodes <- nodes %>%
@@ -167,20 +133,13 @@ nodes <- nodes %>%
     keep=FALSE) %>%
   unique()
 
+# replace missing datatype with name
+nodes$datatype[is.na(nodes$datatype)] <- nodes$name[is.na(nodes$datatype)]
 
+# simple plot of project overlap
 # control colours with a JS ordinal scale
-# edited 20 May 2017 with updated code from Renal Chesak's answer:
-ColourScale <- 'd3.scaleOrdinal()
-            .domain(["dsc", "orion_cygnus"])
-           .range(["#FF6900", "#694489"]);'
 
-ColourScale2 <- 'd3.scaleOrdinal()
-            .domain(["genotype", "genome_sequence", "clinical", "serology", "somatic_genome", "somatic_panel", "immunology", "rna_expression", "orion_cygnus", "dsc" ])
-           .range([ "#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#A6761D", "#666666", "#2986cc", "#F2A21E"]);'
-
-
-
-forceNetwork(Links = edges, Nodes = nodes, 
+plot_fn_s <- forceNetwork(Links = edges, Nodes = nodes, 
              linkDistance = 10,
              Source = "source",
              Target = "filename",
@@ -190,13 +149,17 @@ forceNetwork(Links = edges, Nodes = nodes,
              opacity = 0.9,
              zoom = TRUE,
              opacityNoHover = 0,
-             colourScale = JS(ColourScale2),
+             colourScale = JS(ColourScale),
              charge = -100,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
              fontSize = 14,               # size of the node names
-             fontFamily = "serif",       # font og node names
-             )
+             fontFamily = "sans-serif",       # font of node names
+             legend = TRUE)
 
-# network datatypes ----
+# Fig: 2 simple ----  
+plot_fn_s
+
+# network group datatypes ----
+library(tidyr)
 tmp1 <- df_bind %>% select(filename, datatype, project)
 tmp2 <- tmp1 %>%
   group_by(datatype, project) %>%
@@ -222,6 +185,9 @@ edges2 <- tmp2 %>%
 
 edges3 <- rbind(edges, edges2)
 
+rm(tmp1, tmp2)
+rm(edges, edges2)
+
 # to get node sizes, count how file usage
 #library(tidyr)
 count <- df_bind %>% 
@@ -236,9 +202,13 @@ nodes <- nodes %>%
     keep=FALSE) %>%
   unique()
 
-# replace missing data
-nodes <- nodes %>% replace_na(list(datatype = "project", number_filename = 1))
-nodes$number_filename_10 <- nodes$number_filename*10
+rm(count)
+
+# replace missing datatype with name
+nodes$datatype[is.na(nodes$datatype)] <- nodes$name[is.na(nodes$datatype)]
+
+# replace missing filenumber for the projects
+nodes <- nodes %>% replace_na(list(number_filename = 1))
 
 # to get link color, count how many projects a file is used in
 count_project <- df_bind %>% 
@@ -254,10 +224,6 @@ nodes <- nodes %>%
     count_project, by = c("name" = "name"),
     keep=FALSE) %>%
   unique()
-
-#colors
-#"#edc951"
-#"#eb6841"
 
 link_cols <- c(
 "#00a0b0",
@@ -275,27 +241,19 @@ nodes <- nodes %>%  arrange(id)
 link_cols_id <- nodes %>% select(link_cols, id)
 link_project_count <- nodes %>% select(project_count, id)
 
-
 edges4 <- edges3 %>% left_join(link_cols_id, by = c("filename" = "id"))
 edges5 <- edges3 %>% left_join(link_project_count, by = c("filename" = "id"))
-
-
-
-YourColors <- 'd3.scaleOrdinal()
-                  .domain([0, 1, 2])
-                  .range(["#7FFF00", "#A52A2A", "#E6E6FA"])'
 
 # replace missing data
 edges5 <- edges5 %>% replace_na(list(project_count = "0"))
 
-
-forceNetwork(Links = edges5, Nodes = nodes, 
+plot_fn <- forceNetwork(Links = edges5, Nodes = nodes, 
              linkDistance = 60,
              Nodesize = "number_filename",
-             #linkColour = YourColors,
              linkColour = ifelse(edges5$project_count > 1, "#4f372d", "#00a0b0"),
         #    linkColour = ifelse(edges5$project_count > 1, "blue","black"),
              radiusCalculation = JS(" Math.sqrt(d.nodesize)*6"),
+        linkWidth = JS("function(d) { return Math.sqrt(d.value)/2; }"),
              Source = "source",
              Target = "filename",
              NodeID ="name",
@@ -304,10 +262,24 @@ forceNetwork(Links = edges5, Nodes = nodes,
              opacity = 0.9,
              zoom = TRUE,
              opacityNoHover = 0,
-             colourScale = JS(ColourScale2),
+             colourScale = JS(ColourScale),
              charge = -40,                # numeric value indicating either the strength of the node repulsion (negative value) or attraction (positive value)
              fontSize = 14,               # size of the node names
-             fontFamily = "serif",       # font og node names
+             fontFamily = "sans-serif",       # font og node names
+              bounded = TRUE,
+            arrows = FALSE,
+            legend = TRUE,
 )
 
+# Fig: 2 main ----
+plot_fn 
 
+# other not in use ----
+# clickJS 
+# forceNetwork(..., clickAction = clickJS)
+
+
+# Fig: all plots ----
+highlight(plot_gg_merge, selected = s)
+plot_fn
+plot_fn_s
