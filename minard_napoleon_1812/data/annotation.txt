@@ -1,0 +1,154 @@
+Figurative Map of the successive losses in men of the French Army in the Russian campaign 1812-1813.
+
+Drawn by Mr. Minard, Inspector General of Bridges and Roads in retirement. 
+Paris, 20 November 1869.
+
+––––––––––––––––––––––
+
+The numbers of men presented by the widths of the colored zones at the rate of one millimeter for ten thousand men; they are also written across the zones. The red indicates the men who entered Russia, the black those who left. 
+
+The information used to draw up the map was taken from the works of Messrs. Thiers, de Ségur, de Fezensac, de Chambray and the unpublished diary of Jacob, pharmacist in the army since October 28. 
+
+In order to make the eye better judge the reduction of the army, I assumed that the corps of Prince Jerome and Marshal Davoust, which had been detached to Minsk and Mohilow and joined towards Orscha and Witebsk, had still marched with the army.
+
+
+
+Carte Figurative des pertes succesives en hommes de l’Armée Française dans la campagne de Russie 1812-1813.
+
+Dressée par M. Minard, Inspecteur Général des Ponts et Chaussées en retraite. 
+Paris, le 20 Novembre 1869.
+
+––––––––––––––––––––––
+
+Les nombres d’hommes présentés par les largeurs des zones colorées à raison d’un millimètre pour dix mille hommes ; ils sont de plus écrits en travers des zones. Le rouge désigne les hommes qui entrent en Russie, le noir ceux qui en sortent. 
+
+Les renseignements qui ont servi à dresser la carte ont été puisés dans les ouvrages de MM. Thiers, de Ségur, de Fezensac, de Chambray et le journal inédit de Jacob, pharmacien de l’armée depuis le 28 Octobre. 
+
+Pour mieux faire juger à l’œil la diminution de l’armée, j’ai supposé que les corps du prince Jérôme et du Maréchal Davoust qui avaient été détachés sur Minsk et Mohilow et ont rejoint vers Orscha et Witebsk, avaient toujours marché avec l’armée.
+
+
+
+https://www.masswerk.at/minard/
+
+Date	Event
+June 24	The Grande Armée crosses the Niemen River with 449,000 men and 1,200 cannons, opposed by The Russian Imperial Army combining 153,000 Russians, 942 cannons, and 15,000 Cossacks. — Cossacks are galloping across the frozen Niemen.
+June 28	Napoleon enters Vilnius. Bridges and depots are left destoyed by the Russians.
+August 17-18	First Battle of Polotsk
+October 18-20	Second Battle of Polotsk
+July 12 – August 12	Supply depot at Vitebsk. Napoleon waits for the army to recompose.
+August 15	Fightings at Krasnoi. Napoleon's 43rd birthday.
+November 15-18	Battle of Krasnoi.
+August 16-18	Battle of Smolensk. 84% of the city are destroyed by the artillery bombardment, only 350 out of 2,250 buildings survive intact.
+Date ?	The Grande Armée rests at Gjatsk (Gagarin) and prepares for the imminent decisive battle.
+September 5	Battle of Shevardino Redoubt
+September 7-8	Battle of Borodino. Sept8 Napoleon transfers his headquarters to Mozhaysk.
+September 14	Napoleon enters the city of Moscow.
+September 14-20	Fire of Moscow.
+October 18	The Grande Armée moves out of the city.
+October 24	Battle of Maloyaroslavets
+November 3	Battle of Vyazma
+Date ?	Asymmetrical combat by Cossacks.
+Date ?	Supply depot at Orsha.
+November 26-29	Battle of Berezina (crossing the Berezina near Borisov)
+December 5	Napoleon leaves for Paris to address an attempted coup.
+December 14	The Grande Armée leaves Russian territory heading for Prussia.
+
+
+
+
+
+
+Data source https://en.wikipedia.org/wiki/French_invasion_of_Russia
+
+Date	24 June – 14 December 1812 (5 months, 2 weeks and 6 days)	
+Location	Eastern Europe
+Result	Russian victory
+
+## Belligerents
+Category	Direction	Side
+Belligerents	Advance	French Empire
+Belligerents	Advance	Duchy of Warsaw
+Belligerents	Advance	Kingdom of Italy (Napoleonic)
+Belligerents	Advance	Kingdom of Naples
+Belligerents	Advance	Kingdom of Saxony
+Belligerents	Advance	Kingdom of Bavaria
+Belligerents	Advance	Kingdom of Westphalia
+Belligerents	Advance	Kingdom of Württemberg
+Belligerents	Advance	Grand Duchy of Hesse
+Belligerents	Advance	Grand Duchy of Berg
+Belligerents	Advance	Grand Duchy of Baden
+Belligerents	Advance	Swiss Confederation
+Belligerents	Advance	Austrian Empire Austrian Empire
+Belligerents	Advance	Kingdom of Prussia Kingdom of Prussia
+Belligerents	Advance	Kingdom of Spain
+Belligerents	Defence	Russian Empire	
+Belligerents	Defence	United Kingdom
+
+## Commanders and leaders
+Category	Direction	Side	Commander
+Commanders and leaders	Advance	First French Empire	Napoleon Bonaparte
+Commanders and leaders	Advance	First French Empire	Pierre Augereau
+Commanders and leaders	Advance	First French Empire	Jean-Baptiste Bessières
+Commanders and leaders	Advance	First French Empire	Louis-Nicolas Davout
+Commanders and leaders	Advance	First French Empire	Jean-Andoche Junot
+Commanders and leaders	Advance	First French Empire	François Joseph Lefebvre
+Commanders and leaders	Advance	First French Empire	Étienne Macdonald
+Commanders and leaders	Advance	First French Empire	Édouard Mortier
+Commanders and leaders	Advance	First French Empire	Michel Ney
+Commanders and leaders	Advance	First French Empire	Nicolas Oudinot
+Commanders and leaders	Advance	First French Empire	Jean Reynier
+Commanders and leaders	Advance	First French Empire	Laurent de Gouvion Saint-Cyr
+Commanders and leaders	Advance	First French Empire	Claude Victor-Perrin
+Commanders and leaders	Advance	Napoleonic Poland	Józef Poniatowski
+Commanders and leaders	Advance	Kingdom of Italy (Napoleonic)	Eugène de Beauharnais
+Commanders and leaders	Advance	Kingdom of Naples	Joachim Murat
+Commanders and leaders	Advance	Kingdom of Westphalia	Jérôme Bonaparte
+Commanders and leaders	Advance	Austrian Empire	Karl von Schwarzenberg
+Commanders and leaders	Advance	Kingdom of Prussia	Johann Yorck
+Commanders and leaders	Defence	Russian Empire	Alexander I
+Commanders and leaders	Defence	Russian Empire	Mikhail Kutuzov
+Commanders and leaders	Defence	Russian Empire	Barclay de Tolly
+Commanders and leaders	Defence	Russian Empire	Pyotr Bagration (DOW)
+Commanders and leaders	Defence	Russian Empire	Levin von Bennigsen
+Commanders and leaders	Defence	Russian Empire	Alexander Chechenskiy
+Commanders and leaders	Defence	Russian Empire	Pavel Chichagov
+Commanders and leaders	Defence	Russian Empire	Mikhail Miloradovich
+Commanders and leaders	Defence	Russian Empire	Matvei Platov
+Commanders and leaders	Defence	Russian Empire	Alexander Tormasov
+Commanders and leaders	Defence	Russian Empire	Peter Wittgenstein
+
+## Strength
+Category	Direction	Army	Value	Battle
+Strength	Advance	French Army	612000	Total
+Strength	Advance	French Army	449000	First wave 
+Strength	Advance	French Army	134000	Borodino
+Strength	Advance	French Army	108000	Maloyaros
+Strength	Advance	French Army	33000	Berezina	
+Strength	Defence	Russian Army
+Strength	Defence	Russian Army	623000	Total
+Strength	Defence	Russian Army	198000	First wave
+Strength	Defence	Russian Army	118000	Borodino
+Strength	Defence	Russian Army	129000	Maloyaros
+Strength	Defence	Russian Army	126000	Berezina
+
+## Casualties and losses
+Category	Direction	Value	Label
+Casualties and losses	Advance	400,000–484,000
+Casualties and losses	Advance	200,000–284,000 killed
+Casualties and losses	Advance	100,000 killed in combat
+Casualties and losses	Advance	50,000 died in captivity
+Casualties and losses	Advance	50,000 wounded
+Casualties and losses	Advance	50,000 deserted
+Casualties and losses	Advance	50,000 prisoners
+Casualties and losses	Defence	350,000–410,000	Total
+Casualties and losses	Defence	210,000	dead
+Casualties and losses	Defence	150,000	wounded
+Casualties and losses	Defence	50,000	deserted
+
+## Total military and civilian deaths	
+Category	Value
+Total military and civilian deaths	1,000,000
+
+
+
+
