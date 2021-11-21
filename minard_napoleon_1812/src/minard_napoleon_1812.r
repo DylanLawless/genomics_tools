@@ -119,16 +119,6 @@ plot_grid(
 
 
 
-
-
-
-
-
-
-
-
-
-
 # plotly ----
 # boarder segments ----
 df_A1 <- borders
@@ -226,10 +216,19 @@ p <-
 ggplotly(p)
 
 # map ----
+library(rJava)
 library(ggmap)
 library(OpenStreetMap)
 require(maps)
 require(ggplot2)
+
+# system("java -version")
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#install.packages("BiocManager")
+#BiocManager::install("openmap")
+
+# install.packages("mapmisc")
+library(mapmisc)
 xlim
 ylim
 
@@ -239,6 +238,7 @@ ylim
 
 # zoom depends on number of tiles available from server
 # main window size: c(53.5,23.5), c(57.5,38)
+
 map <- openmap(
   c(54,23.5), c(56,38),
   #c(30,1), c(65,50), # large
@@ -310,4 +310,16 @@ subplot(pmap, px, nrows = 2, margin = 0.02, heights = c(0.4, 0.3), shareX = TRUE
 # %>%
   #layout(xaxis=list(autorange=F, range=c(23,39)), 
   #       yaxis=list(autorange=F, range=c(54,56.5)))
+
+
+
+
+
+# alternative ----
+install.packages('maps')
+library(maps)
+
+
+
+https://medium.com/@joyplumeri/how-to-make-interactive-maps-in-r-shiny-brief-tutorial-c2e1ef0447da
 
