@@ -14,9 +14,20 @@ temps <- read.table("../data/temps.txt", header=T)
 temps$date <- as.Date(strptime(temps$date,"%d%b%Y"))
 
 library(maps)
-borders <- data.frame(map("world", xlim=c(10,50), ylim_temp=c(40, 80), plot=F)[c("x","y")])
+borders <- data.frame(map("world", xlim=c(10,50), ylim=c(40, 80), plot=F)[c("x","y")])
+borders_lakes <- data.frame(map('lakes', add=TRUE, fill=TRUE, col='blue', boundary='black')[c("x","y")])
 
-xlim <- scale_x_continuous(limits = c(24, 39))
+map("world", xlim=c(10,50), ylim=c(40, 80), plot=TRUE)[c("x","y")]
+map('world')
+
+
+x <- map.cities(x = world.cities, country = "russia", 
+           label = NULL, minpop = 0,
+           maxpop = Inf)
+
+
+
+xlim <- scale_x_continuous(limits = c(24, 38))
 ylim <- scale_y_continuous(limits = c(54, 56))
 ylim_temp <- scale_y_continuous(limits = c(-40, 0))
 
@@ -198,25 +209,29 @@ seg <- rbind(seg, end)
 # plot retreat ----
 p <- 
   ggplot(data=troops, aes(x=long2,y=lat2)) + 
-  geom_line(data=df_R2, aes(group = segnum, size=segw), colour="darkgrey", alpha = .9)+ 
-  geom_line(data=df_R2.2, aes(group = segnum, size=segw), colour="darkgrey", alpha = .9)+ 
-  geom_line(data=df_R2.3, aes(group = segnum, size=segw), colour="darkgrey", alpha = .9)+ 
-  geom_line(data=seg, aes(group = segnum, size=segw), color="darkgrey", alpha = .9)+
-  geom_line(data=df_A2, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9)+ 
-  geom_line(data=df_A2.2, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9)+ 
-  geom_line(data=df_A2.3, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9)+
-  geom_text(data = cities, aes( x=long,y=lat, label = city),
-            nudge_x = 0, nudge_y = .0, angle=0)+
+  geom_line(data=borders, aes(x=x2, y=y2, group = segnum), color="grey", alpha = .6, lineend = "round")+
+  geom_line(data=df_R2, aes(group = segnum, size=segw), colour="#4c4c4c", alpha = .9, lineend = "round")+ 
+  geom_line(data=df_R2.2, aes(group = segnum, size=segw), colour="#4c4c4c", alpha = .9, lineend = "round")+ 
+  geom_line(data=df_R2.3, aes(group = segnum, size=segw), colour="#4c4c4c", alpha = .9, lineend = "round")+ 
+  geom_line(data=seg, aes(group = segnum, size=segw), color="#4c4c4c", alpha = .9, lineend = "round")+
+  geom_line(data=df_A2, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9, lineend = "round")+ 
+  geom_line(data=df_A2.2, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9, lineend = "round")+ 
+  geom_line(data=df_A2.3, aes(group = segnum, size=segw), color="#e7d4a7", alpha = .9, lineend = "round")+
   geom_point(data = cities, aes(x=long,y=lat, group= city),
              size = 1)+
-  geom_line(data=borders, aes(x=x2, y=y2, group = segnum), color="#e7d4a7", alpha = .9)+
-  geom_point(data=borders, aes(x=x2, y=y2, group = 1), size = .2)+
-  xlim + ylim
+ # geom_point(data=borders, aes(x=x2, y=y2, group = 1), size = .2)+
+  geom_text(data = cities, aes( x=long,y=lat, label = city),
+            nudge_x = 0, nudge_y = .2, angle = -20)+
+  geom_point(data = cities, aes(x=long,y=lat, group= city),
+             size = 1, color = "darkred")+
+  xlim + ylim +
+  labs(x = "longitude", y = "latitude") 
+  
 
 ggplotly(p)
 
 # map ----
-library(rJava)
+#library(rJava)
 library(ggmap)
 library(OpenStreetMap)
 require(maps)
@@ -228,7 +243,7 @@ require(ggplot2)
 #BiocManager::install("openmap")
 
 # install.packages("mapmisc")
-library(mapmisc)
+#library(mapmisc)
 xlim
 ylim
 
@@ -252,29 +267,28 @@ map <- openmap(
   
 map_longlat <- openproj(map, projection = "+proj=longlat")
 
-autoplot.OpenStreetMap(map_longlat)
-
+# autoplot.OpenStreetMap(map_longlat)
 
 
 pmap <- 
   autoplot.OpenStreetMap(map_longlat) + 
-  #scale_y_continuous(expand = c(0,0), limits = c(54, 56))+
-  geom_line(data=df_R2, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1)+ 
-  geom_line(data=df_R2.2, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1)+ 
-  geom_line(data=df_R2.3, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1)+ 
-  geom_line(data=seg, aes(x=long2,y=lat2, group = segnum, size=segw), color="#4c4c4c", alpha = 1)+
-  geom_line(data=df_A2, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1)+ 
-  geom_line(data=df_A2.2, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1)+ 
-  geom_line(data=df_A2.3, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1)+
+ # scale_y_continuous(expand = c(0,0), limits = c(54, 56))+
+  geom_line(data=df_R2, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1, lineend = "round") +
+  geom_line(data=df_R2.2, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1, lineend = "round") +
+  geom_line(data=df_R2.3, aes(x=long2,y=lat2, group = segnum, size=segw), colour="#4c4c4c", alpha = 1, lineend = "round") +
+  geom_line(data=seg, aes(x=long2,y=lat2, group = segnum, size=segw), color="#4c4c4c", alpha = 1, lineend = "round") +
+  geom_line(data=df_A2, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1, lineend = "round") +
+  geom_line(data=df_A2.2, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1, lineend = "round") +
+  geom_line(data=df_A2.3, aes(x=long2,y=lat2, group = segnum, size=segw), color="#e2ca93", alpha = 1, lineend = "round") +
   geom_text(data = cities, aes( x=long,y=lat, label = city),
             nudge_x = 0, nudge_y = .2, angle = -20)+
   geom_point(data = cities, aes(x=long,y=lat, group= city),
              size = 1, color = "darkred")+
-  
-  geom_line(data=borders, aes(x=x2, y=y2, group = segnum), color="black", alpha = .6)+
+  geom_line(data=borders, aes(x=x2, y=y2, group = segnum), color="green", alpha = .6, lineend = "round")+
   # geom_point(data=borders, aes(x=x2, y=y2, group = 1), size = .2)+ 
-  xlim + ylim
-
+  xlim + ylim 
+ # scale_x_continuous(expand = c(0,0), limits = c(24, 38))
+pmap
 # ggplotly(pmap)
 
 # set map to EU and define initial zoom window
@@ -306,7 +320,12 @@ px <- ggplot(data=temp2, aes(x=long, y=temp)) +
 
 #subplot(p, px, nrows = 2, margin = 0.04, heights = c(0.5, 0.5)) %>%  rangeslider(start = 24.5, end = 37) 
 
-subplot(pmap, px, nrows = 2, margin = 0.02, heights = c(0.4, 0.3), shareX = TRUE) 
+
+# OSM map
+# subplot(pmap, px, nrows = 2, margin = 0.0, heights = c(0.9, 0.1), shareX = TRUE) 
+
+
+subplot(p, px, nrows = 2, margin = 0.0, heights = c(0.7, 0.3), shareX = TRUE) 
 # %>%
   #layout(xaxis=list(autorange=F, range=c(23,39)), 
   #       yaxis=list(autorange=F, range=c(54,56.5)))
@@ -316,10 +335,17 @@ subplot(pmap, px, nrows = 2, margin = 0.02, heights = c(0.4, 0.3), shareX = TRUE
 
 
 # alternative ----
-install.packages('maps')
+# install.packages('maps')
 library(maps)
 
 
+ph_basemap <- get_map(location=c(lon = -75.16522, lat = 39.95258), zoom=11, maptype = 'terrain-background', source = 'stamen')
 
-https://medium.com/@joyplumeri/how-to-make-interactive-maps-in-r-shiny-brief-tutorial-c2e1ef0447da
+library(leaflet)
+m <- leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R") %>%
+  addMarkers(lng=175.768, lat=-35.852, popup="The birthplace of R")
+
+m  # Print the map
 
