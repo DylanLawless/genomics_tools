@@ -206,7 +206,7 @@ end <- rbind(seg[2,], df_R2[36,])
 end$segnum <- 2
 seg <- rbind(seg, end)
 
-# plot retreat ----
+# ggplot retreat ----
 p <- 
   ggplot(data=troops, aes(x=long2,y=lat2)) + 
   geom_line(data=borders, aes(x=x2, y=y2, group = segnum), color="grey", alpha = .6, lineend = "round")+
@@ -311,7 +311,9 @@ px <- ggplot(data=temp2, aes(x=long, y=temp)) +
   geom_line(data=temp2, aes(group = segnum_temp, color=median), show.legend = FALSE)+
   scale_color_gradientn(colours = c("red", "blue"),limits = c(-40, 0))+
   geom_point(aes(x = long, y = temp, colour = temp), size = 2, show.legend = FALSE) +
-  geom_text(data = temp2, aes(label = paste(month, day, "\n",tempC)), size = 3, nudge_y = -8 ) + xlim + ylim_temp
+  geom_text(data = temp2, aes(label = paste(month, day, "\n",tempC)), size = 3, nudge_y = -8 ) + xlim + ylim_temp +
+  labs(x = "longitude", y = "temperature") 
+
 
 #ggplotly(px)
 
@@ -324,8 +326,8 @@ px <- ggplot(data=temp2, aes(x=long, y=temp)) +
 # OSM map
 # subplot(pmap, px, nrows = 2, margin = 0.0, heights = c(0.9, 0.1), shareX = TRUE) 
 
-
-subplot(p, px, nrows = 2, margin = 0.0, heights = c(0.7, 0.3), shareX = TRUE) 
+# fig main ---- 
+subplot(p, px, nrows = 2, margin = 0.02, heights = c(0.7, 0.3), shareX = TRUE, titleY=TRUE) 
 # %>%
   #layout(xaxis=list(autorange=F, range=c(23,39)), 
   #       yaxis=list(autorange=F, range=c(54,56.5)))

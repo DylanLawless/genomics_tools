@@ -1,5 +1,6 @@
 library(lubridate)
 library(dplyr)
+library(stringr)
 #library(ggplot2)
 #library(plotly)
 
@@ -17,21 +18,38 @@ df <-
 df$CLASSIFICATION.YEAR <- 
   year(lubridate::as_datetime(df$CLASSIFICATION.DATE))
 
+# clean names
 df <- df %>% select(-CLASSIFICATION.DATE)
 
 df$GENE.ID..HGNC. <- str_replace(df$GENE.ID..HGNC., "HGNC:", "") 
 df$DISEASE.ID..MONDO. <- str_replace(df$DISEASE.ID..MONDO., "MONDO:", "") 
+df$SOP <- str_replace(df$SOP, "SOP", "")
 
-library(stringr)
 names(df) <- str_to_sentence(names(df), locale = "en")
 df$Classification <- str_replace(df$Classification, "No Known Disease Relationship", "No Known") 
 
-# reorder
-df <- df %>% select(-"Disease.id..Mondo.", -"Gene.id..Hgnc.", -"Sop", "Disease.id..Mondo.", "Gene.id..Hgnc.", "Sop")
 
-# clean names
 names(df) <- str_replace_all(names(df),"\\.\\."," ")
 names(df) <- str_replace_all(names(df),"\\."," ")
+
+colnames(df)[colnames(df) == 'Gcep'] <- 'GCEP'
+colnames(df)[colnames(df) == 'Gene id Hgnc '] <- 'HGNC'
+colnames(df)[colnames(df) == 'Sop'] <- 'SOP'
+colnames(df)[colnames(df) == 'Moi'] <- 'MOI'
+colnames(df)[colnames(df) == 'Disease id Mondo '] <- 'MONDO'
+
+# reorder
+df <- df %>% select(
+"Gene symbol",
+"MOI",
+"Classification",
+"Online report",
+"Disease label",
+"GCEP",
+"HGNC",
+"MONDO",
+"SOP",
+"Classification year")
 
 
 # color theme ----
@@ -50,7 +68,7 @@ names(df) <- str_replace_all(names(df),"\\."," ")
 # cols_warn <- c("#cc3300", "#ff9966", "#ffcc00", "#99cc33", "#339900")
 
 # classifications
-cols_names <- c(unique(df$Classification))
+# cols_names <- c(unique(df$Classification))
 #ColourScale_groups <- data.frame(cols_names, cols_class)
 #ColourScale_groups <- t(ColourScale_groups) %>% janitor::row_to_names(1)
 #rownames(ColourScale_groups)<-NULL
@@ -78,106 +96,80 @@ cols_names <- c(unique(df$Classification))
 library(reactable)
 options(reactable.theme = reactableTheme(
   borderColor = "#dfe2e5",
-  stripedColor = "#fefcf5",
-  highlightColor = "#fefafc",
+  stripedColor = "#fcf0e6",
+  highlightColor = "#f9e2cf",
   cellPadding = "8px 12px",
   style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
                fontSize = "1.0rem"),
-  searchInputStyle = list(width = "100%")
+  searchInputStyle = list(width = "50%")
 ))
 
-# turn the Online.report column into href links, which DT can escape
-df_r <- reactable(df, columns = list(
-  "Online report" = colDef(cell = function(value, index) {
-    # Render as a link
-    url <- sprintf(df[index, "Online report"], value)
-    #htmltools::tags$a(href = url, target = "_blank", as.character(value))
-    htmltools::tags$a(href = url, target = "_blank", "link")
-  }),
-  
-  Classification = colDef(
-    style = function(value) {
-      if (value == "Disputed") {color <- "#962fbf"
-      } else if (value == "Limited") {color <- "#ffbf00"
-      } else if (value == "Moderate") {color <- "#fa7e1e"
-      } else if (value == "No Known") {color <- "#d62976"
-      } else if (value == "Definitive") {color <- "#339900"
-      } else if (value == "Strong") {color <- "#99cc33"
-      } else if (value == "Refuted") {color <- "#4f5bd5"
-} else { color <- "black"}
-      list(color = color)
-    }
+df_t <- 
+  reactable(data,
+            compact = TRUE,
+            searchable = TRUE,
+            #elementId = "download-table",
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 90 ),
+            columns = list(
+              "Disease label" = colDef(minWidth = 200),  # overrides the default
+              "GCEP" = colDef(minWidth = 200), 
+              "SOP" = colDef(minWidth = 70), 
+              "Online report" = colDef(cell = function(value, index) {
+                # Render as a link
+                url <- sprintf(df[index, "Online report"], value)
+                htmltools::tags$a(href = url, target = "_blank", "link")
+              }),
+              
+              Classification = colDef( minWidth = 130,
+                                       style = function(value) {
+                                         if (value == "Disputed") {color <- "#962fbf"
+                                         } else if (value == "Limited") {color <- "#e5ab00"
+                                         } else if (value == "Moderate") {color <- "#fa7e1e"
+                                         } else if (value == "No Known") {color <- "#d62976"
+                                         } else if (value == "Definitive") {color <- "#339900"
+                                         } else if (value == "Strong") {color <- "#99cc33"
+                                         } else if (value == "Refuted") {color <- "#4f5bd5"
+                                         } else { color <- "black"}
+                                         list(color = color) })
+              
+            ),
+            filterable = TRUE,
+            showSortable = TRUE,
+            showPageSizeOptions = TRUE,
+            striped = TRUE,
+            highlight = TRUE
   )
-  
-),
-filterable = TRUE,
-showPageSizeOptions = TRUE,
-striped = TRUE,
-highlight = TRUE,
-#details = function(index) paste("Details for row", index)
-defaultPageSize = 10)
 
-df_r
-
-htmltools::browsable(
-  tagList(
-    tags$button(
-      tagList(fontawesome::fa("download"), "Download as CSV"),
-      onclick = "Reactable.downloadDataCSV('cars-download-table', 'cars.csv')"), df_r))
+df_t
 
 # crosstalk ----
+#Note: bsCols() Seems to completely override the flexdashboard CSS and can't be used on website
 # make the data crosstalk for a checklist filter
 library(crosstalk)
 data <- SharedData$new(df)
 
-df_b <- bscols(
-  widths = c(2, 9),
-  list(
-    filter_checkbox("Classification", "Classification", data, ~Classification)),
-  
-  reactable(data,
-            compact = TRUE,
-            searchable = TRUE,
-            #elementId = "cars-download-table",
-            defaultPageSize = 10,
-            columns = list(
-    "Online report" = colDef(cell = function(value, index) {
-      # Render as a link
-      url <- sprintf(df[index, "Online report"], value)
-      htmltools::tags$a(href = url, target = "_blank", "link")
-    }),
-    
-    Classification = colDef(
-      style = function(value) {
-        if (value == "Disputed") {color <- "#962fbf"
-        } else if (value == "Limited") {color <- "#ffbf00"
-        } else if (value == "Moderate") {color <- "#fa7e1e"
-        } else if (value == "No Known") {color <- "#d62976"
-        } else if (value == "Definitive") {color <- "#339900"
-        } else if (value == "Strong") {color <- "#99cc33"
-        } else if (value == "Refuted") {color <- "#4f5bd5"
-        } else { color <- "black"}
-        list(color = color)
-      }
-    )
-   
-  ),
-  filterable = TRUE,
-  showPageSizeOptions = TRUE,
-  striped = TRUE,
-  highlight = TRUE
-  ),
-  device = c( "sm")
-)
+df_b <- bscols( widths = c(2, 9),
+  ( filter_checkbox("Classification", "Classification", data, ~Classification)),
+ df_t,
+ device = c( "sm"))
 
-df_b
+checkbox <- filter_checkbox("Classification", "Classification", data, ~Classification)
+htmltools::browsable(df_t, checkbox)
 
-# if this is not in use, remove from df_b "elementId = "cars-download-table""
+# download button
+library(htmltools)
+library(fontawesome)
 htmltools::browsable(
   tagList(
     tags$button(
       tagList(fontawesome::fa("download"), "Download as CSV"),
-      onclick = "Reactable.downloadDataCSV('cars-download-table', 'cars.csv')"), df_b))
+      onclick = "Reactable.downloadDataCSV('download-table', 'cars.csv')"
+    ),
+    
+    df_b
+  )
+)
 
-# clingen-gene_disease_validity
+
 
