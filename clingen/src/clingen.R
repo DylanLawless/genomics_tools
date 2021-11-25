@@ -82,7 +82,7 @@ options(reactable.theme = reactableTheme(
   highlightColor = "#fefafc",
   cellPadding = "8px 12px",
   style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
-               fontSize = "0.8rem"),
+               fontSize = "1.0rem"),
   searchInputStyle = list(width = "100%")
 ))
 
@@ -115,7 +115,7 @@ showPageSizeOptions = TRUE,
 striped = TRUE,
 highlight = TRUE,
 #details = function(index) paste("Details for row", index)
-defaultPageSize = 25)
+defaultPageSize = 10)
 
 df_r
 
@@ -139,7 +139,7 @@ df_b <- bscols(
             compact = TRUE,
             searchable = TRUE,
             #elementId = "cars-download-table",
-            defaultPageSize = 25,
+            defaultPageSize = 10,
             columns = list(
     "Online report" = colDef(cell = function(value, index) {
       # Render as a link
