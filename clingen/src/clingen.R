@@ -1,5 +1,5 @@
 library(lubridate)
-# library(dplyr)
+library(dplyr)
 #library(ggplot2)
 #library(plotly)
 
@@ -25,6 +25,14 @@ df$DISEASE.ID..MONDO. <- str_replace(df$DISEASE.ID..MONDO., "MONDO:", "")
 library(stringr)
 names(df) <- str_to_sentence(names(df), locale = "en")
 df$Classification <- str_replace(df$Classification, "No Known Disease Relationship", "No Known") 
+
+# reorder
+df <- df %>% select(-"Disease.id..Mondo.", -"Gene.id..Hgnc.", -"Sop", "Disease.id..Mondo.", "Gene.id..Hgnc.", "Sop")
+
+# clean names
+names(df) <- str_replace_all(names(df),"\\.\\."," ")
+names(df) <- str_replace_all(names(df),"\\."," ")
+
 
 # color theme ----
 # Disputed #962fbf insta purple
@@ -73,15 +81,16 @@ options(reactable.theme = reactableTheme(
   stripedColor = "#fefcf5",
   highlightColor = "#fefafc",
   cellPadding = "8px 12px",
-  style = list(fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"),
+  style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
+               fontSize = "0.8rem"),
   searchInputStyle = list(width = "100%")
 ))
 
 # turn the Online.report column into href links, which DT can escape
 df_r <- reactable(df, columns = list(
-  Online.report = colDef(cell = function(value, index) {
+  "Online report" = colDef(cell = function(value, index) {
     # Render as a link
-    url <- sprintf(df[index, "Online.report"], value)
+    url <- sprintf(df[index, "Online report"], value)
     #htmltools::tags$a(href = url, target = "_blank", as.character(value))
     htmltools::tags$a(href = url, target = "_blank", "link")
   }),
@@ -126,13 +135,15 @@ df_b <- bscols(
   list(
     filter_checkbox("Classification", "Classification", data, ~Classification)),
   
-  reactable(data, 
-            elementId = "cars-download-table",
+  reactable(data,
+            compact = TRUE,
+            searchable = TRUE,
+            #elementId = "cars-download-table",
             defaultPageSize = 25,
             columns = list(
-    Online.report = colDef(cell = function(value, index) {
+    "Online report" = colDef(cell = function(value, index) {
       # Render as a link
-      url <- sprintf(df[index, "Online.report"], value)
+      url <- sprintf(df[index, "Online report"], value)
       htmltools::tags$a(href = url, target = "_blank", "link")
     }),
     
