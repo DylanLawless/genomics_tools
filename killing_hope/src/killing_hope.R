@@ -1,0 +1,142 @@
+library(lubridate)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(stringr)
+library(tidyr)
+
+# import ----
+df <- 
+  read.table(file="../data/killing_hope_dates.tsv", 
+             header = TRUE, 
+             sep = "\t", 
+             stringsAsFactors = TRUE,
+             quote = "")
+
+
+world <- map_data("world")
+
+df$region <- str_replace(df$region, "The Philippines", "Philippines")
+df$region <- str_replace(df$region, "Korea", "South_Korea/North_Korea")
+df$region <- str_replace(df$region, "East Timor", "Timor-Leste")
+df$region <- str_replace(df$region, "The Congo", "Republic of Congo")
+df$region <- str_replace(df$region, "Zaire", "Democratic Republic of the Congo")
+df$region <- str_replace(df$region, "British Guiana", "Guyana")
+df$region <- str_replace(df$region, "Western Europe", "Austria/Belgium/France/Germany/Liechtenstein/Luxembourg/Monaco/Netherlands/Switzerland")
+df$region <- str_replace(df$region, "The Middle East", "Egypt/Turkey/Iran/Iraq/Saudi Arabia/Yemen/Syria/Jordan/United Arab Emirates/Israel/Lebanon/Oman/Palestine/Kuwait/Qatar/Bahrain")
+df$region <- str_replace(df$region, "Soviet Union late", "Armenia/Moldova/Estonia/Latvia/Lithuania/Georgia/Azerbaijan/Tajikistan/Kyrgyzstan/Belarus/Uzbekistan/Turkmenistan/Ukraine/Kazakhstan/Russia")
+
+df$region <- str_replace(df$region, "Eastern Europe", "Belarus/Bulgaria/Czech Republic/Hungary/Poland/Moldova/Romania/Russia/Slovakia/Ukraine")
+
+df <- separate_rows(df,region,sep = "/")
+df$region <- str_replace(df$region, "_", " ")
+
+df$iscountry <- match(df$region, world$region, nomatch = NA_integer_, incomparables = NULL)
+  
+# Once all names match to "map_data" we can continue
+df[ is.na(df$iscountry), ] %>% select(region)
+ 
+
+# merge 
+df_world <- left_join(world, df, by = c("region"))
+
+# extract only the regions
+df_world <- df_world[ !is.na(df_world$Description), ] 
+
+ggplot() +
+  geom_map(
+    data = world, map = world,
+    aes(long, lat, map_id = region),
+    color = "black", fill = "lightgray", size = 0.1
+  )
+
+world %>%
+  ggplot(aes(x=long,y=lat,group=group)) +
+  geom_polygon(data = world, fill="lightgray",
+               color = "black",  size = 0.1) +
+  geom_polygon( data = df_world,
+                color = "gray90",  size = 0.1,
+                aes(fill=Start, x=long,y=lat,group=group)) +
+  scale_fill_continuous(type = "viridis")+
+  theme(legend.position="bottom",
+        axis.line=element_blank(),
+        axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank(),
+        panel.background=element_blank(),
+        panel.border=element_blank(),
+        panel.grid=element_blank()) 
+ # transition_reveal(Start)
+  #coord_map(projection = "albers", lat0 = 45, lat1 = 55) +
+
+
+# Expand events to cover the range of start-end year
+# set the years as dates
+df_world$Start <- lubridate::ymd(df_world$Start, truncated = 2L)
+df_world$End <- lubridate::ymd(df_world$End, truncated = 2L)
+
+event_year <- df_world %>%
+  select(Event, Start, End) %>%
+  group_by(Event, Start, End) %>%
+  unique()
+
+library(tidyr)
+event_year_long <- event_year %>%
+  group_by(Event, Start, End) %>%
+  mutate(date = list(seq.Date(Start, End, by = "year"))) %>%
+  tidyr::unnest()
+
+# merge
+df_world_date <- left_join(df_world, event_year_long, by = c("Event", "Start", "End"))
+
+# Print simply as "Year" for plotting
+df_world_date$Year <- year(df_world_date$date)
+
+df_point <- df_world_date %>%
+  select("region", "Year", "Event") %>%
+  unique() 
+
+library(wesanderson)
+library(gganimate)
+pal <- wes_palette("Zissou1", 10, type = "continuous")
+
+p1 <- world %>%
+  ggplot(aes(x=long,y=lat,group=group)) +
+  geom_polygon(data = world, fill="lightgray",
+               color = "gray90",  size = 0.1) +
+  geom_polygon( data = df_world_date,
+                color = "gray90",  size = 0.1,
+                aes(fill=Event, frame = Year, x=long,y=lat,group=group)) +
+  scale_fill_gradientn(colours = pal) + 
+  theme(legend.position="none",
+           axis.line=element_blank(),
+           axis.text=element_blank(),
+           axis.ticks=element_blank(),
+           axis.title=element_blank(),
+           panel.background=element_blank(),
+           panel.border=element_blank(),
+           panel.grid=element_blank())
+
+# Create plotly graph
+ggplotly(p1, height = 400, width = 500) %>%
+  animation_opts(frame = 10, #easing = "linear", redraw = TRUE
+  ) 
+
+# animate does not work for geom_polygon
+
+
+
+library(gganimate)
+p2 <- world %>%
+  ggplot(aes(x=long,y=lat,group=group)) +
+  geom_point( data = (df_world_date  %>%
+                        filter(Year >= 1970)),
+                 size = 10,
+                aes(fill=Event, frame = Year, 
+                    x=long,y=lat,
+                    group=group)) +
+  scale_fill_gradientn(colours = pal) + 
+  theme(legend.position="none")
+
+p2 + transition_time(Year, transition_length = 3,  range = c(1970,1975))
+
