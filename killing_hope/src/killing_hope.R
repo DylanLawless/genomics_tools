@@ -13,10 +13,12 @@ df <-
              stringsAsFactors = TRUE,
              quote = "")
 
-
+# save a copy 
+df_original <- df
 world <- map_data("world")
 
 world$region <- str_replace(world$region, "Democratic Republic of the Congo", "DRC")
+
 
 df$region <- str_replace(df$region, "The Philippines", "Philippines")
 df$region <- str_replace(df$region, "Korea", "South_Korea/North_Korea")
@@ -30,9 +32,6 @@ df$region <- str_replace(df$region, "Soviet Union late", "Armenia/Moldova/Estoni
 
 df$region <- str_replace(df$region, "Eastern Europe", "Belarus/Bulgaria/Czech Republic/Hungary/Poland/Moldova/Romania/Russia/Slovakia/Ukraine")
 
-
-
-DRC
 
 df <- separate_rows(df,region,sep = "/")
 df$region <- str_replace(df$region, "_", " ")
@@ -131,24 +130,6 @@ p1 <- world %>%
 
 
 
-library(gganimate)
-p2 <- world %>%
-  ggplot(aes(x=long,y=lat,group=group)) +
-  geom_point( data = (df_world_date  %>%
-                        filter(Year >= 1970)),
-                 size = 10,
-                aes(fill=Event, frame = Year, 
-                    x=long,y=lat,
-                    group=group)) +
-  scale_fill_gradientn(colours = pal) + 
-  theme(legend.position="none")
-
-# p2 + transition_time(Year, transition_length = 3,  range = c(1970,1975))
-
-
-
-
-
 library(tidyr)
 event_year_long <- event_year %>%
   group_by(Event, Start, End) %>%
@@ -159,35 +140,7 @@ event_year_long$Year <- year(event_year_long$date)
 
 event_year_long <- event_year_long %>% group_by(Year)
 
-world %>%
-  ggplot(aes(x=long,y=lat,group=group)) +
-  geom_map( aes(map_id = region), 
-            map = world, data = world)+
-  geom_map( aes(fill = Event, map_id = region), 
-            map = df_world_date, data = df_world_date) +
-  annotate(
-    "text", label = event_year_long$Year,
-    x = 2, y = 15, size = 8, colour = "red"
-  )
 
-# use map instead of polygon ----
-# land color = #ffeddf
-p  <- world %>%
-  ggplot(aes(x=long,y=lat,group=group)) +
-  geom_map( aes(map_id = region), 
-            map = world, data = world)+
-    geom_map( aes(fill = Event, map_id = region), 
-      map = df_world_date, data = df_world_date) +
-  scale_fill_gradientn(colours = pal)
-
-# p
-
-
-# animate gif ----
-library(gganimate)
-library(gifski)
-
-# add text and year ----
 # get the first lat,long for a region/event
 df_slice <- df_world_date %>%
   ungroup() %>%
@@ -195,32 +148,152 @@ df_slice <- df_world_date %>%
   group_by(Year, Event, region, Description) %>% 
   slice(1)
 
+world %>%
+  ggplot(aes(x=long,y=lat,group=group)) +
+  geom_map( aes(map_id = region), 
+            size = 0.1,
+            map = world, data = world)+
+  geom_map( aes(fill = Event, map_id = region), 
+            map = df_world_date, data = df_world_date)
+
+# use map instead of polygon ----
+# land color = #ffeddf
+p  <- world %>%
+  ggplot(aes(x=long,y=lat,group=group)) +
+  geom_map( aes(map_id = region, size = 1), 
+            color = "black", fill = "#f8f0ea", size = 0.1,
+            map = world, data = world)+
+    geom_map( aes(fill = Event, map_id = region), 
+              color = "black",  size = 0.1,
+      map = df_world_date, data = df_world_date) +
+  scale_fill_gradientn(colours = pal) +
+  theme(legend.position="none",
+        panel.background = element_rect(fill = "#d5edff"),
+        axis.line=element_blank(),
+        axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        axis.title=element_blank(),
+        panel.border=element_blank(),
+        panel.grid=element_blank())
+
+
+p
+
+# animate gif ----
+library(gganimate)
+library(gifski)
+
+# add repel text and year ----
+# This is not required, but a nice thing for reference
 # spread the lat value between min/max such that labels will be correct but not overlapping
-library(BBmisc)
-df_slice$lat_scaled <- df_slice$lat %>% BBmisc::normalize(method = "range", range = c(-80,80))
+#library(BBmisc)
+#df_slice$lat_scaled <- df_slice$lat %>% BBmisc::normalize(method = "range", range = c(-80,80))
 
-
-# repel text ----
-#ocean <- "#5391c9"
+# Get the description / year
+df_slice_description <- df_slice %>% ungroup() %>% group_by(Year, Event, Description) %>% slice(1) %>% unique()
 
 library(ggrepel)
 animate_plot <- p + transition_manual(frames = Year) +
-  labs(title = paste("{current_frame}")) +# give the year 
-  geom_label_repel(data = df_slice, 
-                   aes(label=region,
-                       y = lat, 
-                       x = long,
-                       group=Event),
-                   xlim=c(-200,-100),
-                   show.legend = FALSE, 
-                   direction="y")  +
-  theme(legend.position="none",
-        panel.background = element_rect(fill = "#5391c9"))
-#+ 
-  #xlim(c(-210, 210))
+  labs(title = paste("{current_frame}")) +# give the year
+  geom_label_repel(data = df_slice,
+                   aes(label=region, y = lat, x = long, group=Event),
+                   xlim=c(-200,-100), show.legend = FALSE,direction="y")
+
+  
+# check number of frames required
+event_year_long %>% 
+  ungroup() %>% 
+  select(Year) %>% 
+  unique() %>% 
+  tally()
 
 library(gifski)
-animate(animate_plot, nframes = 50, fps = 5, end_pause = 10,renderer=gifski_renderer("test.gif"),
-        height = 6, width = 9, units = "in", res = 150 # 450x300px
+animate(animate_plot, 
+        nframes = 55, 
+        fps = 5, 
+        end_pause = 1,
+        renderer=gifski_renderer("test.gif"),
+        height = 6, width = 10, units = "in", res = 150
         )
 
+
+
+# reactable ----
+
+# The collapsed version of table with modern country names
+df_summarised <-
+  df %>%
+  select(-iscountry)  %>%
+  group_by(Event, Start, End, Description) %>%
+  summarize(Region = toString(region)) %>%
+  ungroup
+
+library(reactable)
+options(reactable.theme = reactableTheme(
+  borderColor = "#dfe2e5",
+  stripedColor = "#fcf0e6",
+  highlightColor = "#f9e2cf",
+  cellPadding = "8px 12px",
+  style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
+               fontSize = "1.0rem"),
+  searchInputStyle = list(width = "50%")
+))
+
+df_t_original <- 
+  reactable(df_original,
+            compact = TRUE,
+            searchable = TRUE,
+            #elementId = "download-table",
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 90 ),
+            # columns list
+            filterable = TRUE,
+            showSortable = TRUE,
+            showPageSizeOptions = TRUE,
+            striped = TRUE,
+            highlight = TRUE
+  )
+
+df_t_modern <- 
+  reactable(df_summarised,
+            compact = TRUE,
+            searchable = TRUE,
+            #elementId = "download-table",
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 90 ),
+            # columns list
+            filterable = TRUE,
+            showSortable = TRUE,
+            showPageSizeOptions = TRUE,
+            striped = TRUE,
+            highlight = TRUE
+  )
+
+df_t_original
+df_t_modern
+
+
+
+columns = list(
+  "Disease label" = colDef(minWidth = 200),  # overrides the default
+  "GCEP" = colDef(minWidth = 200), 
+  "SOP" = colDef(minWidth = 70), 
+  "Online report" = colDef(cell = function(value, index) {
+    # Render as a link
+    url <- sprintf(df[index, "Online report"], value)
+    htmltools::tags$a(href = url, target = "_blank", "link")
+  }),
+  
+  Classification = colDef( minWidth = 130,
+                           style = function(value) {
+                             if (value == "Disputed") {color <- "#962fbf"
+                             } else if (value == "Limited") {color <- "#e5ab00"
+                             } else if (value == "Moderate") {color <- "#fa7e1e"
+                             } else if (value == "No Known") {color <- "#d62976"
+                             } else if (value == "Definitive") {color <- "#339900"
+                             } else if (value == "Strong") {color <- "#99cc33"
+                             } else if (value == "Refuted") {color <- "#4f5bd5"
+                             } else { color <- "black"}
+                             list(color = color) })
+  
+),
