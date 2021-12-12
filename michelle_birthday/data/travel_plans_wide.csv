@@ -1,0 +1,12 @@
+Number,Person,origins,longitude.x,latitude.x,longitude.y,latitude.y,destinations,Method,Event,Date
+1,Rachel,Birmingham,-1.9026911,52.4796992,8.309307,47.050167,Lucerne,Flight,Departure,11
+2,Chloe,Germany,13.404954,52.520008,8.309307,47.050167,Lucerne,Train,Departure,11
+3,Lucy,Birmigham,-1.7026911,52.5796992,8.309307,47.050167,Lucerne,Flight,Departure,11
+4,Ana,Cork,-8.471094,51.897866,8.309307,47.050167,Lucerne,Flight,Departure,11
+5,Tereza,Cambridge,0.201237,52.1555314,8.309307,47.050167,Lucerne,Flight,Departure,11
+6,Kai,Dublin,-6.26031,53.349804,8.309307,47.050167,Lucerne,Flight,Departure,11
+7,Emma,London,-0.127758,51.507351,8.309307,47.050167,Lucerne,Flight,Departure,11
+8,Denisa,Lausanne,6.632273,46.519654,8.309307,47.050167,Lucerne,Train,Departure,11
+9,Sarina,Washington,-77.036366,38.895112,-77.036366,38.895112,Lucerne,Home,Departure,11
+10,Kate,Dublin,-6.26031,53.349804,-6.26031,53.349804,Lucerne,Home,Departure,11
+11,Paige,Cambridge,0.131237,52.202544,0.131237,52.202544,Lucerne,Home,Departure,11
