@@ -37,7 +37,7 @@ colnames(df)[colnames(df) == 'Gene id Hgnc '] <- 'HGNC'
 colnames(df)[colnames(df) == 'Sop'] <- 'SOP'
 colnames(df)[colnames(df) == 'Moi'] <- 'MOI'
 colnames(df)[colnames(df) == 'Disease id Mondo '] <- 'MONDO'
-colnames(df)[colnames(df) == 'Online report'] <- 'CliGen'
+colnames(df)[colnames(df) == 'Online report'] <- 'ClinGen'
 colnames(df)[colnames(df) == 'Classification'] <- 'ClinGen classification'
 
 
@@ -77,8 +77,8 @@ df <- df %>% select(
   "MOI",
   "ClinGen classification",
   "Disease label",
-  "GCEP",
-  "gnomAD r2 GRCh37", "gnomAD r3 GRCh38", "UniProt", "Ensembl", "OMIM", "omni", "pdb", "DisProt", "AmiGo", "Alpha Fold", "ORPHA", "HPO", "HGNC", "Gemma",
+  "GCEP", 
+  "ClinGen", "gnomAD r2 GRCh37", "gnomAD r3 GRCh38", "UniProt", "Ensembl", "OMIM", "omni", "pdb", "DisProt", "AmiGo", "Alpha Fold", "ORPHA", "HPO", "HGNC", "Gemma",
   "MONDO",
   "SOP",
   "Classification year")
@@ -116,9 +116,9 @@ df_t <-
               "Disease label" = colDef(minWidth = 200),  # overrides the default
               "GCEP" = colDef(minWidth = 200), 
               "SOP" = colDef(minWidth = 70), 
-              "CliGen" = colDef(cell = function(value, index) {
+              "ClinGen" = colDef(cell = function(value, index) {
                 # Render as a link
-                url <- sprintf(df[index, "CliGen"], value)
+                url <- sprintf(df[index, "ClinGen"], value)
                 htmltools::tags$a(href = url, target = "_blank", "link")
               }),
               "UniProt" = colDef(cell = function(value, index) {
