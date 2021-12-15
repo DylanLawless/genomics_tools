@@ -177,7 +177,23 @@ p  <- world %>%
         panel.grid=element_blank())
 
 
-p
+# annotate ----
+p + annotate("rect", xmin = -50, xmax = 50, ymin = -80, ymax = -120, alpha = 0.3) +
+annotate("text", x = 0, y = -120, label = 
+"Covert CIA operations and United States military interventions 
+during the second half of the 20th century.") +
+  annotate("text", x = 0, y = -120, label = 
+"Data source: Killing Hope U.S. Military
+and CIA Interventions since World War II
+by William Blum.")
+
+"Built by Lawless"
+
+
+p + labs(
+    title = "Mileage by engine size and cylinders",
+    subtitle = "Source: http://fueleconomy.gov" )
+
 
 # animate gif ----
 library(gganimate)
@@ -217,7 +233,7 @@ animate(animate_plot,
         )
 
 
-
+# other ----
 # reactable ----
 
 # The collapsed version of table with modern country names

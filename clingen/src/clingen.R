@@ -52,6 +52,13 @@ df <- df %>% select(
 "Classification year")
 
 
+# lnk to uniprot ----
+#https://www.uniprot.org/uniprot/?query=gene:rag1&fil=organism%3A%22Homo+sapiens+%28Human%29+%5B9606%5D%22&sort=score
+
+# When using % for url, we nee to escape it for sprintf. Use doulbe (%%).
+# We also have to escape for the reactable, and therefore use quadruple (%%%%).
+df$UniProt <- sprintf('https://www.uniprot.org/uniprot/?query=gene:%s&fil=organism%%%%3A%%%%22Homo+sapiens+%%%%28Human%%%%29+%%%%5B9606%%%%5D%%%%22&sort=score', df$`Gene symbol`)
+
 # color theme ----
 # Disputed #962fbf insta purple
 # LIMITED	1-6 gold 	#ffbf00 gold
@@ -61,43 +68,12 @@ df <- df %>% select(
 # STRONG	12-18 green 	#99cc33 light
 # Refuted #4f5bd5 insta blue
 
-#cols_class <- c("#962fbf", "#ffbf00", "#fa7e1e", "#d62976", "#339900", "#99cc33", "#4f5bd5")
-
-# cols_instagram <- c("#feda75", "#fa7e1e", "#d62976", "#962fbf", "#4f5bd5")
-# warning, 2 red, yellow, 2 green
-# cols_warn <- c("#cc3300", "#ff9966", "#ffcc00", "#99cc33", "#339900")
-
-# classifications
-# cols_names <- c(unique(df$Classification))
-#ColourScale_groups <- data.frame(cols_names, cols_class)
-#ColourScale_groups <- t(ColourScale_groups) %>% janitor::row_to_names(1)
-#rownames(ColourScale_groups)<-NULL
-
-# order the click filter 
-#Classification <- c("No Known",  "Limited", "Refuted", "Disputed",  "Moderate",  "Strong", "Definitive")
-#Classification_level <- as.numeric(c(1,2,3,4,5,6,7))
-#Classification_levels <- data.frame(Classification, Classification_level)
-# library(tidyr)
-# df <- merge(df, Classification_levels)
-# df <- unite(df, Classification_level, Classification, col = "Classification", sep = ". ")
-
-# data table ---- 
-# does not render the href
-# DT: An R interface to the DataTables library
-# library(DT)
-# df_d <- datatable(head(df), 
-#          class = 'compact stripe',
-#          filter = 'top', options = list(
-#            pageLength = 25, autoWidth = TRUE,
-#            escape = FALSE))
-# df_d
-
 # reactable ----
 library(reactable)
 options(reactable.theme = reactableTheme(
   borderColor = "#dfe2e5",
-  stripedColor = "#fcf0e6",
-  highlightColor = "#f9e2cf",
+  stripedColor = "##E5E5E5",
+  highlightColor = "#fcf0e6",
   cellPadding = "8px 12px",
   style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
                fontSize = "1.0rem"),
@@ -105,7 +81,7 @@ options(reactable.theme = reactableTheme(
 ))
 
 df_t <- 
-  reactable(data,
+  reactable(df,
             compact = TRUE,
             searchable = TRUE,
             #elementId = "download-table",
@@ -120,7 +96,10 @@ df_t <-
                 url <- sprintf(df[index, "Online report"], value)
                 htmltools::tags$a(href = url, target = "_blank", "link")
               }),
-              
+              "UniProt" = colDef(cell = function(value, index) {
+                url <- sprintf(df[index, 'UniProt'], value)
+                htmltools::tags$a(href = url, target = "_blank", "link")
+              }),
               Classification = colDef( minWidth = 130,
                                        style = function(value) {
                                          if (value == "Disputed") {color <- "#962fbf"
@@ -142,6 +121,12 @@ df_t <-
   )
 
 df_t
+
+
+
+
+
+
 
 # crosstalk ----
 #Note: bsCols() Seems to completely override the flexdashboard CSS and can't be used on website

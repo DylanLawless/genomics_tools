@@ -1,0 +1,48 @@
+https://itanlab.shinyapps.io/goflof/
+
+
+The first germline disease-causing gain-of-function (GOF) and loss-of-function (LOF) variants database has been generated using natural language processing (NLP) on the available abstracts in the Human Gene Mutation Database (HGMD) Professional version. The goal of this project is to provide a comprehensive and publicly available GOF/LOF database for academic and research purposes. The data should be interpreted with caution as the GOF and LOF predictions are not manually curated.
+
+
+For details, see our preprint on bioRxiv https://doi.org/10.1101/2021.01.01.424981
+
+- Here we provide two different versions of the dataset based on (i) the public version of HGMD database, and (ii) ClinVar database.
+
+- The HGMD based database (March 2021) includes 949 GOF and 8,592 LOF variants compiled from the HGMD December 2019 release. The dataset provides HGMD ID, chromosome, position, and gene name. The database will be regularly updated based on up-to-date public version of the HGMD database.
+
+- The ClinVar based database includes 550 GOF and 4,407 LOF variants compiled from the ClinVar June 2021 release. The dataset provides allele ID, chromosome, position, reference allele, alternate allele, gene name, and rsid columns. The dataset will be regularly updated.
+
+- In both datasets the coordinates are based on hg19.
+
+
+
+Citation: Bayrak, Cigdem Sevim, Aayushee Jain, David Stein, Kumardeep Chaudhary, Girish Nadkarni, Tielman T. Van Vleck, Stephanie Boisson-Dupuis et al. Identification of Discriminative Gene-level and Protein-level Features Associated with Gain-of-Function and Loss-of-Function Mutations. bioRxiv (2021).
+
+
+
+Terms of Usage: The database is freely available for all non-commercial users.
+
+
+
+
+
+Examples:
+
+This table is a main output for their paper:
+https://www.sciencedirect.com/science/article/pii/S0002929721003840?via%3Dihub
+
+
+As a filter:
+A combination of features to find genes that have a consensus as being important: low GDI + high pLI + low RVIS ... etc.
+
+RVIS:
+https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003709
+"we found that genes causing Mendelian diseases have lower RVIS values than those that do not, with the strongest correlations observed for haploinsufficiency (p = 1.6×10−31; β = −0.71 [95%CI −0.82–−0.59]) and de novo disease-linked events (p = 2.7×10−36; β = −0.57 [95%CI −0.65–−0.48])"
+
+pLI comes from ref 33 in their paper:
+https://gnomad.broadinstitute.org/help/constraint
+Probability of being loss-of-function intolerant (pLI)
+
+Essentiality comes from ref 36 in their paper:
+"The predicted functional indispensability score (IS) estimates the essentiality on the basis of a gene’s network and evolutionary properties." I believe the "essentiality" column would be this "predicted IS".
+
