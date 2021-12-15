@@ -57,7 +57,7 @@ df$'gnomAD r2 GRCh37' <- sprintf('https://gnomad.broadinstitute.org/gene/%s?data
 df$'gnomAD r3 GRCh38' <- sprintf('https://gnomad.broadinstitute.org/gene/%s?dataset=gnomad_r3', df$`Gene symbol`)
 df$pdb <- sprintf('https://www.rcsb.org/search?request=%%%%7B%%%%22query%%%%22%%%%3A%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22terminal%%%%22%%%%2C%%%%22service%%%%22%%%%3A%%%%22full_text%%%%22%%%%2C%%%%22parameters%%%%22%%%%3A%%%%7B%%%%22value%%%%22%%%%3A%%%%22%s%%%%22%%%%7D%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%2C%%%%22label%%%%22%%%%3A%%%%22full_text%%%%22%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%7D%%%%2C%%%%22return_type%%%%22%%%%3A%%%%22entry%%%%22%%%%2C%%%%22request_options%%%%22%%%%3A%%%%7B%%%%22pager%%%%22%%%%3A%%%%7B%%%%22start%%%%22%%%%3A0%%%%2C%%%%22rows%%%%22%%%%3A25%%%%7D%%%%2C%%%%22scoring_strategy%%%%22%%%%3A%%%%22combined%%%%22%%%%2C%%%%22sort%%%%22%%%%3A%%%%5B%%%%7B%%%%22sort_by%%%%22%%%%3A%%%%22score%%%%22%%%%2C%%%%22direction%%%%22%%%%3A%%%%22desc%%%%22%%%%7D%%%%5D%%%%7D%%%%2C%%%%22request_info%%%%22%%%%3A%%%%7B%%%%22query_id%%%%22%%%%3A%%%%228fb30ed1650bdcc2f59067e304229b28%%%%22%%%%7D%%%%7D', df$`Gene symbol`)
 
-df$HGNC <- sprintf('https://www.genenames.org/tools/search/#!/?query=HGNC:%s&rows=20&start=0&filter=symbol_report_tag:%22Stable%20symbol%22', df$`HGNC`)
+df$HGNC <- sprintf('https://www.genenames.org/tools/search/#!/?query=HGNC:%s', df$`HGNC`)
 
 df$ORPHA <- sprintf('https://hpo.jax.org/app/browse/disease/ORPHA:%s', df$`Gene symbol`)
 
@@ -69,14 +69,16 @@ df$AmiGo <- sprintf('http://amigo.geneontology.org/amigo/search/bioentity?q=%s&s
 
 df$'Alpha Fold' <-  sprintf('https://www.alphafold.ebi.ac.uk/search/text/%s', df$`Gene symbol`)
 
+df$Gemma <- sprintf('https://gemma.msl.ubc.ca/searcher.html?query=%s&scope=G', df$`Gene symbol`)
+
 # reorder
 df <- df %>% select(
   "Gene symbol",
   "MOI",
   "ClinGen classification",
-  "gnomAD r2 GRCh37", "gnomAD r3 GRCh38", "UniProt", "Ensembl", "OMIM", "omni", "pdb", "DisProt", "AmiGo", "Alpha Fold", "ORPHA", "HPO", "HGNC",
   "Disease label",
   "GCEP",
+  "gnomAD r2 GRCh37", "gnomAD r3 GRCh38", "UniProt", "Ensembl", "OMIM", "omni", "pdb", "DisProt", "AmiGo", "Alpha Fold", "ORPHA", "HPO", "HGNC", "Gemma",
   "MONDO",
   "SOP",
   "Classification year")
@@ -169,6 +171,10 @@ df_t <-
               }),
               "Alpha Fold" = colDef(cell = function(value, index) {
                 url <- sprintf(df[index, 'Alpha Fold'], value)
+                htmltools::tags$a(href = url, target = "_blank", "link")
+              }),
+              "Gemma" = colDef(cell = function(value, index) {
+                url <- sprintf(df[index, 'Gemma'], value)
                 htmltools::tags$a(href = url, target = "_blank", "link")
               }),
               
