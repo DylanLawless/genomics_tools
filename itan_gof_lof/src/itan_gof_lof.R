@@ -13,6 +13,110 @@ df <-
            stringsAsFactors = FALSE, header = TRUE) %>%
   na.omit()
 
+df_clivar <-
+  read.csv("../data/goflof_ClinVar_v062021.csv",
+           stringsAsFactors = FALSE, header = TRUE) %>%
+  na.omit()
+
+names(df_clivar)
+names(df)
+
+colnames(df_clivar)[colnames(df_clivar) == 'Chromosome'] <- 'Chr'
+colnames(df)[colnames(df) == 'CHROM'] <- 'Chr'
+colnames(df_clivar)[colnames(df_clivar) == 'GeneSymbol'] <- 'Gene'
+colnames(df)[colnames(df) == 'GENE'] <- 'Gene'
+colnames(df_clivar)[colnames(df_clivar) == 'PositionVCF'] <- 'Pos'
+colnames(df)[colnames(df) == 'POS'] <- 'Pos'
+colnames(df_clivar)[colnames(df_clivar) == 'ReferenceAlleleVCF'] <- 'Ref'
+colnames(df_clivar)[colnames(df_clivar) == 'AlternateAlleleVCF'] <- 'Alt'
+colnames(df_clivar)[colnames(df_clivar) == 'LABEL'] <- 'Label'
+colnames(df)[colnames(df) == 'LABEL'] <- 'Label'
+
+colnames(df)[colnames(df) == 'ID'] <- 'HGMD'
+colnames(df_clivar)[colnames(df_clivar) == 'AlleleID'] <- 'ClinVar'
+colnames(df_clivar)[colnames(df_clivar) == 'Name'] <- 'RefSeqVar'
+
+colnames(df)[colnames(df) == 'VARIANT_CLASS'] <- 'Variant class'
+
+colnames(df)[colnames(df) == 'Selective_pressure'] <- 'Selective pressure'
+colnames(df)[colnames(df) == 'Number_of_paralogs'] <- 'No. of paralogs'
+
+# drop several columns that have few results and not required on webpage
+df <- df %>% select(-"PTM", -"Phosphorylation", -"Acetylation", -"Methylation", -"Ubiquitination", -"Glycosylation")
+df_clivar <- df_clivar %>% select(-"RSnumber") # remove rsID as it is less than useless for variant-level data - misleading for multiallelic position. 
+
+#df_clivar <- separate(df_clivar, RefSeqVar, into = c("RefSeq", "var"), sep = ":")
+#df_clivar$RefSeq <- gsub("\\([^()]*\\)", "", df_clivar$RefSeq)
+
+df_merge <- merge(df, df_clivar, all=TRUE )
+
+4775 # total
+1449 #overlap
+
+df_merge$Database  <- ifelse(is.na(df_merge$ClinVar), NA, "HGMD + ClinVar")
+
+df_merge$Database[is.na(df_merge$ClinVar)] <- "HGMD"
+df_merge$Database[is.na(df_merge$HGMD)] <- "ClinVar"
+
+# column order ----
+df_merge %>% names()
+df_merge <- df_merge %>% select("Gene", "Label",
+                    "Chr",
+                    "Pos",
+                    "Database",
+                    "RefSeqVar",
+                    "HGVSc",
+                    "HGVSp", 
+                    "MAX_AF", everything())
+
+# arrange so that Databases ClinVar + HGMD for a nice presentation, since arrange based on ChrPos is not really necessary
+df_merge <- df_merge %>% 
+  arrange(desc(Database))
+
+# export table ----
+# reactable ----
+library(reactable)
+options(reactable.theme = reactableTheme(
+  borderColor = "#dfe2e5",
+  stripedColor = "#E5E5E5",
+  highlightColor = "#fcf0e6",
+  cellPadding = "8px 12px",
+  style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
+               fontSize = "1.0rem"),
+  searchInputStyle = list(width = "50%")
+))
+
+df_merge_t <- 
+  reactable(df_merge,
+            compact = TRUE,
+            searchable = TRUE,
+            #elementId = "download-table",
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 93 ),
+            columns = list(
+              "RefSeqVar" = colDef(minWidth = 200),  # overrides the default
+              "HGVSc" = colDef(minWidth = 200),
+              "HGVSp" = colDef(minWidth = 200),
+              "DOMAINS_VEP" = colDef(minWidth = 350),
+              "Chr" = colDef(minWidth = 70),
+              "Database" = colDef(minWidth = 100),
+              "Selective pressure" = colDef(minWidth = 100)
+              ),
+            filterable = TRUE,
+            showSortable = TRUE,
+            showPageSizeOptions = TRUE,
+            striped = TRUE,
+            highlight = TRUE
+  )
+
+df_merge_t
+
+
+
+
+
+
+
 # Filter to find top genes to use in candidate study
 # Here we will find the genes that are predicted pathogenic in several databases
 # using thresholds we think are useful based on the original sources.
