@@ -222,16 +222,87 @@ gnomad_t <-
 gnomad_t
 
 
-subplot(gnomad_t, ggp, p3, ggest, nrows = 4, margin = 0.0, heights = c(0.2, 0.2, 0.2, 0.4), shareX = F, titleY=F) 
 
-df %>% drop_na(transcript_id) %>%
-  ggplot(aes(x=start, y=type)) +
-  geom_segment(size = 4,
-               aes(x = start,  xend = end, 
-                   y = type, yend = type, 
-                   colour = gene_id)) +
-  # facet_grid(gene_id ~., scales = "free_y" )
-  facet_grid(transcript_id ~., scales = "free_y" )
+
+library(tidyverse)
+library(plotly)
+library(htmlwidgets)
+# Save ggplotly as widget in file test.html
+saveWidget(ggplotly(ggp), file = "test.html");
+
+.
+
+
+
+
+
+# duplicate rows for tiles
+df_uniprot$freq <- df_uniprot$end - df_uniprot$start +1
+tmp  <- df_uniprot # %>% head()
+tmp <- tmp %>% select(freq, seqid, type, start, end)
+tmp
+library(purrr)
+tmp <- tmp %>% map_df( rep, tmp$freq)
+tmp
+tmp$res <- ave(tmp$freq, tmp$seqid, tmp$type, tmp$start, tmp$end, FUN = seq_along)
+tmp$AA <- (tmp$start) + (tmp$res - 1)
+
+tmp2 <- merge(tmp, df_uniprot)
+
+library(data.table)
+tmp2 <- as.data.table(tmp2)
+tmp2 <- tmp2[,which(unlist(lapply(tmp2, function(x)!all(is.na(x))))),with=F]
+
+
+# add notes as shapes
+tmp2$Note <- as.character(tmp2$Note)
+
+px <- tmp2 %>% select(AA, Note, freq, seqid, type, start, end) %>% 
+  group_by(type, Note) %>%
+  ggplot(aes(x=AA, y=type, fill=type)) +
+  geom_tile() + # geom_time = 6.3MB
+  #geom_raster(aes()) # geom_raster = 6.3MB
+  facet_grid(vars(label), scales = "free", space = "free") +
+  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0) +
+  geom_vline(xintercept=c(126,221), linetype="dotted", color="blue")+
+  ylab("") +
+  xlab("Protein position") + 
+  theme_bw() +
+  scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
+  scale_color_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
+  
+  #ggplotly(px)
+saveWidget(ggplotly(px), file = "test.html") 
+  
+px 
+ggp <- ggplotly(p)
+hide_legend(ggp)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ggplotly(p)
