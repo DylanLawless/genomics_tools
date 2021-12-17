@@ -1,16 +1,98 @@
+
 # library(lubridate)
 library(dplyr)
 library(ggplot2)
 library(plotly)
 
-# Data usage tracking
-# caption: Long-term projects use data from many sources. Data may be reused multiple times, and some planned analysis is not required. Data tracking systems can show these analytics and improve multipurpose use.
-
 
 # import ----
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+#BiocManager::install("rtracklayer")
 library(rtracklayer)
-df <-readGFF("../data/ddx58_GRCh38_p13.gff")
 
+# Identify canonical transcript ----
+# GnomAD: Ensembl canonical transcript More informationENST00000379883.2
+# Uniprot: ENST00000379868﻿; ENSP00000369197﻿; ENSG00000107201 [O95786-2]
+# Uniprot:ENST00000379883﻿; ENSP00000369213﻿; ENSG00000107201 [O95786-1]
+
+# Data sources ----
+# Ensembl: https://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000107201;r=9:32455302-32526208
+# Uniprot under format tab: https://www.uniprot.org/uniprot/O95786# 
+
+# Data import ----
+df <-readGFF("../data/ddx58_GRCh38_p13.gff")
+df_uniprot <- readGFF("../data/uniprot_DDX58_HUMAN_O95786.gff")
+df_uniprot <- data.frame(df_uniprot)
+
+# Uniprot plot ----
+# data tidy ----
+# if column is all NA, drop. This DT method is more complex than filter, but will be fast on large data.
+library(data.table)
+dt <- as.data.table(df_uniprot)
+dt_uniprot <- dt[,which(unlist(lapply(dt, function(x)!all(is.na(x))))),with=F]
+rm(dt)
+
+# add notes as shapes
+dt_uniprot$Note <- as.character(df_uniprot$Note)
+
+# get the mean start end to position center
+dt_uniprot$position_label <- rowMeans(dt_uniprot[,c('start', 'end')], na.rm=TRUE)
+
+# some labels have start=end (1 amino) and not shown as geom_point
+# if start end = 0, add 1 to end
+dt_uniprot$diff <- dt_uniprot$end - dt_uniprot$start
+dt_uniprot$end_alt <- dt_uniprot$end
+dt_uniprot$end_alt[dt_uniprot$diff==0] <-  1
+dt_uniprot$end_alt[dt_uniprot$diff>0] <-  0
+dt_uniprot$end <- dt_uniprot$end + dt_uniprot$end_alt
+
+names(dt_uniprot)
+dt_uniprot$type %>% unique()
+# "Chain", "Domain", "Nucleotide binding", "Region", "Motif", "Metal binding",     "Modified residue", "Cross-link", "Alternative sequence", "Natural variant", "Mutagenesis", "Helix", "Turn", "Beta strand"
+
+
+Domain <- c("Chain", "Domain", "Region", "Motif")
+Features <- c("Nucleotide binding", "Metal binding", "Modified residue", "Cross-link", "Alternative sequence", "Natural variant", "Mutagenesis")
+Structure <- c("Helix", "Turn", "Beta strand")
+ 
+dt_uniprot_Domain <- filter(dt_uniprot, type %in% Domain)
+dt_uniprot_Features <- filter(dt_uniprot, type %in% Features) 
+dt_uniprot_Structure <- filter(dt_uniprot, type %in% Structure) 
+dt_uniprot_Domain$label <- "Family & Domain"
+dt_uniprot_Features$label <- "Features"
+dt_uniprot_Structure$label <- "Structure"
+dt_uniprot_Domain$type <- make.unique(as.character(dt_uniprot_Domain$type), sep = "_") # esp for domain, do not overlap
+dt_uniprot <- rbind(dt_uniprot_Domain, dt_uniprot_Features, dt_uniprot_Structure)
+
+p <- dt_uniprot %>%
+  group_by(type, Note) %>%
+  ggplot(aes(x=start, y=type)) +
+  geom_segment(size = 4,
+               aes(x = start,  xend = end, 
+                   y = type, yend = type, 
+                   color = type)) +
+  guides(shape="none", color="none") +
+  facet_grid(label ~., scales = "free_y" ) 
+
+ggplotly(p)
+
+geom_dotplot(aes(y = label,
+                 x = position_label),
+             stackdir = "centerwhole",
+             # stackdir='center', 
+             method="dotdensity",
+             #method="histodot",
+             stackgroups = T,
+             binpositions="all",
+             binaxis='x',
+             binwidth=10, 
+             # stackratio=0.5,
+             dotsize=.3
+) 
+
+# Ensembl plot ----
+# Data tidy ----
 df$length <-  df$end - df$start
 #df2 <- df %>%
  # filter(transcript_id == "ENST00000379883")
@@ -20,23 +102,31 @@ df$length <-  df$end - df$start
 
 unique( df$gene_id )
 
-
 #df %>%group_by("gene_id","transcript_id","exon_id")
 
 #to get the correct y axis, 
-#collape "types", and transcript
+#collapse "types", and transcript
 
 library(tidyr)
-df %>% #drop_na(transcript_id) %>%
+df <- df %>% drop_na(transcript_id) 
+
+# remove gaps to emulate CDNA
+df$start <- factor(df$start)
+df$end <- factor(df$end)
+
+df %>%
   ggplot(aes(x=start, y=transcript_id)) +
   geom_segment(size = 4,
                aes(x = start,  xend = end, 
                    y = transcript_id, yend = transcript_id, 
                    colour = gene_id)) +
   # facet_grid(gene_id ~., scales = "free_y" )
-  facet_grid(type ~., scales = "free_y" )
-  
-df %>% #drop_na(transcript_id) %>%
+  facet_grid(type ~., scales = "free_y" ) +
+  theme(axis.text.x = element_text(angle = 90))
+
+
+
+df %>% drop_na(transcript_id) %>%
   ggplot(aes(x=start, y=type)) +
   geom_segment(size = 4,
                aes(x = start,  xend = end, 
