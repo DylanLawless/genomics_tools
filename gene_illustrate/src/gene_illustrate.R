@@ -12,7 +12,7 @@ library(plotly)
 library(rtracklayer)
 
 # Identify canonical transcript ----
-# GnomAD: Ensembl canonical transcript More informationENST00000379883.2
+# GnomAD: Ensembl canonical transcript More information ENST00000379883.2
 # Uniprot: ENST00000379868﻿; ENSP00000369197﻿; ENSG00000107201 [O95786-2]
 # Uniprot:ENST00000379883﻿; ENSP00000369213﻿; ENSG00000107201 [O95786-1]
 
@@ -64,32 +64,29 @@ dt_uniprot_Features$label <- "Features"
 dt_uniprot_Structure$label <- "Structure"
 dt_uniprot_Domain$type <- make.unique(as.character(dt_uniprot_Domain$type), sep = "_") # esp for domain, do not overlap
 dt_uniprot <- rbind(dt_uniprot_Domain, dt_uniprot_Features, dt_uniprot_Structure)
+dt_uniprot_sub <- dt_uniprot %>% filter(label=="Family & Domain")
 
+library(wesanderson)
 p <- dt_uniprot %>%
   group_by(type, Note) %>%
-  ggplot(aes(x=start, y=type)) +
-  geom_segment(size = 4,
-               aes(x = start,  xend = end, 
-                   y = type, yend = type, 
-                   color = type)) +
-  guides(shape="none", color="none") +
-  facet_grid(label ~., scales = "free_y" ) 
+  ggplot(aes(x=start, y=type, label=type)) +
+  geom_segment(size = 4, aes(x = start,  xend = end, y = type, yend = type, color = type), show.legend=FALSE) +
+  facet_grid(vars(label), scales = "free", space = "free") +
+  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0)  +
+  geom_vline(xintercept=c(126,221), linetype="dotted", color="blue")+
+  ylab("") +
+  xlab("Protein position") + 
+  theme_bw() +
+  scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
+  #scale_color_manual(values = wes_palette("Zissou1", 19, type = "continuous"))
+  scale_color_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
 
-ggplotly(p)
+p 
+ggp <- ggplotly(p)
+hide_legend(ggp)
 
-geom_dotplot(aes(y = label,
-                 x = position_label),
-             stackdir = "centerwhole",
-             # stackdir='center', 
-             method="dotdensity",
-             #method="histodot",
-             stackgroups = T,
-             binpositions="all",
-             binaxis='x',
-             binwidth=10, 
-             # stackratio=0.5,
-             dotsize=.3
-) 
+
+# possible to duplicate every row for region and use:  geom_raster(aes(x=start, fill = type), hjust=0.5, vjust=0.5, interpolate=FALSE)
 
 # Ensembl plot ----
 # Data tidy ----
@@ -111,20 +108,121 @@ library(tidyr)
 df <- df %>% drop_na(transcript_id) 
 
 # remove gaps to emulate CDNA
-df$start <- factor(df$start)
-df$end <- factor(df$end)
+#df$start <- factor(df$start)
+#df$end <- factor(df$end)
 
-df %>%
+# mark the canonical transcript
+df$canon[df$transcript_id=="ENST00000379883.3"] <-  1
+canon <- df %>% filter(canon == 1) %>% filter(start == min(start))
+
+enst <- df %>%
   ggplot(aes(x=start, y=transcript_id)) +
   geom_segment(size = 4,
                aes(x = start,  xend = end, 
                    y = transcript_id, yend = transcript_id, 
                    colour = gene_id)) +
-  # facet_grid(gene_id ~., scales = "free_y" )
-  facet_grid(type ~., scales = "free_y" ) +
-  theme(axis.text.x = element_text(angle = 90))
+  geom_point(data = canon, shape=23, fill="green", size =3) +
+#  facet_grid(type ~., scales = "free_y" ) +
+  geom_vline(xintercept=c(32493805, 32491328), linetype="dotted", color="blue")+
+  theme(axis.text.x = element_text(angle = 90)) +
+          ylab("") +  
+          xlab("Protein position") +    theme_bw()
+
+enst
+ggest <- hide_legend(ggplotly(enst))
 
 
+
+# fig main ---- 
+subplot(ggp, ggest, nrows = 2, margin = 0.02, heights = c(0.5, 0.5), shareX = F, titleY=TRUE) 
+# %>%
+#layout(xaxis=list(autorange=F, range=c(23,39)), 
+#       yaxis=list(autorange=F, range=c(54,56.5)))
+
+
+#coord <- c(min(df$start), max(df$end), min(df_uniprot$start), max(df_uniprot$end))
+coord <- c(0, 700, 0, 900)
+# variant <- c(32466290, 32472975, 126, 221)
+variant <- c(334, 360, 126, 221)
+label <- c("gDNA", "gDNA", "cDNA", "cDNA")
+position <- c("start", "end", "start", "end")
+df_coord <- data.frame(label, coord, variant, position) 
+  
+df_coord
+class(df_coord$variant)
+class(df_coord$coord)
+
+p3 <- df_coord %>%
+  ggplot(aes(x=coord, y=label, group = position)) +
+  geom_line(data = df_coord, aes(x=coord))  +
+  geom_line(data = df_coord, aes(x=variant), linetype="dotted", color="blue") +
+  #geom_path( aes(x=coord, y=label), arrow = arrow(length = unit(0.2, "cm"))) +
+  #geom_path( aes(x=variant, y=label), arrow = arrow(length = unit(0.2, "cm"))) +
+  scale_y_discrete(limits=rev) +
+  scale_x_continuous(limits = c(0, 900), breaks = seq(0, 900, 100))  +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  ylab("")
+p3
+
+# main figure ----
+subplot(ggp, p3, ggest, nrows = 3, margin = 0.0, heights = c(0.4, 0.2, 0.4), shareX = F, titleY=F) 
+
+# query gnomad for variants ----
+SNP1 <- c(
+"9-32493805-T-C",
+"E / G",
+"p.Asp126Gly",
+"missense",
+6,
+281044,
+2.13e-5,
+0)
+
+SNP2 <- c(
+"9-32491328-T-C",
+"E",
+"p.Asn221Ser",
+"missense",
+4,
+250734,
+1.60e-5,
+0)
+
+head <- c("Variant ID", "Source", "HGVS Consq", "VEP", "AC", "AN", "Freq", "Hom")
+gnomad <- data.frame( SNP1, SNP2)
+rownames(gnomad) <- head
+gnomad <- t(gnomad) %>% as.data.frame()
+gnomad
+
+# reactable ----
+library(reactable)
+options(reactable.theme = reactableTheme(
+  borderColor = "#dfe2e5",
+  stripedColor = "#E5E5E5",
+  highlightColor = "#fcf0e6",
+  cellPadding = "8px 12px",
+  style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
+               fontSize = "1.0rem"),
+  searchInputStyle = list(width = "50%")
+))
+
+gnomad_t <- 
+  reactable(gnomad,
+            compact = TRUE, 
+            searchable = TRUE,
+            #elementId = "download-table",
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 93 ),
+            columns = list(
+            "Variant ID" = colDef(minWidth = 200),
+            "HGVS Consq" = colDef(minWidth = 150)
+            ))
+            
+gnomad_t
+
+
+subplot(gnomad_t, ggp, p3, ggest, nrows = 4, margin = 0.0, heights = c(0.2, 0.2, 0.2, 0.4), shareX = F, titleY=F) 
 
 df %>% drop_na(transcript_id) %>%
   ggplot(aes(x=start, y=type)) +
