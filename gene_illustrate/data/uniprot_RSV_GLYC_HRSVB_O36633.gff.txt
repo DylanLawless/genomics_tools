@@ -1,0 +1,38 @@
+##gff-version 3
+##sequence-region O36633 1 299
+O36633	UniProtKB	Chain	1	299	.	.	.	ID=PRO_0000365795;Note=Major surface glycoprotein G	
+O36633	UniProtKB	Chain	66	299	.	.	.	ID=PRO_0000451324;Note=Mature secreted glycoprotein G;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Topological domain	1	37	.	.	.	Note=Cytoplasmic;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Transmembrane	38	66	.	.	.	Note=Helical	
+O36633	UniProtKB	Topological domain	67	299	.	.	.	Note=Extracellular;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Region	89	160	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+O36633	UniProtKB	Region	187	198	.	.	.	Note=Binding to host heparan sulfate;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Region	189	299	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+O36633	UniProtKB	Motif	297	299	.	.	.	Note=Microbody targeting signal;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Compositional bias	89	150	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+O36633	UniProtKB	Compositional bias	208	222	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+O36633	UniProtKB	Compositional bias	223	299	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+O36633	UniProtKB	Site	65	66	.	.	.	Note=Cleavage;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Glycosylation	70	70	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Glycosylation	72	72	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Glycosylation	81	81	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	86	86	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	92	92	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Glycosylation	100	100	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	113	113	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	137	137	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	138	138	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	139	139	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	141	141	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	199	199	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	203	203	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	232	232	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	236	236	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	254	254	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	276	276	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	284	284	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	290	290	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Glycosylation	291	291	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+O36633	UniProtKB	Disulfide bond	173	186	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Disulfide bond	176	182	.	.	.	Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	
+O36633	UniProtKB	Alternative sequence	1	47	.	.	.	ID=VSP_036523;Note=In isoform Secreted glycoprotein G. Missing;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:P03423	

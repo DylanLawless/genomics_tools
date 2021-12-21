@@ -1,0 +1,59 @@
+##gff-version 3
+##sequence-region P03423 1 298
+P03423	UniProtKB	Chain	1	298	.	.	.	ID=PRO_0000142855;Note=Major surface glycoprotein G	
+P03423	UniProtKB	Chain	66	298	.	.	.	ID=PRO_0000451323;Note=Mature secreted glycoprotein G	
+P03423	UniProtKB	Topological domain	1	42	.	.	.	Note=Cytoplasmic;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:31852779;Dbxref=PMID:31852779	
+P03423	UniProtKB	Transmembrane	43	63	.	.	.	Note=Helical;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Topological domain	64	298	.	.	.	Note=Extracellular;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:31852779;Dbxref=PMID:31852779	
+P03423	UniProtKB	Region	125	161	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+P03423	UniProtKB	Region	187	198	.	.	.	Note=Binding to host heparan sulfate;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:10400758;Dbxref=PMID:10400758	
+P03423	UniProtKB	Region	190	298	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+P03423	UniProtKB	Compositional bias	125	159	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+P03423	UniProtKB	Compositional bias	221	288	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+P03423	UniProtKB	Site	65	66	.	.	.	Note=Cleavage;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	70	70	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	72	72	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	80	80	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	86	86	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	87	87	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	92	92	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000305;evidence=ECO:0000305|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Glycosylation	100	100	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	105	105	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	113	113	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	117	117	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	119	119	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	135	135	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	137	137	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	138	138	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	139	139	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	141	141	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	144	144	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	147	147	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	199	199	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	203	203	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	219	219	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	231	231	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	235	235	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	237	237	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	251	251	.	.	.	Note=N-linked (GlcNAc...) asparagine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	253	253	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	269	269	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	270	270	.	.	.	Note=O-linked (GlcNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	275	275	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	282	282	.	.	.	Note=O-linked (GalNAc...) threonine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	283	283	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	287	287	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Glycosylation	290	290	.	.	.	Note=O-linked (GalNAc...) serine%3B by host;Ontology_term=ECO:0000255;evidence=ECO:0000255	
+P03423	UniProtKB	Disulfide bond	173	186	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:9194191;Dbxref=PMID:9194191	
+P03423	UniProtKB	Disulfide bond	176	182	.	.	.	Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:9194191;Dbxref=PMID:9194191	
+P03423	UniProtKB	Alternative sequence	1	47	.	.	.	ID=VSP_036039;Note=In isoform Secreted glycoprotein G. Missing;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:8207828;Dbxref=PMID:8207828	
+P03423	UniProtKB	Mutagenesis	2	2	.	.	.	Note=Complete loss of interaction with protein M. S->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Mutagenesis	3	3	.	.	.	Note=Partial loss of interaction with protein M. K->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Mutagenesis	4	4	.	.	.	Note=Partial loss of interaction with protein M. N->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Mutagenesis	5	5	.	.	.	Note=Partial loss of interaction with protein M. K->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Mutagenesis	6	6	.	.	.	Note=Complete loss of interaction with protein M. D->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Mutagenesis	7	7	.	.	.	Note=Partial loss of interaction with protein M. Q->AQ;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15958665;Dbxref=PMID:15958665	
+P03423	UniProtKB	Helix	165	168	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:5WNA	
+P03423	UniProtKB	Helix	173	175	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:5WN9	
+P03423	UniProtKB	Turn	176	178	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:5WNA	
+P03423	UniProtKB	Helix	180	185	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:5WN9	
