@@ -122,7 +122,7 @@ p <- dt_uniprot %>%
   geom_segment(size = 4, aes(x = start,  xend = end, y = type, yend = type, color = type), show.legend=FALSE) +
   facet_grid(vars(label), scales = "free", space = "free") +
   geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0)  +
-  geom_vline(xintercept=c(123,217), linetype="dotted", color="blue")+
+  geom_vline(xintercept=c(123,217), linetype="dotted", color="red")+
   ylab("") +
   xlab("Protein position") + 
   theme_bw() +
@@ -135,7 +135,7 @@ ggp <- ggplotly(p)
 hide_legend(ggp)
 
 library(htmlwidgets)
-saveWidget(hide_legend(ggp), file = "../output/gene_illustrate_rsv.html") 
+# saveWidget(hide_legend(ggp), file = "../output/gene_illustrate_rsv.html") 
 
 # possible to duplicate every row for region and use:  geom_raster(aes(x=start, fill = type), hjust=0.5, vjust=0.5, interpolate=FALSE)
 
@@ -180,7 +180,7 @@ px <- tmp2 %>%
             scales = "free", space = "free"
              ) +
   geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0) +
-  geom_vline(xintercept=c(123,217), linetype="dotted", color="blue")+
+  geom_vline(xintercept=c(123,217), linetype="dotted", color="red")+
   ylab("") +
   xlab("Protein position") + 
   theme_bw() +
@@ -189,9 +189,51 @@ px <- tmp2 %>%
 px
 
 gpx <- hide_legend(ggplotly(px))
-gpx
-saveWidget(gpx, file = "../output/gene_illustrate_rsv_detail.html") 
+# gpx
+# saveWidget(gpx, file = "../output/gene_illustrate_rsv_detail.html") 
 
 
+
+# import P value and r sequred LD from analysis ----
+
+# write.table(fit_long_cor, file='~/web/tools/genomics_tools/gene_illustrate/data/rsv_fit_long_cor.csv',sep=",", quote=FALSE, row.names=FALSE, col.names = FALSE)
+
+
+fit_long_cor <- 
+  read.table(file="../data/rsv_fit_long_cor.csv",
+             header = TRUE, 
+             sep = ",", 
+             stringsAsFactors = FALSE,
+            # colClasses = c("character"),
+             )
+
+fit_long_cor$p <- as.numeric(fit_long_cor$p)
+class(fit_long_cor$position)
+
+# main figure ----
+
+p3_legend <- fit_long_cor %>%
+  ggplot(aes( x= as.numeric( position ), y=( -log10(p) ) ))+
+  geom_point( aes(color = groups ) ) +
+  scale_color_manual(breaks = levels(fit_long_cor$groups),
+                     values = c("blue", "green", "orange", "red"),
+                     name="r² with proxy SNP") +
+  labs(x = "Position", y = "-log10 (Pvalue) ") + 
+  theme_bw()
+p3_legend
+ggplotly(p3_legend)
+
+p3 <- p3_legend + theme(panel.background = element_rect("#F7F7F7"),
+                        legend.position="none")
+
+p3
+ggplotly(p3)
+# r2_with_proxy_SNP.pdf 3x7.5
+# r2_with_proxy_SNP_no_legend.pdf 3x6
+
+
+subplots <- subplot(ggplotly(p3), gpx, nrows = 2, margin = 0.02, heights = c(0.3, 0.7), shareX = TRUE, titleY=TRUE) 
+
+saveWidget(subplots, file = "../output/gene_illustrate_rsv_Pval.html") 
 
 
