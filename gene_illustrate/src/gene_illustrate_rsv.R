@@ -4,6 +4,9 @@ library(dplyr)
 library(ggplot2)
 library(plotly)
 
+# https://www.ncbi.nlm.nih.gov/gene/1489824
+# G attachment glycoprotein [ Human orthopneumovirus ]
+
 # Most features are included here. Other possible features might be found via swissprot.
 # https://www.ncbi.nlm.nih.gov/ipg/NP_056862.1
 # SwissProt O36633.1 Human respiratory syncytial virus B1
@@ -172,7 +175,7 @@ tmp2$Note <- as.character(tmp2$Note)
 px <- tmp2 %>% 
   ungroup() %>%
   ggplot(aes(x=AA, y=type, 
-             label=label, label2=start, label3=end, 
+             label=label, label2=start, label3=end, label4=evidence, label5=Dbxref
              )) +
   geom_tile(aes(fill=type)) + # geom_time = 6.3MB
   #geom_raster(aes()) # geom_raster = 6.3MB
@@ -221,13 +224,13 @@ p3_legend <- fit_long_cor %>%
   labs(x = "Position", y = "-log10 (Pvalue) ") + 
   theme_bw()
 p3_legend
-ggplotly(p3_legend)
+#ggplotly(p3_legend)
 
 p3 <- p3_legend + theme(panel.background = element_rect("#F7F7F7"),
                         legend.position="none")
 
 p3
-ggplotly(p3)
+#ggplotly(p3)
 # r2_with_proxy_SNP.pdf 3x7.5
 # r2_with_proxy_SNP_no_legend.pdf 3x6
 
@@ -236,4 +239,13 @@ subplots <- subplot(ggplotly(p3), gpx, nrows = 2, margin = 0.02, heights = c(0.3
 
 saveWidget(subplots, file = "../output/gene_illustrate_rsv_Pval.html") 
 
+
+
+
+
+# features assessed:
+tmp2$label%>% unique()
+tmp$type %>% unique()
+
+tmp2$Note%>% unique()
 
