@@ -1,3 +1,12 @@
+---
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+
+
 
 # library(lubridate)
 library(dplyr)
@@ -168,6 +177,12 @@ tmp2 <- tmp2[,which(unlist(lapply(tmp2, function(x)!all(is.na(x))))),with=F]
 # add notes as shapes
 tmp2$Note <- as.character(tmp2$Note)
 
+
+# crosstalk ----
+ library(crosstalk)
+tmp2 <- SharedData$new(tmp2)  
+
+
 # detail figure ----
 px <- tmp2 %>% 
   ungroup() %>%
@@ -199,8 +214,6 @@ gpx <- hide_legend(ggplotly(px))
 # write.table(fit_long_cor, file='~/web/tools/genomics_tools/gene_illustrate/data/rsv_fit_long_cor.csv',sep=",", quote=FALSE, row.names=FALSE, col.names = FALSE)
 
 
-
-
 fit_long_cor <- 
   read.table(file="../data/rsv_fit_long_cor.csv",
              header = TRUE, 
@@ -228,227 +241,29 @@ ggplotly(p3_legend)
 p3 <- p3_legend + theme(panel.background = element_rect("#F7F7F7"),
                         legend.position="none")
 
-p3
-ggplotly(p3)
-# r2_with_proxy_SNP.pdf 3x7.5
-# r2_with_proxy_SNP_no_legend.pdf 3x6
+# p3
+#  ggplotly(p3)
+
 
 subplots <- subplot(ggplotly(p3), gpx, nrows = 2, margin = 0.02, heights = c(0.3, 0.7), shareX = TRUE, titleY=TRUE) 
 
 # save ouput ----
 # saveWidget(subplots, file = "../output/gene_illustrate_rsv_Pval.html") 
 
+```
 
-# merge with dataset
+Packages above.
 
-colnames(tmp2)[colnames(tmp2) == 'AA'] <- 'position'
-tmp3 <- merge(fit_long_cor, tmp2, all=T, by='position')
+Code at: [GitHub](https://gist.github.com/jthomasmock/06a26d2cb0bc3053b804dc45f8379b63)
 
-# crosstalk ----
-
-library(ggplot2)
-library(plotly)
-library(DT)
-
-library(tidyverse)
-library(plotly)
-
-library(reactable)
-library(crosstalk)
-library(htmltools)
-
-
-# data_t <- reactable( data, filterable = TRUE)
-
-
-data <- tmp3 %>% filter(cor >0) %>% select(p, position, cor) %>% unique()
-data$Pcor <- round( (-log10(data$p))  , digits = 2)
-data$p <- round( data$p , digits = 3)
-data$cor <- round( data$cor , digits = 3)
-# working version ----
-
-shared_mtcars <- SharedData$new(data)
-
-crosstalk::bscols(widths = c(10),
-                  list(
-                    filter_checkbox("auto", "Sig Pval:", shared_mtcars, ~ifelse(p <= 0.05, "Yes", "No")),
-
-                    crosstalk::filter_slider("position", "Position", shared_mtcars, ~position, width = "80%"),
-                    crosstalk::filter_slider("Pvalue", "-log10 P-cor", shared_mtcars, ~Pcor, width = "80%"),
-                    # test SNP check box
-                    ggplotly(  ggplot( shared_mtcars, aes(position, -log10(p)) ) + geom_point(aes(color = cor)) ) %>% highlight("plotly_selected", opacityDim = getOption("opacityDim", 0.1)) ),
-                  reactable(shared_mtcars, minRows = 10)
-                  
-)
-
-
-
-# dt version - formatting doesn't work well. 
-crosstalk::bscols(widths = c(10),
-                  list(
-                    DT::datatable(shared_mtcars, filter = 'top'),
-                    ggplotly(  ggplot( shared_mtcars, aes(position, -log10(p)) ) + geom_point(aes(color = cor)) ) %>% highlight("plotly_selected", opacityDim = getOption("opacityDim", 0.1), width = 300) )
-)
-
-
-
-
-
-# data <- SharedData$new(data)
-data <- crosstalk::SharedData$new(data)$data()
-
-m<-highlight_key( data )
-p <-ggplot( m, aes(position, -log10(p)) ) + geom_point(aes(color = cor))
-gg<-highlight(ggplotly(p),"plotly_selected",
-              opacityDim = getOption("opacityDim", 0.1),)
-
-
-crosstalk::bscols(widths = c(3,3),
-  #list(
-    #filter_checkbox("type", "Type", data, ~p),
-   # filter_slider("position", "Pos", data, ~position, width = "100%"),
-  #  filter_select(" ", "Pval", data, ~p)
-  #),
-  gg, DT::datatable(m)
-  )
-
-
-
-sd <- SharedData$new(data)
-
-
-
-
-p_filter <- filter_slider("pval", "pval", sd, "p",  step = NULL, width = '100%', dragRange = TRUE)
-
-pos_filter <- filter_slider("pos", "pos", sd, "position",  step = NULL, width = '100%', dragRange = TRUE)
-
-
-
-
-tags$div(class="well well-lg",
-         tagList(
-           tags$h2('Alcohol Related Motor Vehicle Accidents 2012 - 2017'),
-           p_filter,
-           gg,
-           bscols(pos_filter,
-                  list(pos_filter,
-                       pos_filter),
-                  type_filter)
-         )
-)    
-
-
-
-
-gg<-highlight(ggplotly(p),"plotly_selected",
-              opacityDim = getOption("opacityDim", 0.01),)
-
-crosstalk::bscols(gg,DT::datatable(m))
-
-
-
-
-
-
-# Wrap data frame in SharedData
-sd <- SharedData$new(data)
-
-# Create a filter input
-filter_slider("pos", "pos", sd, "position",  step = NULL, width = '100%', dragRange = TRUE)
-
-# Use SharedData like a dataframe with Crosstalk-enabled widgets
-crosstalk::bscols(gg,DT::datatable(sd))
-
-
-if (interactive()) {
+```{r}
+# qbs <- tmp2 data
+# px ggplot
+# gpx <- hide_legend(ggplotly(px))
+# react_table <-  tmp2_t
   
-  sd <- SharedData$new(data)
-  filter_slider("pos", "pos", sd, "position",  step = NULL, width = '100%', dragRange = TRUE)
-  crosstalk::bscols(gg,DT::datatable(sd))
-}
-
-
-
-
-
-dt <- bscols(
-  widths = c(3,3,3),
-  list(
-    #filter_checkbox("type", "Type", data, ~p),
-    filter_slider("position", "Pos", data, ~position, width = "100%"),
-    filter_select(" ", "Pval", data, ~p)
-  ),
-  reactable(data, minRows = 10),
-  gg
-)
-dt
-
-
-crosstalk::bscols(dt)
-
-
-
-
-# table with plots
-library(plotly)
-library(reactable)
-library(ggplot2)
-library(dplyr)
-
-
-df = iris %>%
-  as_tibble() %>%
-  nest_by(Species) %>%
-  mutate(plot = list(
-    ggplot(data, aes(x=Sepal.Length, y=Sepal.Width)) + geom_point() + ggtitle(Species)
-  ))
-
-reactable(df %>%select(Species), 
-          details = function(index) {
-              ggplotly(df$plot[[index]])
-            })
-
-
-
-
-
-
-
-# example ----
-tmp2 - data
-px  - ggplot
-gpx  - ggplotly
-react_table
-
-##crosstalk ----
-library(tidyverse)
-library(plotly)
-library(reactable)
-library(crosstalk)
-library(htmltools)
-
-
-library(crosstalk)
-tmp2 <- SharedData$new(tmp2)
-
-div(
-  h3("Compare and filter QBs by EPA or Success rate per play"),
-  h4("Filter sliders for specific ranges affect plot & table"),
-  bscols(
-    widths = c(2, 10),
-    list(
-#      filter_slider("epa_per_play", "EPA/Play", tmp2, ~AA),
- #     filter_slider("success_per_play", "Success/Play", tmp2, ~start)
-    ),
-    ggplotly(p3)
-  ),
-  tmp2_t
-)
-
-
-
-# reactable ----
+  
+  # reactable ----
 library(reactable)
 options(reactable.theme = reactableTheme(
   borderColor = "#dfe2e5",
@@ -474,36 +289,28 @@ tmp2_t <-
 
 tmp2_t
 
+```
 
+### `crosstalk`
 
-df_b <- bscols( widths = c(2, 9),
-                ( filter_checkbox("ClinGen classification", "ClinGen classification", tmp2, ~'ClinGen classification')),
-                tmp2_t,
-                device = c( "sm"))
+Crosstalk lets HTMLWidgets like `reactable` or `plotly` to talk to each other.
 
+```{r}
 
+nfl_plot <-ggplotly(qb_plot, tooltip = c("text"), width=700, height = 500)
 
-
-
-
-
-
-# crosstalk ----
-#Note: bsCols() Seems to completely override the flexdashboard CSS and can't be used on website
-# make the data crosstalk for a checklist filter
-library(crosstalk)
-data <- SharedData$new(tmp2)
-
-df_b <- bscols( widths = c(2, 9),
-                ( filter_checkbox("ClinGen classification", "ClinGen classification", data, ~'ClinGen classification')),
-                df_t,
-                device = c( "sm"))
-
-checkbox <- filter_checkbox("ClinGen classification", "ClinGen classification", data, ~'ClinGen classification')
-htmltools::browsable(df_t, checkbox)
-
-htmltools::browsable(data)
-checkbox <- filter_checkbox("AA", data, ~'type')
-
-
+div(
+  h3("Compare and filter QBs by EPA or Success rate per play"),
+  h4("Filter sliders for specific ranges affect plot & table"),
+  bscols(
+  widths = c(2, 10),
+  list(
+    filter_slider("epa_per_play", "EPA/Play", qb_data, ~epa_per_play),
+    filter_slider("success_per_play", "Success/Play", qb_data, ~success_per_play)
+  ),
+  nfl_plot
+  ),
+  react_table
+)
+```
 
