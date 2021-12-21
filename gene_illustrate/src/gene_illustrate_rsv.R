@@ -264,9 +264,9 @@ library(htmltools)
 # data_t <- reactable( data, filterable = TRUE)
 
 
-data <- tmp3 %>% filter(cor >0) %>% select(p, position, cor) %>% unique()
+data <- tmp3 %>% filter(cor >0) %>%
+  select(p, position, cor) %>% unique()
 data$Pcor <- round( (-log10(data$p))  , digits = 2)
-data$p <- round( data$p , digits = 3)
 data$cor <- round( data$cor , digits = 3)
 # working version ----
 
