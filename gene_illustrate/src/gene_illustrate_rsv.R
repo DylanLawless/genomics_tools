@@ -143,8 +143,6 @@ library(htmlwidgets)
 # possible to duplicate every row for region and use:  geom_raster(aes(x=start, fill = type), hjust=0.5, vjust=0.5, interpolate=FALSE)
 
 
-
-
 # duplicate rows for tiles
 df_uniprot <- dt_uniprot
 df_uniprot$freq <- df_uniprot$end - df_uniprot$start +1
@@ -202,8 +200,6 @@ gpx <- hide_legend(ggplotly(px))
 # write.table(fit_long_cor, file='~/web/tools/genomics_tools/gene_illustrate/data/rsv_fit_long_cor.csv',sep=",", quote=FALSE, row.names=FALSE, col.names = FALSE)
 
 
-
-
 fit_long_cor <- 
   read.table(file="../data/rsv_fit_long_cor.csv",
              header = TRUE, 
@@ -244,8 +240,12 @@ subplots <- subplot(ggplotly(p3), gpx, nrows = 2, margin = 0.02, heights = c(0.3
 
 # merge with dataset
 
+fit_long_cor$assoc_test_data <- "yes"
+# tmp2$assoc_test_data <- "no"
+
 colnames(tmp2)[colnames(tmp2) == 'AA'] <- 'position'
-tmp3 <- merge(fit_long_cor, tmp2, all=T, by='position')
+tmp3 <- merge(fit_long_cor, tmp2, all=T, by = c("position"))
+tmp3 <- tmp3 %>% tidyr::replace_na(list(assoc_test_data = "no"))
 
 # crosstalk ----
 
@@ -264,26 +264,130 @@ library(htmltools)
 # data_t <- reactable( data, filterable = TRUE)
 
 
-data <- tmp3 %>% filter(cor >0) %>%
-  select(p, position, cor) %>% unique()
+data <- tmp3 %>% #filter(cor >0) %>%
+  select(p, position, cor, type, position_label, groups,
+         label, Note, type, start, end, evidence, Dbxref, assoc_test_data) %>% unique()
+data$p <- round( data$p , digits = 5)
 data$Pcor <- round( (-log10(data$p))  , digits = 2)
 data$cor <- round( data$cor , digits = 3)
 # working version ----
 
+
 shared_mtcars <- SharedData$new(data)
 
-crosstalk::bscols(widths = c(10),
-                  list(
-                    filter_checkbox("auto", "Sig Pval:", shared_mtcars, ~ifelse(p <= 0.05, "Yes", "No")),
 
-                    crosstalk::filter_slider("position", "Position", shared_mtcars, ~position, width = "80%"),
-                    crosstalk::filter_slider("Pvalue", "-log10 P-cor", shared_mtcars, ~Pcor, width = "80%"),
-                    # test SNP check box
-                    ggplotly(  ggplot( shared_mtcars, aes(position, -log10(p)) ) + geom_point(aes(color = cor)) ) %>% highlight("plotly_selected", opacityDim = getOption("opacityDim", 0.1)) ),
-                  reactable(shared_mtcars, minRows = 10)
-                  
-)
+# we can subset shared data as long as grouped using the same name.
+sd_mtcars_all <- SharedData$new(data, group = "mtcars_subset")
+sd_mtcars_assoc <- SharedData$new((data %>%
+                                    #  filter(assoc_test_data=='yes') %>% 
+                                     select(p, cor, position, groups))
+, group = "mtcars_subset")
 
+
+sd_mtcars_auto <- SharedData$new( data %>%
+                                    # (data[!is.na(data$p),] %>% 
+                                     select(p, cor, position, groups) %>%
+                                     unique(), group = "mtcars_subset")
+
+
+sd_mtcars_annotate <- SharedData$new( (data[!is.na(data$type),] ), group = "mtcars_subset")
+
+
+
+
+crosstalk::bscols(
+  widths = c(10),
+  
+  list(
+    crosstalk::filter_checkbox("auto", "Tested proxy variant:", sd_mtcars_all, ~ifelse(assoc_test_data == "no", "No", "Yes"), inline = TRUE),
+    crosstalk::filter_select("Position", "Position", sd_mtcars_all, ~position, filter_checkbox),
+    crosstalk::filter_slider("position", "Position", sd_mtcars_all, ~position, width = "80%"),
+   #subplot(nrows = 2, margin = 0.02, heights = c(.2, .8), shareX = TRUE, titleY=F,
+      
+   hide_legend(
+    ggplotly(  
+      ggplot( sd_mtcars_auto, aes(position, -log10(p)) ) + 
+        theme_bw() +
+        geom_point( aes(color = groups ) )+
+        scale_color_manual(breaks = levels(sd_mtcars_auto$groups),
+                           values = c("blue", "green", "orange", "red"),
+                           name="r² with proxy SNP") +
+        labs(x = "Position", y = "-log10 (Pvalue) ") 
+
+      ) %>%
+     layout(margin = list(l = 130) # ,legend = list(orientation = "v", x = -.1, y =0)
+            ) %>% highlight( on = "plotly_click", off = "plotly_doubleclick")
+    #%>% highlight(dynamic = TRUE, selectize = TRUE)
+   # %>% highlight(opacityDim = getOption("opacityDim", 0.4), dynamic = TRUE)
+   ),
+    # 
+
+    hide_legend(
+      ggplotly(
+        sd_mtcars_annotate %>%
+          ggplot(  aes(x=position, y=type, label=label, label2=start, label3=end, label4=evidence, label5=Dbxref) ) +
+          geom_tile(aes(fill=type)) +
+          facet_grid(label~. ,scales = "free", space = "free") +
+          geom_text( aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0) +
+          geom_vline(xintercept=c(123,217), linetype="dotted", color="red")+
+          ylab("") +
+          xlab("Protein position") + 
+          theme_bw() +
+          scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
+          scale_fill_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
+        ) %>% highlight( on = "plotly_click", off = "plotly_doubleclick") 
+      )
+   
+   #)
+    ),
+  reactable(sd_mtcars_auto, minRows = 5,
+            compact = TRUE,
+            searchable = TRUE,
+            defaultPageSize = 10,
+            defaultColDef = colDef(minWidth = 90 ),
+            filterable = TRUE,
+            showSortable = TRUE,
+            showPageSizeOptions = TRUE,
+            striped = TRUE,
+            highlight = TRUE)
+  )
+
+x
+#list(
+  #filter_checkbox("auto", "Sig Pval:", shared_mtcars, ~ifelse(p <= 0.05, "Yes", "No")),
+ # crosstalk::filter_slider("position", "Position", sd_mtcars_all, ~position, width = "80%"),
+  # for a slider, the value must be on each subgroup. 
+  # crosstalk::filter_slider("Pvalue", "-log10 P-cor", sd_mtcars_all, ~Pcor, width = "80%"),
+  # 
+
+
+
+p <-  ggplot( sd_mtcars_all, aes(position, -log10(p)) ) + geom_point(aes(color = cor)) 
+
+ ggplotly(p) %>% layout(margin = list(l = 175))
+
+ str(ggpval[['x']][['layout']][['annotations']]) 
+
+
+ggplot(aes(x=AA, y=type, 
+           label=label, label2=start, label3=end, label4=evidence, label5=Dbxref
+)) +
+  geom_tile(aes(fill=type)) + # geom_time = 6.3MB
+  #geom_raster(aes()) # geom_raster = 6.3MB
+  facet_grid(label~. ,scales = "free", space = "free" ) +
+  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0) +
+  geom_vline(xintercept=c(123,217), linetype="dotted", color="red")+
+  ylab("") +
+  xlab("Protein position") + 
+  theme_bw() +
+  scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
+  scale_fill_manual(values = wes_palette("FantasticFox1", 19, type = "continuous")) 
+
+
+
+
+
+as.data.frame(shared_mtcars)
 
 
 # dt version - formatting doesn't work well. 

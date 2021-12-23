@@ -4,6 +4,35 @@ library(stringr)
 #library(ggplot2)
 #library(plotly)
 
+# get gene list ----
+# Which source should we use to define "all genes"?
+# https://www.genecards.org/List/Statistics#ProteinCoding
+
+# genes from String db
+#protein.info.v11.5.txt.gz (1.4 Gb)	list of STRING proteins incl. their display names and descriptions
+# grep "^9606" protein.info.v11.5.txt > string.protein.info.v11.5.9606.txt
+
+# genes from BioMart Ensembl GRCh37 release 105 
+#https://grch37.ensembl.org/biomart/martview/7d9bf7937836726d33d926806f92a978
+
+#Dataset 63737 / 63737 Genes
+#Human genes (GRCh37.p13)
+#UniProtKB Gene Name symbol
+#HGNC ID
+
+df_genes <- 
+  read.table(file="../data/BioMartEnsemblGRCh37release105_UniProtKBGeneNameSymbol_HGNCid.csv", 
+             header = TRUE,
+             sep = ",", 
+             stringsAsFactors = FALSE)
+
+# replace empty
+df_genes[df_genes==""]<-NA
+df_genes <- na.omit(df_genes)
+colnames(df_genes)[colnames(df_genes) == 'HGNC.ID'] <- 'HGNC'
+colnames(df_genes)[colnames(df_genes) == 'UniProtKB.Gene.Name.symbol'] <- 'Gene symbol'
+df_genes <- df_genes %>% unique()
+
 # import ----
 df <- 
   read.table(file="../data/Gene-Disease Validity-2021-11-24.csv", 
@@ -12,6 +41,13 @@ df <-
              sep = ",", 
              stringsAsFactors = FALSE) %>% 
   slice(-c(1)) # remove the row of symbols
+
+df2 <- 
+  read.table(file="../data/ClinGen Curation Activity Summary Report-2021-11-24.csv", 
+             header = TRUE,
+             skip = 3, # skip the info head
+             sep = ",", 
+             stringsAsFactors = FALSE)
 
 # tidy ----
 # Use lubridate for the Complete ISO-8601 date
@@ -39,6 +75,44 @@ colnames(df)[colnames(df) == 'Moi'] <- 'MOI'
 colnames(df)[colnames(df) == 'Disease id Mondo '] <- 'MONDO'
 colnames(df)[colnames(df) == 'Online report'] <- 'ClinGen'
 colnames(df)[colnames(df) == 'Classification'] <- 'ClinGen classification'
+
+
+colnames(df2)[colnames(df2) == 'disease_label'] <- 'Disease label'
+colnames(df2)[colnames(df2) == 'gene_symbol'] <- 'Gene symbol'
+colnames(df2)[colnames(df2) == 'hgnc_id'] <- 'HGNC'
+df2$HGNC <- str_replace(df2$HGNC, "HGNC:", "") 
+colnames(df2)[colnames(df2) == 'mondo_id'] <- 'MONDO'
+df2$MONDO <- str_replace(df2$MONDO, "MONDO:", "") 
+colnames(df2)[colnames(df2) == 'mode_of_inheritance'] <- 'MOI'
+colnames(df2)[colnames(df2) == 'dosage_haploinsufficiency_assertion'] <- 'Haploinsufficiency classification'
+
+
+df2$MOI <- str_replace_all(df2$MOI,"Autosomal recessive inheritance","AR")
+df2$MOI <- str_replace_all(df2$MOI,"Autosomal dominant inheritance","AD")
+df2$MOI <- str_replace_all(df2$MOI,"X-linked inheritance","XL")
+df2$MOI <- str_replace_all(df2$MOI,"Semidominant mode of inheritance","Semi-AD")
+df2$MOI <- str_replace_all(df2$MOI,"N/A",'NA')
+df2$MOI <- str_replace_all(df2$MOI,"Mode of inheritance",'NA') # note to do this last - probably an error from clingen
+
+# split date from classification
+df2[c('Haploinsufficiency classification', 'Haploinsufficiency classification date')] <- str_split_fixed(df2$`Haploinsufficiency classification`, "[()]", 2)
+
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"0 - No Evidence for Haploinsufficiency ",'No evidence') 
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"1 - Little Evidence for Haploinsufficiency ",'Little evidence') 
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"2 - Emerging Evidence for Haploinsufficiency ",'Emerging Evidence') 
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"3 - Sufficient Evidence for Haploinsufficiency ",'Sufficient Evidence') 
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"30 - Gene Associated with Autosomal Recessive Phenotype ",'Assoc with AR') 
+df2$`Haploinsufficiency classification` <- str_replace_all(df2$`Haploinsufficiency classification`,"40 - Dosage Sensitivity Unlikely ",'Unlikely') 
+df2$`Haploinsufficiency classification` %>% unique()
+
+
+df2 <- df2 %>% select(`Gene symbol`, HGNC, MOI, MONDO, `Haploinsufficiency classification`, `Disease label`)
+
+df3 <- merge(df, df2, all=TRUE)
+df4 <- merge(df_genes, df3, all=TRUE)
+df <- df4
+# Note this is where I use df4 in place of the origin df. 
+
 
 
 # lnk to uniprot ----
@@ -71,6 +145,12 @@ df$'Alpha Fold' <-  sprintf('https://www.alphafold.ebi.ac.uk/search/text/%s', df
 
 df$Gemma <- sprintf('https://gemma.msl.ubc.ca/searcher.html?query=%s&scope=G', df$`Gene symbol`)
 
+# for genes we no validity yet, return a quiry for clingen: first make a search for every gene row
+df$ClinGen_search <- sprintf('https://search.clinicalgenome.org/kb/genes?page=1&size=50&search=%s', df$`Gene symbol`)
+
+# then coalesce (dplyr) for any NA in the url ClinGen column: result only the validated genes has a "gene-validity" url which everything else returns a surch. 
+df <- df%>% mutate(ClinGen = coalesce(ClinGen,ClinGen_search)) 
+
 # reorder
 df <- df %>% select(
   "Gene symbol",
@@ -82,6 +162,9 @@ df <- df %>% select(
   "MONDO",
   "SOP",
   "Classification year")
+
+library(tidyr)
+df$`ClinGen classification` <- replace_na(df$`ClinGen classification`, "") 
 
 
 # color theme ----
@@ -111,13 +194,12 @@ df_t <-
             searchable = TRUE,
             #elementId = "download-table",
             defaultPageSize = 10,
-            defaultColDef = colDef(minWidth = 93 ),
+            defaultColDef = colDef(minWidth = 93),
             columns = list(
               "Disease label" = colDef(minWidth = 200),  # overrides the default
               "GCEP" = colDef(minWidth = 200), 
               "SOP" = colDef(minWidth = 70), 
               "ClinGen" = colDef(cell = function(value, index) {
-                # Render as a link
                 url <- sprintf(df[index, "ClinGen"], value)
                 htmltools::tags$a(href = url, target = "_blank", "link")
               }),
@@ -187,6 +269,7 @@ df_t <-
                                          } else if (value == "Definitive") {color <- "#339900"
                                          } else if (value == "Strong") {color <- "#99cc33"
                                          } else if (value == "Refuted") {color <- "#4f5bd5"
+                                         } else if (value == "NA") {color <- "grey"
                                          } else { color <- "black"}
                                          list(color = color) })
               
@@ -199,13 +282,84 @@ df_t <-
   )
 
 df_t
+# clingen-gene_disease_validity_table_all_genes.html
 
 
 
+# I would like a sparkiline footer for MOI
+df_head <- df %>% head(100)
+tbl <- with(df_head, table(MOI ))
+tbl
+barplot(tbl, legend = FALSE)
+tbl <- as.data.frame(tbl)
+library(reactablefmtr)
+library(tidyverse)
+library(sparkline)
+library(dataui)
+
+reactable(
+  tbl,
+  pagination = FALSE,
+  defaultColDef = colDef(cell = data_bars(tbl),
+                        footer = function(values) {
+    if (!is.numeric(values)) return()
+    sparkline(values, type = "bar", width = 100, height = 30)
+  })
+)
+
+library(reactR)
+reactable(
+  tbl,
+  pagination = FALSE,
+  defaultColDef = colDef(cell = data_bars(tbl),
+                         footer = function(values) {
+                           if (!is.numeric(values)) return()
+                           sparkline(values, type = "box", width = 100, height = 30)
+                         })
+)
+
+
+reactable(
+  tbl,
+  columns = list(
+    MOI = colDef(maxWidth = 85),
+    MOI = colDef(
+      cell = react_sparkline(tbl)
+    )
+  )
+)
 
 
 
+reactable(
+  tbl,
+  columns = list(
+    MOI = colDef(maxWidth = 85),
+    Freq = colDef(
+      cell = react_sparkbar(
+        tbl
+      )
+    )
+  )
+)
 
+
+library(palmerpenguins)
+df <- penguins %>%
+  filter(!is.na(sex)) %>%
+  group_by(species, sex) %>%
+  summarize(flipper_length = list(flipper_length_mm))
+
+reactable(
+  df,
+  columns = list(
+    species = colDef(maxWidth = 85),
+    sex = colDef(maxWidth = 85),
+    flipper_length = colDef(
+      cell = react_sparkbar(df)
+    )
+  )
+)
 # crosstalk ----
 #Note: bsCols() Seems to completely override the flexdashboard CSS and can't be used on website
 # make the data crosstalk for a checklist filter
