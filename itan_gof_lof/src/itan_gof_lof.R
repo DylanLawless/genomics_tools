@@ -122,8 +122,8 @@ df_merge_t
 # using thresholds we think are useful based on the original sources.
 
 # total number of genes ---
-df %>% group_by(GENE) %>% tally() 
-df_total_count <- df %>% group_by(GENE) %>% tally() %>% tally()
+df %>% group_by(Gene) %>% tally() 
+df_total_count <- df %>% group_by(Gene) %>% tally() %>% tally()
 df_total_count
 
 # strict threshold for ALL ----
@@ -133,7 +133,7 @@ df %>%
   filter( LoFtool > 0.5 ) %>% 
   filter( denovo > 0.01 ) %>% 
   filter( RVIS < 0 ) %>% 
-  group_by(GENE) %>% tally()
+  group_by(Gene) %>% tally()
 # result in too few overlaps
 
 # strict threshold for ANY ----
@@ -144,17 +144,17 @@ df %>%
       LoFtool > 0.5 |
       denovo > 1.0 |
       RVIS < 0 ) %>% 
-  group_by(GENE) %>% tally()
+  group_by(Gene) %>% tally()
 # results in too many
 # Note alternative filter logic methods are: ! (NOT), & (AND), | (OR)
 
 # Percentage of gene kept on individual filter ----
 # Instead, find genes where >3 filters have overlapping genes
-f1 <- df %>% filter( GDI_Phred < 3 ) %>% group_by(GENE) %>% tally() # genes after filter 
-f2 <- df %>% filter( ExACpLI > 0.9 ) %>%  group_by(GENE) %>% tally() # genes after filter 
-f3 <- df %>% filter( LoFtool > 0.5 ) %>%  group_by(GENE) %>% tally() # genes after filter 
-f4 <- df %>% filter( denovo > 1.0 ) %>%  group_by(GENE) %>% tally() # genes after filter 
-f5 <- df %>% filter( RVIS < 0 ) %>% group_by(GENE) %>% tally() # genes after filter 
+f1 <- df %>% filter( GDI_Phred < 3 ) %>% group_by(Gene) %>% tally() # genes after filter 
+f2 <- df %>% filter( ExACpLI > 0.9 ) %>%  group_by(Gene) %>% tally() # genes after filter 
+f3 <- df %>% filter( LoFtool > 0.5 ) %>%  group_by(Gene) %>% tally() # genes after filter 
+f4 <- df %>% filter( denovo > 1.0 ) %>%  group_by(Gene) %>% tally() # genes after filter 
+f5 <- df %>% filter( RVIS < 0 ) %>% group_by(Gene) %>% tally() # genes after filter 
 
 filter_percent_remain <- c(
  f1 %>% tally(name = "pc_f1") / df_total_count*100, # % of genes remain
@@ -170,7 +170,7 @@ filter_percent_remain <- t(filter_percent_remain) # tidy
 filter_percent_remain # percentage of genes remaining after each filter
 
 # keep the genes present after 3-4 filters ----
-filtered <- rbind (f1,f2,f3,f4,f5) %>% group_by(GENE) %>% tally() %>% arrange(desc(n))
+filtered <- rbind (f1,f2,f3,f4,f5) %>% group_by(Gene) %>% tally() %>% arrange(desc(n))
 filtered_top_genes <- filtered %>% filter(n > 3)
 filtered_top_genes
 
@@ -188,11 +188,11 @@ filtered_top_genes
 # devtools::install_github("yanlinlin82/ggvenn")
 library("ggvenn")
 
-x <- list( A = f1$GENE,
-           B = f2$GENE,
-           C = f3$GENE, 
-           D = f4$GENE,
-           E = f5$GENE)
+x <- list( A = f1$Gene,
+           B = f2$Gene,
+           C = f3$Gene, 
+           D = f4$Gene,
+           E = f5$Gene)
 
 # Default plot
 ggvenn(x)
@@ -219,9 +219,41 @@ subset[, columns] <- lapply(columns, function(x) as.numeric(subset[[x]]))
 subset$Protein_position_relative <- 
   (subset$Protein_position_start/subset$Protein_length)
 
+# compare "any gene" to the total distribution ----
 subset %>%
-  ggplot(aes(x=log(Selective_pressure))) +
+  ggplot(aes(x=log(`Selective pressure`))) +
   geom_histogram(bins = 100)
+
+d <- subset %>% select(Gene, LoFtool, ExACpLI, RVIS, Essentiality, GDI_Phred) 
+d <- d %>% unique()
+gene_var <- "CHST14"
+gene_var_d <- d %>% filter(Gene == gene_var) %>% group_by(key)
+gene_var_d
+
+d <- d %>% 
+#  tidyr::gather(key, value)
+  tidyr::gather(key = key, value = value, -Gene)
+
+
+ggplot(d,aes(x = value)) + 
+  facet_wrap(~key,scales = "free") + 
+  geom_histogram() +
+  geom_vline(data  = gene_var_d, aes(xintercept = value, colour = key))
+
+ggplot(d,aes(x = log(value) )) + 
+  facet_wrap(~key,scales = "free") + 
+  geom_histogram()
+
+
+
+
+
+z
+
+
+
+
+
 
 subset %>%
   ggplot(aes(x=Protein_position_relative)) +
@@ -252,11 +284,11 @@ p1
 ggplotly(p1)
 
 # reorder genes by selective pressure
-subset$GENE <- reorder(subset$GENE, subset$Selective_pressure)
+subset$Gene <- reorder(subset$Gene, subset$Selective_pressure)
 
 #subset %>% 
-#  ggplot(aes(x=GENE, y=Protein_position_relative )) +
-#  geom_boxplot(aes(group = GENE)) +
+#  ggplot(aes(x=Gene, y=Protein_position_relative )) +
+#  geom_boxplot(aes(group = Gene)) +
 #  geom_point(aes(color=log(Selective_pressure))) +
 #  facet_grid(Inheritance ~ .)
 
@@ -264,13 +296,13 @@ p2 <- subset %>%
   ggplot() +
   geom_point(aes(x=Protein_position_relative, 
                  y=Selective_pressure,
-                 group = GENE)) 
+                 group = Gene)) 
 
 p2log <- subset %>% 
   ggplot() +
   geom_point(aes(x=Protein_position_relative, 
                  y= log(Selective_pressure),
-                 group = GENE)) 
+                 group = Gene)) 
 
 p2
 p2gg <- ggplotly(p2)
@@ -286,7 +318,7 @@ subplot(p2gg, p2loggg,  titleX = TRUE, titleY = TRUE,
 # medians ----
 tmp_subsetProtein_position_relative_median <-
 subset %>%
-  group_by(GENE) %>%
+  group_by(Gene) %>%
   summarise(Protein_position_relative_median = median(Protein_position_relative))
 
 subset <- 
@@ -298,13 +330,13 @@ p3 <- subset %>%
   ggplot() +
   geom_point( aes(x=Protein_position_relative_median, 
                  y=Selective_pressure,
-             group = GENE))
+             group = Gene))
 
 p4 <- subset %>% 
   ggplot() +
   geom_point(aes(x=Protein_position_relative_median, 
                  y=log(Selective_pressure), 
-                 group = GENE)) 
+                 group = Gene)) 
 p3
 p3g <- ggplotly(p3)
 p4

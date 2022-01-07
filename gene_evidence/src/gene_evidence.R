@@ -17,14 +17,13 @@ library(stringr)
 
 #Dataset 63737 / 63737 Genes
 #Human genes (GRCh37.p13)
-#UniProtKB Gene Name symbol
+#Gene name
 #HGNC ID
+#UniProtKB Gene Name symbol
 
+# note switch to read.csv as read.table had EOF problems
 df_genes <- 
-  read.table(file="../data/BioMartEnsemblGRCh37release105_UniProtKBGeneNameSymbol_HGNCid.csv", 
-             header = TRUE,
-             sep = ",", 
-             stringsAsFactors = FALSE)
+  read.csv(file="../data/BioMartEnsemblGRCh37release105_UniProtKBGeneNameSymbol_HGNCid.csv")
 
 # replace empty
 df_genes[df_genes==""]<-NA
@@ -167,6 +166,21 @@ library(tidyr)
 df$`ClinGen classification` <- replace_na(df$`ClinGen classification`, "") 
 
 
+df_count <- df %>% select(`Gene symbol`) %>%  unique() 
+
+# reduce the size of df for genes that are unlikely to ever be used.
+# including dropping, cligen year, mondo, sop.
+df <- df %>% unique() %>%
+  filter(! str_detect(`Gene symbol`, regex("-AS1", ignore_case = TRUE)))  %>%
+  filter(! str_detect(`Gene symbol`, regex("\\.", ignore_case = TRUE))) %>%
+  filter(is.na(`ClinGen classification`) | ! str_detect(`Gene symbol`, regex("ZNF", ignore_case = TRUE))) %>%
+  filter(! str_detect(`Gene symbol`, regex("DKFZP", ignore_case = TRUE))) %>%
+  filter(! str_detect(`Gene symbol`, regex("HOSA", ignore_case = TRUE))) %>%
+  filter(! str_detect(`Gene symbol`, regex("KRTAP", ignore_case = TRUE))) %>%
+  select(-`Classification year`, -MONDO, -SOP, -ORPHA, -omni ) 
+
+df_count <- df %>% select(`Gene symbol`) %>%  unique() 
+
 # color theme ----
 # Disputed #962fbf insta purple
 # LIMITED	1-6 gold 	#ffbf00 gold
@@ -184,108 +198,112 @@ options(reactable.theme = reactableTheme(
   highlightColor = "#fcf0e6",
   cellPadding = "8px 12px",
   style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
-               fontSize = "1.0rem"),
+               fontSize = "0.8rem"),
   searchInputStyle = list(width = "50%")
 ))
 
 df_t <- 
-  reactable(df,
-            compact = TRUE,
-            searchable = TRUE,
-            #elementId = "download-table",
-            defaultPageSize = 10,
-            defaultColDef = colDef(minWidth = 93),
-            columns = list(
-              "Disease label" = colDef(minWidth = 200),  # overrides the default
-              "GCEP" = colDef(minWidth = 200), 
-              "SOP" = colDef(minWidth = 70), 
-              "ClinGen" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, "ClinGen"], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "UniProt" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'UniProt'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "Ensembl" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'Ensembl'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "OMIM" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'OMIM'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "gnomAD r2 GRCh37" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'gnomAD r2 GRCh37'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "gnomAD r3 GRCh38" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'gnomAD r3 GRCh38'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "omni" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'omni'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "pdb" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'pdb'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "ORPHA" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'ORPHA'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "HPO" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'HPO'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "HGNC" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'HGNC'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "DisProt" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'DisProt'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "AmiGo" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'AmiGo'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "Alpha Fold" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'Alpha Fold'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              "Gemma" = colDef(cell = function(value, index) {
-                url <- sprintf(df[index, 'Gemma'], value)
-                htmltools::tags$a(href = url, target = "_blank", "link")
-              }),
-              
-              'ClinGen classification' = colDef( minWidth = 130,
-                                       style = function(value) {
-                                         if (value == "Disputed") {color <- "#962fbf"
-                                         } else if (value == "Limited") {color <- "#e5ab00"
-                                         } else if (value == "Moderate") {color <- "#fa7e1e"
-                                         } else if (value == "No Known") {color <- "#d62976"
-                                         } else if (value == "Definitive") {color <- "#339900"
-                                         } else if (value == "Strong") {color <- "#99cc33"
-                                         } else if (value == "Refuted") {color <- "#4f5bd5"
-                                         } else if (value == "NA") {color <- "grey"
-                                         } else { color <- "black"}
-                                         list(color = color) })
-              
-            ),
-            filterable = TRUE,
-            showSortable = TRUE,
-            showPageSizeOptions = TRUE,
-            striped = TRUE,
-            highlight = TRUE
+  reactable( df,
+             compact = TRUE,
+             searchable = TRUE,
+             #elementId = "download-table",
+             defaultPageSize = 10,
+             defaultColDef = colDef(minWidth = 93),
+             columns = list(
+               "Disease label" = colDef(minWidth = 200),  # overrides the default
+               "GCEP" = colDef(minWidth = 200), 
+               "SOP" = colDef(minWidth = 70), 
+               "ClinGen" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, "ClinGen"], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "UniProt" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'UniProt'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "Ensembl" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'Ensembl'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "OMIM" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'OMIM'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "gnomAD r2 GRCh37" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'gnomAD r2 GRCh37'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "gnomAD r3 GRCh38" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'gnomAD r3 GRCh38'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "omni" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'omni'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "pdb" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'pdb'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "ORPHA" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'ORPHA'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "HPO" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'HPO'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "HGNC" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'HGNC'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "DisProt" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'DisProt'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "AmiGo" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'AmiGo'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "Alpha Fold" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'Alpha Fold'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               "Gemma" = colDef(cell = function(value, index) {
+                 url <- sprintf(df[index, 'Gemma'], value)
+                 htmltools::tags$a(href = url, target = "_blank", "link")
+               }),
+               
+               'ClinGen classification' = colDef( minWidth = 130,
+                                                  style = function(value) {
+                                                    if (value == "Disputed") {color <- "#962fbf"
+                                                    } else if (value == "Limited") {color <- "#e5ab00"
+                                                    } else if (value == "Moderate") {color <- "#fa7e1e"
+                                                    } else if (value == "No Known") {color <- "#d62976"
+                                                    } else if (value == "Definitive") {color <- "#339900"
+                                                    } else if (value == "Strong") {color <- "#99cc33"
+                                                    } else if (value == "Refuted") {color <- "#4f5bd5"
+                                                    } else if (value == "NA") {color <- "grey"
+                                                    } else { color <- "black"}
+                                                    list(color = color) })
+               
+             ),
+             filterable = TRUE,
+             showSortable = TRUE,
+             showPageSizeOptions = TRUE,
+             striped = TRUE,
+             highlight = TRUE
   )
 
-df_t
+rm(df2, df_genes, df3, df4)
+#df_t
+
+library(reactablefmtr)
+save_reactable(df_t, "../output/gene_disease_validity_table_all_genes.html")
 # clingen-gene_disease_validity_table_all_genes.html
 
-
-
+tmp <- df$`Gene symbol` %>% unique()
+rm(tmp)
 # I would like a sparkiline footer for MOI
 df_head <- df %>% head(100)
 tbl <- with(df_head, table(MOI ))
@@ -301,10 +319,10 @@ reactable(
   tbl,
   pagination = FALSE,
   defaultColDef = colDef(cell = data_bars(tbl),
-                        footer = function(values) {
-    if (!is.numeric(values)) return()
-    sparkline(values, type = "bar", width = 100, height = 30)
-  })
+                         footer = function(values) {
+                           if (!is.numeric(values)) return()
+                           sparkline(values, type = "bar", width = 100, height = 30)
+                         })
 )
 
 library(reactR)
@@ -367,9 +385,9 @@ library(crosstalk)
 data <- SharedData$new(df)
 
 df_b <- bscols( widths = c(2, 9),
-  ( filter_checkbox("ClinGen classification", "ClinGen classification", data, ~'ClinGen classification')),
- df_t,
- device = c( "sm"))
+                ( filter_checkbox("ClinGen classification", "ClinGen classification", data, ~'ClinGen classification')),
+                df_t,
+                device = c( "sm"))
 
 checkbox <- filter_checkbox("ClinGen classification", "ClinGen classification", data, ~'ClinGen classification')
 htmltools::browsable(df_t, checkbox)
