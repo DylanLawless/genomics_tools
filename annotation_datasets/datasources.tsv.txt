@@ -1,0 +1,134 @@
+#	TAB	Source	TAB	Name	TAB	Version	Type
+1	TAB	Broad	TAB	<a href="http://exac.broadinstitute.org/" target="_blank">Exac genes</a>	TAB	18-Sep-2018	TAB	Exome Aggregation Consortium gene database
+2	TAB	Broad	TAB	<a href="http://exac.broadinstitute.org/" target="_blank">ExacCNV</a>	TAB	01-Jul-2021	TAB	Exome Aggregation Consortium CNVs
+3	TAB	Broad	TAB	<a href="https://gnomad.broadinstitute.org" target="_blank">gnomAD Mitochondrial</a>	TAB	3.1	TAB	gnomAD mtDNA variants
+4	TAB	Broad	TAB	<a href="http://gnomad.broadinstitute.org/" target="_blank">gnomAD exomes</a>	TAB	2.1.1	TAB	Genome Aggregation Database
+5	TAB	Broad	TAB	<a href="ftp://ftp.broadinstitute.org/pub/ExAC_release/current/coverage" target="_blank">gnomAD exomes coverage</a>	TAB	2.1	TAB	gnomAD exome coverage data
+6	TAB	Broad	TAB	<a href="https://gnomad.broadinstitute.org/downloads/#v2-constraint" target="_blank">gnomAD gene constraints</a>	TAB	2.1	TAB	gnomAD gene constraints
+7	TAB	Broad	TAB	<a href="http://gnomad.broadinstitute.org/" target="_blank">gnomAD genomes</a>	TAB	3.1.1	TAB	Genome Aggregation Database
+8	TAB	Broad	TAB	<a href="/external.data/Variants/gnomAD.WGS/release-170228/genomes/coverage" target="_blank">gnomAD genomes coverage</a>	TAB	3.0	TAB	gnomAD genome coverage data
+9	TAB	Broad	TAB	<a href="https://gnomad.broadinstitute.org/downloads#v2-structural-variants" target="_blank">gnomAD structural variants</a>	TAB	30-Jun-2021	TAB	gnomAD structural variants
+10	TAB	CHOP	TAB	<a href="https://www.mitomap.org/foswiki/bin/view/MITOMAP/WebHome" target="_blank">Mitomap</a>	TAB	18-Oct-2021	TAB	Human Mitochondrial Genome Database
+11	TAB	CPIC	TAB	<a href="https://cpicpgx.org/genes-drugs/" target="_blank">CPIC Genes-Drugs</a>	TAB	15-Jun-2021	TAB	Gene Drugs Interactions and Levels
+12	TAB	CSH	TAB	<a href="http://compgen.cshl.edu/phast/" target="_blank">phastCons100way</a>	TAB	14-Apr-2021	TAB	Conservation scoring and identification of conserved elements
+13	TAB	CSH	TAB	<a href="http://compgen.cshl.edu/phast/" target="_blank">phyloP100way</a>	TAB	13-Apr-2021	TAB	Computation of p-values for conservation or acceleration
+14	TAB	CTTI	TAB	<a href="https://clinicaltrials.gov" target="_blank">AACT</a>	TAB	07-Sep-2021	TAB	Aggregate Analysis of ClincalTrials.gov
+15	TAB	EBI	TAB	<a href="http://www.ebi.ac.uk/" target="_blank">GWAS Catalog</a>	TAB	11-Nov-2021	TAB	The NHGRI-EBI Catalog of published genome-wide association studies
+16	TAB	EBI	TAB	<a href="https://www.ebi.ac.uk/gene2phenotype/about" target="_blank">gene2phenotype</a>	TAB	20-Dec-2021	TAB	gene2phenotype
+17	TAB	EMA	TAB	<a href="https://www.ema.europa.eu/en" target="_blank">EMA Approved Drugs</a>	TAB	03-Sep-2021	TAB	EMA Approved Drugs
+18	TAB	EMBL	TAB	<a href="http://www.ensembl.org/info/website/index.html" target="_blank">Ensembl</a>	TAB	104	TAB	Ensemble transcript database
+19	TAB	FDA	TAB	<a href="https://www.fda.gov/drugs/informationondrugs/ucm079750.htm" target="_blank">FDA Approved Drugs</a>	TAB	03-Sep-2021	TAB	FDA Approved Drugs
+20	TAB	FDA	TAB	<a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling" target="_blank">Pharmacogenomic Biomarkers</a>	TAB	16-Sep-2021	TAB	Table of Pharmacogenomic Biomarkers in Drug Labeling
+21	TAB	GERP	TAB	<a href="http://mendel.stanford.edu/SidowLab/downloads/gerp/" target="_blank">GERP</a>	TAB	2010	TAB	Germline Variants
+22	TAB	GenCC	TAB	<a href="https://thegencc.org/" target="_blank">GenCC</a>	TAB	20-Dec-2021	TAB	GenCC
+23	TAB	Genomenon	TAB	Mastermind	TAB	2021.04.02	TAB	Genomenon's Mastermind engine
+24	TAB	Genomics England	TAB	<a href="https://panelapp.genomicsengland.co.uk/" target="_blank">PanelApp</a>	TAB	11-Nov-2021	TAB	Genomics England PanelApp
+25	TAB	HPO	TAB	<a href="http://charite.github.io/compbio-onto.html" target="_blank">HPO</a>	TAB	20-Dec-2021	TAB	Human Phenotype Ontology
+26	TAB	HUGO	TAB	<a href="http://www.genenames.org/" target="_blank">HGNC</a>	TAB	21-Oct-2021	TAB	HUGO gene nomenclature committee
+27	TAB	IARC	TAB	TP53 Germline	TAB	release 20	TAB	IARC TP53 germline database http://p53.iarc.fr/
+28	TAB	IARC	TAB	TP53 Somatic	TAB	release 20	TAB	IARC TP53 somatic database http://p53.iarc.fr/
+29	TAB	ICGC	TAB	<a href="https://icgc.org/" target="_blank">ICGC somatic</a>	TAB	release 28	TAB	ICGC somatic mutations database
+30	TAB	ISB	TAB	<a href="http://db.systemsbiology.net/kaviar/Kaviar.downloads.html" target="_blank">kaviar3</a>	TAB	4-Feb-2016	TAB	Known Variants, allele count &gt; 3
+31	TAB	JAX	TAB	<a href="https://ckb.jax.org/" target="_blank">CKB</a>	TAB	17-Nov-2021	TAB	The Clinical Knowledgebase
+32	TAB	KAW	TAB	<a href="https://www.proteinatlas.org/about" target="_blank">The Human Protein Atlas</a>	TAB	07-Sep-2021	TAB	The Human Protein Atlas
+33	TAB	MSK	TAB	<a href="https://www.cancerhotspots.org" target="_blank">CancerHotspots</a>	TAB	10-Sep-2021	TAB	A resource for statistically significant mutations in cancer
+34	TAB	MSK	TAB	<a href="http://oncotree.mskcc.org/#/home" target="_blank">OncoTree</a>	TAB	01-Sep-2021	TAB	OncoTree
+35	TAB	MSK	TAB	<a href="https://www.cbioportal.org/" target="_blank">cBioPortal</a>	TAB	17-Sep-2021	TAB	cBioPortal for Cancer Genomics
+36	TAB	Monarch	TAB	<a href="https://monarchinitiative.org/" target="_blank">Mondo</a>	TAB	17-Nov-2021	TAB	Mondo Disease Ontology
+37	TAB	NCBI	TAB	<a href="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_...gz" target="_blank">ClinVar CNVs</a>	TAB	11-Nov-2021	TAB	ClinVar CNV Regions
+38	TAB	NCBI	TAB	<a href="ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited" target="_blank">ClinVar2</a>	TAB	11-Nov-2021	TAB	ClinVar v2 populated from TSV files
+39	TAB	NCBI	TAB	<a href="http://www.ncbi.nlm.nih.gov/refseq/" target="_blank">RefSeq</a>	TAB	208	TAB	NCBI transcript database
+40	TAB	NCBI	TAB	<a href="http://www.ncbi.nlm.nih.gov/snp" target="_blank">dbSNP</a>	TAB	build 154	TAB	NCBI SNP variant database
+41	TAB	NCBI	TAB	<a href="https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/" target="_blank">dbVar</a>	TAB	30-Jun-2021	TAB	dbVar
+42	TAB	NHGRI	TAB	<a href="http://research.nhgri.nih.gov/CGD/" target="_blank">CGD</a>	TAB	11-Nov-2021	TAB	Clinical Genomic Database
+43	TAB	NIH	TAB	<a href="https://ftp.clinicalgenome.org/" target="_blank">ClinGen</a>	TAB	20-Dec-2021	TAB	ClinGen
+44	TAB	NIH	TAB	<a href="https://ftp.clinicalgenome.org/" target="_blank">ClinGen CNVs</a>	TAB	20-Dec-2021	TAB	ClinGen CNVs
+45	TAB	NIH	TAB	<a href="https://ftp.clinicalgenome.org/" target="_blank">ClinGen Disease Validity</a>	TAB	20-Dec-2021	TAB	ClinGen Disease Validity
+46	TAB	NIH	TAB	<a href="https://ftp.clinicalgenome.org/" target="_blank">ClinGen Regions</a>	TAB	20-Dec-2021	TAB	ClinGen Regions
+47	TAB	NIH	TAB	<a href="https://dailymed.nlm.nih.gov" target="_blank">DailyMed</a>	TAB	03-Sep-2021	TAB	DailyMed
+48	TAB	NIH	TAB	<a href="https://gdc.cancer.gov/" target="_blank">GDC</a>	TAB	13-Oct-2021	TAB	Genomic Data Commons
+49	TAB	NIH	TAB	<a href="https://gtexportal.org/home/" target="_blank">GTEx</a>	TAB	v8	TAB	Genotype-Tissue Expression (GTEx) Program
+50	TAB	NLM	TAB	<a href="https://ghr.nlm.nih.gov/gene" target="_blank">GHR Genes</a>	TAB	20-Oct-2021	TAB	GHR Genes Index
+51	TAB	PharmGKB	TAB	<a href="https://www.pharmgkb.org/" target="_blank">PharmGKB</a>	TAB	11-Nov-2021	TAB	PharmGKB
+52	TAB	Sanger	TAB	<a href="https://cancer.sanger.ac.uk/census" target="_blank">Cancer Gene Census</a>	TAB	v94	TAB	Cancer Gene Census
+53	TAB	Sanger	TAB	<a href="http://cancer.sanger.ac.uk/cosmic" target="_blank">COSMIC</a>	TAB	v94	TAB	Catalogue of Somatic Mutations in Cancer (Available to users with a separate COSMIC license)
+54	TAB	Sanger	TAB	<a href="https://decipher.sanger.ac.uk/" target="_blank">DECIPHER</a>	TAB	11-Nov-2021	TAB	Sanger DECIPHER
+55	TAB	TCAG	TAB	<a href="http://dgv.tcag.ca/dgv/app/home" target="_blank">DGV</a>	TAB	30-Jun-2021	TAB	Database of Genomic Variants
+56	TAB	UCI	TAB	<a href="https://cbcl.ics.uci.edu/doku.php/data#dann_data" target="_blank">DANN SNVs</a>	TAB	2014	TAB	Deleterious Annotation of genetic variants using Neural Networks
+57	TAB	UMICH	TAB	<a href="https://bravo.sph.umich.edu/freeze5/hg38/" target="_blank">Bravo</a>	TAB	Freeze8	TAB	Bravo Aggregation Database
+58	TAB	UNIL	TAB	<a href="https://wwwfbm.unil.ch/domino/index.html" target="_blank">Domino</a>	TAB	04-Sep-2019	TAB	Domino Gene Scores
+59	TAB	UNIPROT	TAB	<a href="http://www.uniprot.org/" target="_blank">UniProt Regions</a>	TAB	13-Jul-2021	TAB	Uniprot Regions
+60	TAB	UNIPROT	TAB	<a href="http://www.uniprot.org/" target="_blank">UniProt Variants</a>	TAB	13-Jul-2021	TAB	UniProt Variants Database
+61	TAB	UTexas	TAB	<a href="https://ccsm.uth.edu/FusionGDB/" target="_blank">FusionGDB</a>	TAB	19-Nov-2021	TAB	Fusion Gene annotation DataBase
+62	TAB	UW	TAB	<a href="https://cadd.gs.washington.edu/" target="_blank">CADD</a>	TAB	1.6	TAB	Combined Annotation Dependent Depletion
+63	TAB	WUSTL	TAB	<a href="https://civic.genome.wustl.edu/#/home" target="_blank">CIViC</a>	TAB	10-Dec-2021	TAB	Clinical Interpretation of Variants in Cancer
+64	TAB	WUSTL	TAB	<a href="http://dgidb.genome.wustl.edu/" target="_blank">DGI</a>	TAB	09-Sep-2021	TAB	Drug Gene Interaction Database
+65	TAB	Weill Cornell Medicine	TAB	<a href="https://pmkb.weill.cornell.edu/" target="_blank">PMKB</a>	TAB	19-Aug-2021	TAB	Precision Medicine Knowledge Base
+66	TAB	dbNSFP	TAB	<a href="https://sites.google.com/site/jpopgen/dbNSFP" target="_blank">dbNSFP genes</a>	TAB	4.2	TAB	dbNSFP expression and other gene-based data
+67	TAB	dbNSFP	TAB	<a href="https://sites.google.com/site/jpopgen/dbNSFP" target="_blank">dbNSFP-c</a>	TAB	4.2	TAB	dbNSFP license-free data
+68	TAB	dbNSFP	TAB	<a href="https://sites.google.com/site/jpopgen/dbNSFP" target="_blank">dbNSFP-p</a>	TAB	4.2	TAB	dbNSFP licensed data for premium
+69	TAB	dbNSFP	TAB	dbscSNV	TAB	v1.1	TAB	dbNSFP splice site variant database
+70	TAB	dbNSFP genes	TAB	<a href="https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways" target="_blank">BioCarta</a>	TAB	4.2	TAB	Gene
+71	TAB	dbNSFP genes	TAB	<a href="http://cpdb.molgen.mpg.de/" target="_blank">Consensus</a>	TAB	4.2	TAB	Gene
+72	TAB	dbNSFP genes	TAB	<a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484" target="_blank">Essential Genes</a>	TAB	4.2	TAB	Gene
+73	TAB	dbNSFP genes	TAB	<a href="https://www.pnas.org/content/112/44/13615" target="_blank">GDI</a>	TAB	4.2	TAB	Gene
+74	TAB	dbNSFP genes	TAB	<a href="https://academic.oup.com/nar/article/43/15/e101/2414292" target="_blank">GHIS</a>	TAB	4.2	TAB	Gene
+75	TAB	dbNSFP genes	TAB	<a href="https://www.ebi.ac.uk/gxa/home" target="_blank">GNF/Atlas</a>	TAB	4.2	TAB	Gene
+76	TAB	dbNSFP genes	TAB	<a href="http://geneontology.org/" target="_blank">Gene Ontology</a>	TAB	4.2	TAB	Gene
+77	TAB	dbNSFP genes	TAB	<a href="https://academic.oup.com/bioinformatics/article/33/12/1751/2964486" target="_blank">HIPred</a>	TAB	4.2	TAB	Gene
+78	TAB	dbNSFP genes	TAB	<a href="https://www.genome.jp/kegg/" target="_blank">KEGG</a>	TAB	4.2	TAB	Gene
+79	TAB	dbNSFP genes	TAB	<a href="https://academic.oup.com/bioinformatics/article/33/4/471/2525582" target="_blank">LoFTool</a>	TAB	4.2	TAB	Gene
+80	TAB	dbNSFP genes	TAB	<a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154" target="_blank">P(HI) Score</a>	TAB	4.2	TAB	Gene
+81	TAB	dbNSFP genes	TAB	<a href="https://science.sciencemag.org/content/335/6070/823" target="_blank">P(rec) Score</a>	TAB	4.2	TAB	Gene
+82	TAB	dbNSFP genes	TAB	<a href="http://genic-intolerance.org/" target="_blank">RVIS</a>	TAB	4.2	TAB	Gene
+83	TAB	dbNSFP genes	TAB	<a href="https://www.uniprot.org/" target="_blank">UniProt Genes</a>	TAB	4.2	TAB	Gene
+84	TAB	dbNSFP genes	TAB	<a href="BioMart" target="_blank">egenetics</a>	TAB	4.2	TAB	Gene
+85	TAB	dbNSFP-c	TAB	<a href="http://aloft.gersteinlab.org/" target="_blank">ALoFT</a>	TAB	4.2	TAB	Functional prediction
+86	TAB	dbNSFP-c	TAB	<a href="http://fengbj-laboratory.org/BayesDel/BayesDel.html" target="_blank">BayesDel</a>	TAB	4.2	TAB	Functional prediction
+87	TAB	dbNSFP-c	TAB	<a href="https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways" target="_blank">BioCarta</a>	TAB	4.2	TAB	Gene
+88	TAB	dbNSFP-c	TAB	<a href="http://cpdb.molgen.mpg.de/" target="_blank">Consensus</a>	TAB	4.2	TAB	Gene
+89	TAB	dbNSFP-c	TAB	<a href="https://deogen2.mutaframe.com/" target="_blank">DEOGEN2</a>	TAB	4.2	TAB	Functional prediction
+90	TAB	dbNSFP-c	TAB	<a href="http://www.columbia.edu/~ii2135/eigen.html" target="_blank">Eigen</a>	TAB	4.2	TAB	Functional prediction
+91	TAB	dbNSFP-c	TAB	<a href="http://www.columbia.edu/~ii2135/eigen.html" target="_blank">Eigen-PC</a>	TAB	4.2	TAB	Functional prediction
+92	TAB	dbNSFP-c	TAB	<a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484" target="_blank">Essential Genes</a>	TAB	4.2	TAB	Gene
+93	TAB	dbNSFP-c	TAB	<a href="http://fathmm.biocompute.org.uk" target="_blank">FATHMM</a>	TAB	4.2	TAB	Functional prediction
+94	TAB	dbNSFP-c	TAB	<a href="http://fathmm.biocompute.org.uk/fathmmMKL.htm" target="_blank">FATHMM-MKL</a>	TAB	4.2	TAB	Functional prediction
+95	TAB	dbNSFP-c	TAB	<a href="http://fathmm.biocompute.org.uk/fathmm-xf/" target="_blank">FATHMM-XF</a>	TAB	4.2	TAB	Functional prediction
+96	TAB	dbNSFP-c	TAB	<a href="https://www.pnas.org/content/112/44/13615" target="_blank">GDI</a>	TAB	4.2	TAB	Gene
+97	TAB	dbNSFP-c	TAB	<a href="https://academic.oup.com/nar/article/43/15/e101/2414292" target="_blank">GHIS</a>	TAB	4.2	TAB	Gene
+98	TAB	dbNSFP-c	TAB	<a href="https://www.ebi.ac.uk/gxa/home" target="_blank">GNF/Atlas</a>	TAB	4.2	TAB	Gene
+99	TAB	dbNSFP-c	TAB	<a href="http://geneontology.org/" target="_blank">Gene Ontology</a>	TAB	4.2	TAB	Gene
+100	TAB	dbNSFP-c	TAB	<a href="https://academic.oup.com/bioinformatics/article/33/12/1751/2964486" target="_blank">HIPred</a>	TAB	4.2	TAB	Gene
+101	TAB	dbNSFP-c	TAB	<a href="https://www.genome.jp/kegg/" target="_blank">KEGG</a>	TAB	4.2	TAB	Gene
+102	TAB	dbNSFP-c	TAB	<a href="https://precomputed.list-s2.msl.ubc.ca/" target="_blank">LIST-S2</a>	TAB	4.2	TAB	Functional prediction
+103	TAB	dbNSFP-c	TAB	<a href="http://www.genetics.wustl.edu/jflab/lrt_query.html" target="_blank">LRT</a>	TAB	4.2	TAB	Functional prediction
+104	TAB	dbNSFP-c	TAB	<a href="https://academic.oup.com/bioinformatics/article/33/4/471/2525582" target="_blank">LoFTool</a>	TAB	4.2	TAB	Gene
+105	TAB	dbNSFP-c	TAB	<a href="http://bejerano.stanford.edu/MCAP/" target="_blank">M-CAP</a>	TAB	4.2	TAB	Functional prediction
+106	TAB	dbNSFP-c	TAB	<a href="https://www.biorxiv.org/content/10.1101/148353v1" target="_blank">MPC</a>	TAB	4.2	TAB	Functional prediction
+107	TAB	dbNSFP-c	TAB	<a href="https://github.com/ShenLab/missense" target="_blank">MVP</a>	TAB	4.2	TAB	Functional prediction
+108	TAB	dbNSFP-c	TAB	<a href="https://academic.oup.com/hmg/article/24/8/2125/651446" target="_blank">MetaLR</a>	TAB	4.2	TAB	Functional prediction
+109	TAB	dbNSFP-c	TAB	<a href="http://www.liulab.science/metarnn.html" target="_blank">MetaRNN</a>	TAB	4.2	TAB	Functional prediction
+110	TAB	dbNSFP-c	TAB	<a href="https://academic.oup.com/hmg/article/24/8/2125/651446" target="_blank">MetaSVM</a>	TAB	4.2	TAB	Functional prediction
+111	TAB	dbNSFP-c	TAB	<a href="http://mutpred.mutdb.org/" target="_blank">MutPred</a>	TAB	4.2	TAB	Functional prediction
+112	TAB	dbNSFP-c	TAB	<a href="http://mutationassessor.org/" target="_blank">MutationAssessor</a>	TAB	4.2	TAB	Functional prediction
+113	TAB	dbNSFP-c	TAB	<a href="http://www.mutationtaster.org/" target="_blank">MutationTaster</a>	TAB	4.2	TAB	Functional prediction
+114	TAB	dbNSFP-c	TAB	<a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154" target="_blank">P(HI) Score</a>	TAB	4.2	TAB	Gene
+115	TAB	dbNSFP-c	TAB	<a href="https://science.sciencemag.org/content/335/6070/823" target="_blank">P(rec) Score</a>	TAB	4.2	TAB	Gene
+116	TAB	dbNSFP-c	TAB	<a href="http://provean.jcvi.org/index.php" target="_blank">PROVEAN</a>	TAB	4.2	TAB	Functional prediction
+117	TAB	dbNSFP-c	TAB	<a href="https://github.com/Illumina/PrimateAI" target="_blank">PrimateAI</a>	TAB	4.2	TAB	Functional prediction
+118	TAB	dbNSFP-c	TAB	<a href="https://sites.google.com/site/revelgenomics/" target="_blank">REVEL</a>	TAB	4.2	TAB	Functional prediction
+119	TAB	dbNSFP-c	TAB	<a href="http://genic-intolerance.org/" target="_blank">RVIS</a>	TAB	4.2	TAB	Gene
+120	TAB	dbNSFP-c	TAB	<a href="https://sift.bii.a-star.edu.sg" target="_blank">SIFT</a>	TAB	4.2	TAB	Functional prediction
+121	TAB	dbNSFP-c	TAB	<a href="https://sift.bii.a-star.edu.sg/sift4g/" target="_blank">SIFT4G</a>	TAB	4.2	TAB	Functional prediction
+122	TAB	dbNSFP-c	TAB	<a href="https://www.broadinstitute.org/mammals-models/29-mammals-project-supplementary-info" target="_blank">SiPhy</a>	TAB	4.2	TAB	Conservation score
+123	TAB	dbNSFP-c	TAB	<a href="https://www.uniprot.org/" target="_blank">UniProt Genes</a>	TAB	4.2	TAB	Gene
+124	TAB	dbNSFP-c	TAB	<a href="http://cadd.gs.washington.edu/" target="_blank">bStatistic</a>	TAB	4.2	TAB	Conservation score
+125	TAB	dbNSFP-c	TAB	<a href="BioMart" target="_blank">egenetics</a>	TAB	4.2	TAB	Gene
+126	TAB	dbNSFP-c	TAB	<a href="http://compgen.bscb.cornell.edu/fitCons/" target="_blank">fitCons</a>	TAB	4.2	TAB	Functional prediction
+127	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons100way/" target="_blank">phastCons100way Vertebrate</a>	TAB	4.2	TAB	Conservation score
+128	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons17way/" target="_blank">phastCons17way Primate</a>	TAB	4.2	TAB	Conservation score
+129	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons30way/" target="_blank">phastCons30way Mammalian</a>	TAB	4.2	TAB	Conservation score
+130	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP100way/" target="_blank">phyloP100way Vertebrate</a>	TAB	4.2	TAB	Conservation score
+131	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP17way/" target="_blank">phyloP17way Primate</a>	TAB	4.2	TAB	Conservation score
+132	TAB	dbNSFP-c	TAB	<a href="http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP30way/" target="_blank">phyloP30way Mammalian</a>	TAB	4.2	TAB	Conservation score
+133	TAB	dbNSFP-p	TAB	<a href="http://genetics.bwh.harvard.edu/pph2/" target="_blank">Polyphen-2</a>	TAB	4.2	TAB	Functional prediction
