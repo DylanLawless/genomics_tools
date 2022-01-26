@@ -1,3 +1,5 @@
+% Public data over time
+
 # Reference sequences
 
 * Human orthopneumovirus Subgroup A, complete cds
@@ -16,16 +18,22 @@
 
 Next we download viral sequence data from NCBI. 
 
-<https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType%2F_s=Nucleotide&VirusLineage%2F_ss=Human%20orthopneumovirus,%20taxid:11250&SeqType_s=Nucleotide&HostLineage_ss=Homo%20(humans),%20taxid:9605&VirusLineage_ss=Human%20orthopneumovirus%20(HRSV),%20taxid:11250&ProtNames_ss=attachment%20glycoprotein&CollectionDate_dr=2018-01-01T00:00:00.00Z%20TO%202022-01-07T23:59:59.00Z>
+v2 <https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType%2F_s=Nucleotide&VirusLineage%2F_ss=Human%20orthopneumovirus,%20taxid:11250&SeqType_s=Nucleotide&HostLineage_ss=Homo%20(humans),%20taxid:9605&VirusLineage_ss=Human%20orthopneumovirus%20(HRSV),%20taxid:11250&ProtNames_ss=attachment%20glycoprotein&CollectionDate_dr=1989-12-31T00:00:00.00Z%20TO%202021-12-31T23:59:59.00Z>
+
+v1 <https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType%2F_s=Nucleotide&VirusLineage%2F_ss=Human%20orthopneumovirus,%20taxid:11250&SeqType_s=Nucleotide&HostLineage_ss=Homo%20(humans),%20taxid:9605&VirusLineage_ss=Human%20orthopneumovirus%20(HRSV),%20taxid:11250&ProtNames_ss=attachment%20glycoprotein&CollectionDate_dr=2018-01-01T00:00:00.00Z%20TO%202022-01-07T23:59:59.00Z>
 
 ## Download settings
 * Virus: Human orthopneumovirus (HRSV), taxid:11250
 * Proteins: attachment glycoprotein
 * Host: Homo (humans), taxid:9605
-* Collection Date:  From Jan 1, 2018 To Jan 8, 2022
+* v1 Collection Date:  From Jan 1, 2018 To Jan 8, 2022
+* v2 Collection Date:  From Dec 31, 1989 To Jan 1, 2022
 
 * Filename: data/HRSV_virus11250_attachment_glycoprotein_host9605_20180101_20220108.fasta
 * Filename: data/HRSV_virus11250_attachment_glycoprotein_host9605_20180101_20220108.csv
+
+* Filename: data/HRSV_virus11250_attachment_glycoprotein_host9605_19891231_20220101.fasta
+* Filename: data/HRSV_virus11250_attachment_glycoprotein_host9605_19891231_20220101.csv
 
 ## Results:
 

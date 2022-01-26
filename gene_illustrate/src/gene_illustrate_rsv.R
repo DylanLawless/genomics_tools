@@ -193,7 +193,8 @@ gpx <- hide_legend(ggplotly(px))
 # gpx
 # saveWidget(gpx, file = "../output/gene_illustrate_rsv_detail.html") 
 
-
+# unified hover ----
+gpx %>% layout(hovermode = "x unified")
 
 # import P value and r sequred LD from analysis ----
 

@@ -1,7 +1,7 @@
 % Primer check on public data over time
 
 # Summary 
-We want to see if primer identity varies of time / isolates / region / etc.
+We want to see if primer identity varies over time / isolates / region / etc.
 
 1. Make an example primer (primer blast)
 2. Download all public nucleotide data.
@@ -15,7 +15,7 @@ As a test, I made a random example primer using Primer Blast on the reference nu
 * Ref gene used AF013254.1: 
 	- <https://www.ncbi.nlm.nih.gov/nuccore/AF013254.1?from=4690&to=5589&report=gbwithparts>
 * Primer blast: 
-	- <https://www.ncbi.nlm.nih.gov/tools/primer-blast/primertool.cgi>
+	- <https://www.ncbi.nlm.nih.gov/tools/primer-blast/>
 
 ## Results:
 
@@ -29,6 +29,7 @@ Next we download viral sequence data from NCBI.
 <https://www.ncbi.nlm.nih.gov/labs/virus/vssi/#/virus?SeqType%2F_s=Nucleotide&VirusLineage%2F_ss=Human%20orthopneumovirus,%20taxid:11250&SeqType_s=Nucleotide&HostLineage_ss=Homo%20(humans),%20taxid:9605&VirusLineage_ss=Human%20orthopneumovirus%20(HRSV),%20taxid:11250&ProtNames_ss=attachment%20glycoprotein&CollectionDate_dr=2018-01-01T00:00:00.00Z%20TO%202022-01-07T23:59:59.00Z>
 
 ## Download settings
+
 * Virus: Human orthopneumovirus (HRSV), taxid:11250
 * Proteins: attachment glycoprotein
 * Host: Homo (humans), taxid:9605
@@ -42,6 +43,9 @@ Next we download viral sequence data from NCBI.
 
 # Blast
 Then blast each primer against all fasta.
+
+* Use: blastn 
+* option: Align two or more sequences 
 
 <https://blast.ncbi.nlm.nih.gov/Blast.cgi>
 

@@ -67,23 +67,46 @@ dt_uniprot <- rbind(dt_uniprot_Domain, dt_uniprot_Features, dt_uniprot_Structure
 dt_uniprot_sub <- dt_uniprot %>% filter(label=="Family & Domain")
 
 library(wesanderson)
+library(stringr)
+
+dt_uniprot$Note <- str_replace_all(dt_uniprot$Note, "character\\(0\\)", "")
+dt_uniprot$Dbxref <- str_replace_all(dt_uniprot$Dbxref, "character\\(0\\)", "")
+
+dt_uniprot$Note = str_wrap(dt_uniprot$Note, width = 30)
+dt_uniprot$Dbxref = str_wrap(dt_uniprot$Dbxref, width = 30)
+dt_uniprot$evidence = str_wrap(dt_uniprot$evidence, width = 30)
+
+wes_pal = c(
+  "#00A08A", "#F2AD00", "#F98400", "#5BBCD6", # Darjeeling1 (removed "#FF0000" hard red)
+  "#ECCBAE", "#046C9A", "#D69C4E", "#ABDDDE", # Darjeeling2 (removed #"#000000" black)
+  "#DD8D29", "#E2D200", "#46ACC8", "#E58601", "#B40F20", #  FantasticFox1
+  "#F1BB7B", "#FD6467", "#5B1A18", "#D67236", # GrandBudapest1
+  "#E6A0C4", "#C6CDF7", "#D8A499", "#7294D4" # GrandBudapest2
+  # "#446455", "#FDD262", "#D3DDDC", "#C7B19C", #Chevalier1
+)
+
 p <- dt_uniprot %>%
   group_by(type, Note) %>%
-  ggplot(aes(x=start, y=type, label=type)) +
+  ggplot(aes(y=type, x=start, label=end, label2=Note, label3=Dbxref, label4=evidence)) +
   geom_segment(size = 4, aes(x = start,  xend = end, y = type, yend = type, color = type), show.legend=FALSE) +
   facet_grid(vars(label), scales = "free", space = "free") +
-  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0)  +
+  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0, text = paste0())  +
   geom_vline(xintercept=c(126,221), linetype="dotted", color="blue")+
   ylab("") +
   xlab("Protein position") + 
   theme_bw() +
   scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
-  #scale_color_manual(values = wes_palette("Zissou1", 19, type = "continuous"))
-  scale_color_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
+  scale_color_manual(values = wes_pal)
 
-p 
-ggp <- ggplotly(p)
+p
+
+ggp <- ggplotly(p, tooltip = c("y", "x", "label", "label2", "label3", "label4" ))
 hide_legend(ggp)
+
+# unified hover ----
+hide_legend(ggp) %>% layout(hovermode = "x unified",
+                            margin = list(l = 150,
+                                          r = 50))
 
 
 # possible to duplicate every row for region and use:  geom_raster(aes(x=start, fill = type), hjust=0.5, vjust=0.5, interpolate=FALSE)
@@ -116,11 +139,12 @@ df$canon[df$transcript_id=="ENST00000379883.3"] <-  1
 canon <- df %>% filter(canon == 1) %>% filter(start == min(start))
 
 enst <- df %>%
-  ggplot(aes(x=start, y=transcript_id)) +
+  ggplot(aes(x=start, y=transcript_id, xend = end)) +
   geom_segment(size = 4,
                aes(x = start,  xend = end, 
                    y = transcript_id, yend = transcript_id, 
-                   colour = gene_id)) +
+                   colour = gene_id,
+                   label = end, label2 = gene_id)) +
   geom_point(data = canon, shape=23, fill="green", size =3) +
 #  facet_grid(type ~., scales = "free_y" ) +
   geom_vline(xintercept=c(32493805, 32491328), linetype="dotted", color="blue")+
@@ -129,10 +153,14 @@ enst <- df %>%
           xlab("Protein position") +    theme_bw()
 
 enst
-ggest <- hide_legend(ggplotly(enst))
+ggest <- 
+  ggplotly(enst,  tooltip = c("x", "y","label", "label2" )) %>% 
+  hide_legend() %>% 
+  layout(hovermode = "x unified",
+           margin = list(l = 150,
+                         r = 50))
 
-
-
+ggest
 # fig main ---- 
 subplot(ggp, ggest, nrows = 2, margin = 0.02, heights = c(0.5, 0.5), shareX = F, titleY=TRUE) 
 # %>%
@@ -166,7 +194,7 @@ p3 <- df_coord %>%
 p3
 
 # main figure ----
-subplot(ggp, p3, ggest, nrows = 3, margin = 0.0, heights = c(0.4, 0.2, 0.4), shareX = F, titleY=F) 
+subplot(ggp, p3, ggest, nrows = 3, margin = 0.0, heights = c(0.5, 0.1, 0.4), shareX = F, titleY=F) 
 
 # query gnomad for variants ----
 SNP1 <- c(
@@ -237,9 +265,11 @@ saveWidget(ggplotly(ggp), file = "test.html");
 
 
 # duplicate rows for tiles
-df_uniprot$freq <- df_uniprot$end - df_uniprot$start +1
-tmp  <- df_uniprot # %>% head()
-tmp <- tmp %>% select(freq, seqid, type, start, end)
+# df_uniprot$freq <- df_uniprot$end - df_uniprot$start +1
+dt_uniprot$freq <- dt_uniprot$end - dt_uniprot$start +1
+# tmp  <- df_uniprot # %>% head()
+tmp  <- dt_uniprot
+tmp <- tmp %>% select(freq, seqid, type, start, end, label)
 tmp
 library(purrr)
 tmp <- tmp %>% map_df( rep, tmp$freq)
@@ -247,40 +277,66 @@ tmp
 tmp$res <- ave(tmp$freq, tmp$seqid, tmp$type, tmp$start, tmp$end, FUN = seq_along)
 tmp$AA <- (tmp$start) + (tmp$res - 1)
 
-tmp2 <- merge(tmp, df_uniprot)
+tmp2 <- merge(tmp, df_uniprot, all.x=TRUE)
 
 library(data.table)
 tmp2 <- as.data.table(tmp2)
 tmp2 <- tmp2[,which(unlist(lapply(tmp2, function(x)!all(is.na(x))))),with=F]
 
 
+# remove label Notes - try to keep in hover
+tmp2$Note <- na_if(tmp2$Note, "character(0)")
+
 # add notes as shapes
 tmp2$Note <- as.character(tmp2$Note)
 
-px <- tmp2 %>% select(AA, Note, freq, seqid, type, start, end) %>% 
-  group_by(type, Note) %>%
-  ggplot(aes(x=AA, y=type, fill=type)) +
-  geom_tile() + # geom_time = 6.3MB
-  #geom_raster(aes()) # geom_raster = 6.3MB
-  facet_grid(vars(label), scales = "free", space = "free") +
-  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type, ), hjust=0, vjust=0) +
+wes_pal = c(
+  "#00A08A", "#F2AD00", "#F98400", "#5BBCD6", # Darjeeling1 (removed "#FF0000" hard red)
+  "#ECCBAE", "#046C9A", "#D69C4E", "#ABDDDE", # Darjeeling2 (removed #"#000000" black)
+  "#DD8D29", "#E2D200", "#46ACC8", "#E58601", "#B40F20", #  FantasticFox1
+  "#F1BB7B", "#FD6467", "#5B1A18", "#D67236", # GrandBudapest1
+  "#E6A0C4", "#C6CDF7", "#D8A499", "#7294D4" # GrandBudapest2
+  # "#446455", "#FDD262", "#D3DDDC", "#C7B19C", #Chevalier1
+  )
+
+px <- tmp2 %>% select(AA, Note, freq, seqid, type, label, evidence, Dbxref) %>% 
+  #group_by(type, Note) %>%
+  ggplot(aes(x=AA, y=type, fill=type, #label2=AA
+             label = Note, label1=label, label3=evidence, label4=Dbxref
+             )) +
   geom_vline(xintercept=c(126,221), linetype="dotted", color="blue")+
+  geom_tile(aes(label = NULL)) + # geom_time = 6.3MB
+  #geom_raster(aes()) # geom_raster = 6.3MB
+ # facet_grid(vars(label), scales = "free", space = "free") +
+  facet_grid(vars(label), scales = "free", space = "free") +
+  geom_text(data = dt_uniprot_sub, aes(label = Note, x = position_label,  y = type), hjust=0, vjust=0) +
   ylab("") +
   xlab("Protein position") + 
   theme_bw() +
   scale_x_continuous(limits = c(0, max(dt_uniprot$end)), breaks = seq(0, max(dt_uniprot$end), 50))+
-  scale_color_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
-  
-  #ggplotly(px)
-saveWidget(ggplotly(px), file = "test.html") 
-  
+ # scale_fill_manual(values = wes_palette("FantasticFox1", 19, type = "continuous"))
+ #scale_fill_manual(values = wes_palette("Darjeeling2", 19, type = "continuous"))
+  scale_fill_manual(values = wes_pal)
 px 
-ggp <- ggplotly(p)
-hide_legend(ggp)
+# saveWidget(ggplotly(px), file = "test.html") 
+
+# all positions ----
+
+#ggpx <- ggplotly(px)
+ggpx <- hide_legend(
+  ggplotly(px, tooltip = c("x", "y", "label", "AA", "evidence", "Dbxref"))
+  ) %>% layout(hovermode = "x unified",
+                             margin = list(l = 150,
+                                           r = 50))
+
+ggpx
+# gene_illustrate_all_positions
 
 
-
-
+# main figure ----
+subplot(ggpx, p3, ggest, nrows = 3, margin = 0.0, heights = c(0.4, 0.2, 0.4), shareX = F, titleY=F) 
+# gene_illustrate2
+x
 
 
 

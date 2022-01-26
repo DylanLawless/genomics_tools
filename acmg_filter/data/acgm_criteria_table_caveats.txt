@@ -1,0 +1,38 @@
+Evidence_type	label	Evidence	Manual_adjustment	ACGM_label	Caveat_number	Caveat
+pathogenicity	VS1	very_strong		PVS1	1	LoF not disease causing for gene
+pathogenicity	VS1	very_strong		PVS1	2	LoF at 3prime end (loftee)
+pathogenicity	VS1	very_strong		PVS1	3	exon skipping splce that leave functional protein
+pathogenicity	VS1	very_strong		PVS1	4	multiple transcript check
+pathogenicity	S1	strong		PS1	1	Assess for splicing vs amino acid change
+pathogenicity	S2	strong	manual	PS2	1	"Do not assume maternity or paternity i.e. egg donor, surrogate"
+pathogenicity	S3	strong	manual	PS3	1	Quality of functional evidence
+pathogenicity	S4	strong		PS4	1	"Assess RR, OR, CI for case/control evidence"
+pathogenicity	S4	strong		PS4	2	Rare variant in multiple indipendent cases can guide
+pathogenicity	S5	other		PS5		
+pathogenicity	M1	moderate		PM1		
+pathogenicity	M2	moderate		PM2	1	Indels in population reference may not match your protocol
+pathogenicity	M3	moderate	manual	PM3	1	Pedigree sequencing is ideal. Phasing (GATK) may guide. Ldlink may guide
+pathogenicity	M4	moderate		PM4		
+pathogenicity	M5	moderate		PM5	1	Assess for splicing vs amino acid change
+pathogenicity	M6	moderate		PM6		
+pathogenicity	M7	moderate	other	PM7		
+pathogenicity	P1	supporting	manual	PP1		
+pathogenicity	P2	supporting		PP2		
+pathogenicity	P3	supporting		PP3	1	"Prediction methods may have used the same data sources, do not assume each as independent evidence"
+pathogenicity	P4	supporting	manual	PP4		
+pathogenicity	P5	supporting		PP5		
+pathogenicity	P6	supporting	other	PP6		
+benign	A1	stand_alone		BA1		
+benign	S1	strong		BS1		
+benign	S2	strong		BS2		
+benign	S3	strong	manual	BS3		
+benign	S4	strong	manual	BS4	1	Question the accuracy of segregation. Presence of phenocopies can mimic lack of segregation. Additional pathogenic variants may produce autosomal dominant pattern.
+benign	S5	strong	other	BS5		
+benign	P1	supporting		BP1		
+benign	P2	supporting	manual	BP2		
+benign	P3	supporting		BP3		
+benign	P4	supporting		BP4	1	"Prediction methods may have used the same data sources, do not assume each as independent evidence"
+benign	P5	supporting	manual	BP5		
+benign	P6	supporting		BP6		
+benign	P7	supporting		BP7		
+benign	P8	supporting	other	BP8

@@ -1,0 +1,34 @@
+Evidence_type	label	Evidence	Manual_adjustment	ACGM_label	Caveat_checks	Criteria
+pathogenicity	VS1	very_strong		PVS1	4	"null variant (nonsense, frameshift, canonical +- 2 splice sites, initiation codon, single or multiexon deletion) in a gene where LOF is a known mechanism of disease"
+pathogenicity	S1	strong		PS1	1	Same amino acid change as a previously established pathogenic variant regardless of nucleotide change
+pathogenicity	S2	strong	manual	PS2	1	De novo (both maternity and paternity confirmed) in a patient with the disease and no family history
+pathogenicity	S3	strong	manual	PS3	1	Well-established in vitro or in vivo functional studies supportive of a damaging effect on the gene or gene product
+pathogenicity	S4	strong		PS4	2	The prevalence of the variant in affected individuals is significantly increased compared with the prevalence in controls
+pathogenicity	S5	other		PS5		The user has additional (value) strong pathogenic evidence
+pathogenicity	M1	moderate		PM1		"Located in a mutational hot spot and/or critical and well-established functional domain (e.g., active site of an enzyme) without benign variation"
+pathogenicity	M2	moderate		PM2	1	"Absent from controls (or at extremely low frequency if recessive) in Exome Sequencing Project, 1000 Genomes Project, or Exome Aggregation Consortium"
+pathogenicity	M3	moderate	manual	PM3	1	"For recessive disorders, detected in trans with a pathogenic variant"
+pathogenicity	M4	moderate		PM4		Protein length changes as a result of in-frame deletions/insertions in a nonrepeat region or stop-loss variants
+pathogenicity	M5	moderate		PM5	1	Novel missense change at an amino acid residue where a different missense change determined to be pathogenic has been seen before
+pathogenicity	M6	moderate		PM6		"Assumed de novo, but without confirmation of paternity and maternity"
+pathogenicity	M7	moderate	other	PM7		The user has additional (value) moderate pathogenic evidence
+pathogenicity	P1	supporting	manual	PP1		Cosegregation with disease in multiple affected family members in a gene definitively known to cause the disease
+pathogenicity	P2	supporting		PP2		Missense variant in a gene that has a low rate of benign missense variation and in which missense variants are a common mechanism of disease
+pathogenicity	P3	supporting		PP3	1	"Multiple lines of computational evidence support a deleterious effect on the gene or gene product (conservation, evolutionary, splicing impact, etc.)"
+pathogenicity	P4	supporting	manual	PP4		Patient's phenotype or family history is highly specific for a disease with a single genetic etiology
+pathogenicity	P5	supporting		PP5		"Reputable source recently reports variant as pathogenic, but the evidence is not available to the laboratory to perform an independent evaluation"
+pathogenicity	P6	supporting	other	PP6		The user has additional (value) supporting pathogenic evidence
+benign	A1	stand_alone		BA1		"Allele frequency is >5% in Exome Sequencing Project, 1000 Genomes Project, or Exome Aggregation Consortium"
+benign	S1	strong		BS1		Allele frequency is greater than expected for disorder
+benign	S2	strong		BS2		"Observed in a healthy adult individual for a recessive (homozygous), dominant (heterozygous), or X-linked (hemizygous) disorder, with full penetrance expected at an early age"
+benign	S3	strong	manual	BS3		Well-established in vitro or in vivo functional studies show no damaging effect on protein function or splicing
+benign	S4	strong	manual	BS4	1	Lack of segregation in affected members of a family
+benign	S5	strong	other	BS5		The user has additional (value) strong benign evidence
+benign	P1	supporting		BP1		Missense variant in a gene for which primarily truncating variants are known to cause disease
+benign	P2	supporting	manual	BP2		Observed in trans with a pathogenic variant for a fully penetrant dominant gene/disorder or observed in cis with a pathogenic variant in any inheritance pattern
+benign	P3	supporting		BP3		In-frame deletions/insertions in a repetitive region without a known function
+benign	P4	supporting		BP4	1	"Multiple lines of computational evidence suggest no impact on gene or gene product (conservation, evolutionary, splicing impact, etc.)"
+benign	P5	supporting	manual	BP5		Variant found in a case with an alternate molecular basis for disease
+benign	P6	supporting		BP6		"Reputable source recently reports variant as benign, but the evidence is not available to the laboratory to perform an independent evaluation"
+benign	P7	supporting		BP7		A synonymous (silent) variant for which splicing prediction algorithms predict no impact to the splice consensus sequence nor the creation of a new splice site AND the nucleotide is not highly conserved
+benign	P8	supporting	other	BP8		The user has additional (value) supporting benign evidence
