@@ -1,0 +1,154 @@
+General genomics
+\href{http://www.ensembl.org/info/website/index.html}{Ensembl}
+\href{http://www.ncbi.nlm.nih.gov/refseq/}{RefSeq}
+\href{http://www.genenames.org/}{HGNC}
+\href{https://www.proteinatlas.org/about}{The Human Protein Atlas}
+\href{https://gtexportal.org/home/}{GTEx}
+\href{https://ghr.nlm.nih.gov/gene}{GHR Genes}
+\href{http://www.uniprot.org/}{UniProt}
+\href{https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways}{BioCarta}
+\href{https://www.ebi.ac.uk/gxa/home}{GNF/Atlas}
+\href{http://geneontology.org/}{Gene Ontology}
+\href{https://www.genome.jp/kegg/}{KEGG}
+\href{BioMart}{egenetics}
+\href{https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways}{BioCarta}
+\href{https://www.ebi.ac.uk/gxa/home}{GNF/Atlas}
+\href{http://geneontology.org/}{Gene Ontology}
+\href{https://grch37.ensembl.org/info/data/biomart/index.html}{BioMart}
+\href{http://pmglab.top/kggseq/}{KGGSeq}
+\href{https://pubs.broadinstitute.org/mammals/haploreg/haploreg.php}{HaploReg}
+
+Annotation resources
+\href{https://sites.google.com/site/jpopgen/dbNSFP}{dbNSFP}
+\href{https://annovar.openbioinformatics.org/en/latest/}{ANNOVAR}
+\href{https://genome.ucsc.edu/cgi-bin/}{UCSC hgVai}
+\href{https://www.ensembl.org/info/docs/tools/vep/index.html}{Ensembl VEP}
+\href{http://pcingola.github.io/SnpEff/}{SnpEff, SnpSift} 
+
+Genotype analysis
+\href{http://zzz.bwh.harvard.edu/plink/}{PLINK}
+\href{https://www.kingrelatedness.com/manual.shtml}{KING}
+\href{https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html}{SHAPEIT2} 
+\href{https://mathgen.stats.ox.ac.uk/impute/impute_v2.html}{IMPUTE2}
+\href{https://cnsgenomics.com/software/gcta/}{GCTA}
+\href{http://locuszoom.org}{LocusZoom}
+\href{https://ldlink.nci.nih.gov}{LDLink}
+\href{https://fuma.ctglab.nl}{FUMA}
+imputation; \href{https://www.sanger.ac.uk/tool/sanger-imputation-service/}{Sanger}
+\href{http://csg.sph.umich.edu/abecasis/MACH/tour/imputation.html}{MACH}
+\href{https://imputation.biodatacatalyst.nhlbi.nih.gov}{TOPMed}
+
+Population/conservation data
+\href{http://exac.broadinstitute.org/}{Exac}
+\href{http://gnomad.broadinstitute.org/}{gnomAD}
+\href{http://compgen.cshl.edu/phast/}{PHAST}
+\href{https://www.mitomap.org/foswiki/bin/view/MITOMAP/WebHome}{Mitomap}
+\href{http://compgen.bscb.cornell.edu/fitCons/}{fitCons}
+\href{http://hgdownload.soe.ucsc.edu/goldenPath/hg38/}{phastCons}
+\href{http://db.systemsbiology.net/kaviar/Kaviar.downloads.html}{kaviar3}
+\href{http://www.ncbi.nlm.nih.gov/snp}{dbSNP}
+\href{https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/}{dbVar}
+\href{https://evs.gs.washington.edu/EVS/}{EVS, NHLBI ESP6500}
+\href{http://dgv.tcag.ca/dgv/app/home}{DGV}
+\href{https://bravo.sph.umich.edu/freeze5/hg38/}{Bravo}
+\href{https://r4.finngen.fi}{FinnGen}
+\href{https://www.internationalgenome.org/data}{1000 Genomes Project (1KG)}
+\href{https://www.ukbiobank.ac.uk}{UKBB}
+
+
+Drug-gene
+\href{https://cpicpgx.org/genes-drugs/}{CPIC Genes-Drugs}
+\href{https://clinicaltrials.gov}{AACT}
+\href{https://www.ema.europa.eu/en}{EMA Approved Drugs}
+\href{https://www.fda.gov/drugs/informationondrugs/ucm079750.htm}{FDA Approved Drugs}
+\href{https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling}{FDA Pharmacogenomics}
+\href{https://www.pharmgkb.org/}{PharmGKB}
+\href{http://dgidb.genome.wustl.edu/}{DGI}
+
+Cancer
+\href{https://tp53.isb-cgc.org}{TP53}
+\href{https://icgc.org/}{ICGC somatic}
+\href{https://www.cancerhotspots.org}{CancerHotspots}
+\href{http://oncotree.mskcc.org/#/home}{OncoTree}
+\href{https://www.cbioportal.org/}{cBioPortal}
+\href{https://gdc.cancer.gov/}{GDC}
+\href{https://cancer.sanger.ac.uk/census}{Cancer Gene Census}
+\href{http://cancer.sanger.ac.uk/cosmic}{COSMIC}
+\href{https://ccsm.uth.edu/FusionGDB/}{FusionGDB}
+\href{https://civic.genome.wustl.edu/#/home}{CIViC}
+
+Association
+\href{https://www.ncbi.nlm.nih.gov/clinvar/}{ClinVar}
+\href{https://ftp.clinicalgenome.org/}{ClinGen}
+\href{http://www.ebi.ac.uk/}{GWAS Catalog}
+\href{https://www.ebi.ac.uk/gene2phenotype/about}{gene2phenotype}
+\href{https://thegencc.org/}{GenCC}
+\href{https://mastermind.genomenon.com}{Mastermind}
+\href{https://panelapp.genomicsengland.co.uk/}{GE PanelApp}
+\href{https://ckb.jax.org/}{CKB}
+\href{https://monarchinitiative.org/}{Mondo}
+\href{http://research.nhgri.nih.gov/CGD/}{CGD}
+\href{https://hpo.jax.org/app/}{HPO}
+\href{https://dailymed.nlm.nih.gov}{DailyMed}
+\href{https://decipher.sanger.ac.uk/}{DECIPHER}
+\href{https://pmkb.weill.cornell.edu/}{PMKB}
+\href{http://cpdb.molgen.mpg.de/}{Consensus}
+\href{http://www.hgmd.cf.ac.uk/ac/index.php}{HGMD}
+
+Viral genetics
+\href{https://www.huge-man-linux.net/man1/asn2fsa.html}{asn2fsa}
+\href{qiagenbioinformatics.com}{clc_novo_assemble}
+\href{https://www.ebi.ac.uk/Tools/msa/clustalo/}{ClustalO}
+\href{https://www.ncbi.nlm.nih.gov/genbank/}{GenBank}
+\href{https://www.iqtree.org/}{IQ-Tree}
+\href{https://mafft.cbrc.jp/alignment/software}{MAFFT}
+\href{https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/}{Tbl2asn}
+\href{https://sourceforge.net/projects/jcvi-vigor/files/}{VIGOR}
+
+Protein structure
+\href{https://www.rcsb.org}{RCSB PDB}
+\href{https://alphafold.com}{alphafold}
+\href{https://new.rosettacommons.org/docs/latest/Home}{RoseTTA}
+\href{http://foldxsuite.crg.eu}{FoldX} 
+\href{https://pubmed.ncbi.nlm.nih.gov/32881105/}{DynaMut}
+
+Prediction
+\href{http://mendel.stanford.edu/SidowLab/downloads/gerp/}{GERP}
+\href{https://cbcl.ics.uci.edu/doku.php/data#dann_data}{DANN SNVs}
+\href{https://wwwfbm.unil.ch/domino/index.php}{Domino}
+\href{https://cadd.gs.washington.edu/}{CADD}
+\href{http://www.liulab.science/dbscsnv.html}{dbscSNV}
+\href{https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484}{Essential Genes}
+\href{https://www.pnas.org/content/112/44/13615}{GDI}
+\href{https://academic.oup.com/nar/article/43/15/e101/2414292}{GHIS}
+\href{https://academic.oup.com/bioinformatics/article/33/12/1751/2964486}{HIPred}
+\href{https://academic.oup.com/bioinformatics/article/33/4/471/2525582}{LoFTool}
+\href{https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154}{P(HI) Score}
+\href{https://science.sciencemag.org/content/335/6070/823}{P(rec) Score}
+\href{http://genic-intolerance.org/}{RVIS}
+\href{http://aloft.gersteinlab.org/}{ALoFT}
+\href{http://fengbj-laboratory.org/BayesDel/BayesDel.html}{BayesDel}
+\href{https://deogen2.mutaframe.com/}{DEOGEN2}
+\href{http://www.columbia.edu/~ii2135/eigen.html}{Eigen}
+\href{http://fathmm.biocompute.org.uk}{FATHMM}
+\href{http://fathmm.biocompute.org.uk/fathmmMKL.htm}{FATHMM}
+\href{https://academic.oup.com/bioinformatics/article/33/12/1751/2964486}{HIPred}
+\href{https://www.genome.jp/kegg/}{KEGG}
+\href{https://precomputed.list-s2.msl.ubc.ca/}{LIST-S2}
+\href{http://www.genetics.wustl.edu/jflab/lrt_query.html}{LRT}
+\href{https://academic.oup.com/bioinformatics/article/33/4/471/2525582}{LoFTool}
+\href{http://bejerano.stanford.edu/MCAP/}{M-CAP}
+\href{https://www.biorxiv.org/content/10.1101/148353v1}{MPC}
+\href{https://github.com/ShenLab/missense}{MVP}
+\href{http://www.liulab.science}{MetaLR,SVM,RNN}
+\href{http://mutpred.mutdb.org/}{MutPred}
+\href{http://mutationassessor.org/}{MutationAssessor}
+\href{http://www.mutationtaster.org/}{MutationTaster}
+\href{http://provean.jcvi.org/index.php}{PROVEAN}
+\href{https://github.com/Illumina/PrimateAI}{PrimateAI}
+\href{https://sites.google.com/site/revelgenomics/}{REVEL}
+\href{https://sift.bii.a-star.edu.sg}{SIFT}
+\href{https://www.broadinstitute.org/mammals-models/29-mammals-project-supplementary-info}{SiPhy}
+\href{http://cadd.gs.washington.edu/}{bStatistic}
+\href{http://genetics.bwh.harvard.edu/pph2/}{Polyphen-2}
+\href{https://evemodel.org/}{EVE}

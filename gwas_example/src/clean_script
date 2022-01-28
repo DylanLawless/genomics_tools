@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in *.sh; do sed -i'.bak' -e 's/SPSS/CASE/g' $file; done
+for file in *.sh; do sed -i'.bak' -e 's/spss/case/g' $file; done
+for file in *.sh; do sed -i'.bak' -e 's/SHCS/CONTROL/g' $file; done
+for file in *.sh; do sed -i'.bak' -e 's/shcs/control/g' $file; done
+for file in *.sh; do sed -i'.bak' -e 's/lawless/username/g' $file; done
+for file in *.sh; do sed -i'.bak' -e 's/Samira/archive/g' $file; done
+printf "replaced\n"
+
+
+rm *.sh.bak
+

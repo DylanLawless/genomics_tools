@@ -1,0 +1,43 @@
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version 1.92.2 beta3 Linux
+* (C) 2010-2019, The University of Queensland
+* Please report bugs to: Jian Yang <jian.yang@uq.edu.au>
+*******************************************************************
+Analysis started at 14:56:05 UTC on Wed Dec 23 2020.
+Hostname: g203
+
+Accepted options:
+--bfile /work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group
+--cojo-file test.ma
+--cojo-slct
+--chr 9
+--cojo-cond cond.snplist
+--out cond3
+
+
+Reading PLINK FAM file from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.fam].
+1504 individuals to be included from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.fam].
+Reading PLINK BIM file from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.bim].
+7192147 SNPs to be included from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.bim].
+313957 SNPs on chromosome 9 are included in the analysis.
+Reading PLINK BED file from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.bed] in SNP-major format ...
+Genotype data for 1504 individuals and 313957 SNPs to be included from [/work/gr-fe/lawless/spss_gwas/data/processed/combined/geno/cohort.filt.group.bed].
+
+Reading GWAS summary-level statistics from [test.ma] ...
+GWAS summary statistics of 7192147 SNPs read from [test.ma].
+Phenotypic variance estimated from summary statistics of all 7192147 SNPs: 0.146964 (variance of logit for case-control studies).
+Matching the GWAS meta-analysis results to the genotype data ...
+Calculating allele frequencies ...
+313957 SNPs are matched to the genotype data.
+Calculating the variance of SNP genotypes ...
+
+Performing stepwise model selection on 313957 SNPs to select association signals ... (p cutoff = 5e-08; collinearity cutoff = 0.9)
+(Assuming complete linkage equilibrium between SNPs which are more than 10Mb away from each other)
+Finally, 2 associated SNPs are selected.
+Performing joint analysis on all the 2 selected signals ...
+Saving the 2 independent signals to [cond3.jma.cojo] ...
+Saving the LD structure of 2 independent signals to [cond3.ldr.cojo] ...
+
+Analysis finished at 14:57:51 UTC on Wed Dec 23 2020
+Computational time: 1 minute 45 second(s).

@@ -40,7 +40,7 @@ df_t <-
              compact = TRUE,
              searchable = TRUE,
              #elementId = "download-table",
-             defaultPageSize = 50,
+             defaultPageSize = 10,
              defaultColDef = colDef(minWidth = 40),
              columns = list(
                "Manual adjustment" = colDef(minWidth = 60),  # overrides the default
@@ -93,7 +93,7 @@ df_t2 <-
              compact = TRUE,
              searchable = TRUE,
              #elementId = "download-table",
-             defaultPageSize = 50,
+             defaultPageSize = 10,
              defaultColDef = colDef(minWidth = 40),
              columns = list(
                "Manual adjustment" = colDef(minWidth = 60),  # overrides the default

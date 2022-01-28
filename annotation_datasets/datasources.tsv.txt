@@ -21,12 +21,12 @@
 20	TAB	FDA	TAB	<a href="https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling" target="_blank">Pharmacogenomic Biomarkers</a>	TAB	16-Sep-2021	TAB	Table of Pharmacogenomic Biomarkers in Drug Labeling
 21	TAB	GERP	TAB	<a href="http://mendel.stanford.edu/SidowLab/downloads/gerp/" target="_blank">GERP</a>	TAB	2010	TAB	Germline Variants
 22	TAB	GenCC	TAB	<a href="https://thegencc.org/" target="_blank">GenCC</a>	TAB	20-Dec-2021	TAB	GenCC
-23	TAB	Genomenon	TAB	Mastermind	TAB	2021.04.02	TAB	Genomenon's Mastermind engine
+23	TAB	Genomenon	TAB	Mastermind https://mastermind.genomenon.com	TAB	2021.04.02	TAB	Genomenon's Mastermind engine
 24	TAB	Genomics England	TAB	<a href="https://panelapp.genomicsengland.co.uk/" target="_blank">PanelApp</a>	TAB	11-Nov-2021	TAB	Genomics England PanelApp
-25	TAB	HPO	TAB	<a href="http://charite.github.io/compbio-onto.html" target="_blank">HPO</a>	TAB	20-Dec-2021	TAB	Human Phenotype Ontology
+25	TAB	HPO	TAB	<a href="http://charite.github.io/compbio-onto.html / https://hpo.jax.org/app/" target="_blank">HPO</a>	TAB	20-Dec-2021	TAB	Human Phenotype Ontology
 26	TAB	HUGO	TAB	<a href="http://www.genenames.org/" target="_blank">HGNC</a>	TAB	21-Oct-2021	TAB	HUGO gene nomenclature committee
-27	TAB	IARC	TAB	TP53 Germline	TAB	release 20	TAB	IARC TP53 germline database http://p53.iarc.fr/
-28	TAB	IARC	TAB	TP53 Somatic	TAB	release 20	TAB	IARC TP53 somatic database http://p53.iarc.fr/
+27	TAB	IARC	TAB	TP53 Germline https://tp53.isb-cgc.org	TAB	release 20	TAB	IARC TP53 germline database http://p53.iarc.fr/
+28	TAB	IARC	TAB	TP53 Somatic https://tp53.isb-cgc.org	TAB	release 20	TAB	IARC TP53 somatic database http://p53.iarc.fr/
 29	TAB	ICGC	TAB	<a href="https://icgc.org/" target="_blank">ICGC somatic</a>	TAB	release 28	TAB	ICGC somatic mutations database
 30	TAB	ISB	TAB	<a href="http://db.systemsbiology.net/kaviar/Kaviar.downloads.html" target="_blank">kaviar3</a>	TAB	4-Feb-2016	TAB	Known Variants, allele count &gt; 3
 31	TAB	JAX	TAB	<a href="https://ckb.jax.org/" target="_blank">CKB</a>	TAB	17-Nov-2021	TAB	The Clinical Knowledgebase

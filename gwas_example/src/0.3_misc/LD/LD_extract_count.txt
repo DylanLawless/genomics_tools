@@ -1,0 +1,7 @@
+13 LDrange_coding_variants.txt
+534 LDrange_all_variants.txt
+  353 /work/gr-fe/lawless/spss_gwas/data/processed/misc/chr9.locus.all.casecontrol.bim
+  365 /work/gr-fe/lawless/spss_gwas/data/processed/misc/chr9.locus.all.cases.bim
+    5 /work/gr-fe/lawless/spss_gwas/data/processed/misc/chr9.locus.coding.casecontrol.bim
+    6 /work/gr-fe/lawless/spss_gwas/data/processed/misc/chr9.locus.coding.cases.bim
+  729 total
