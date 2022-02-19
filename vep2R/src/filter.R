@@ -25,6 +25,9 @@ d <- df
 # There are duplicated columns. Keep only the last one
 d <- d[, !duplicated(colnames(d), fromLast = TRUE)] 
 
+# Replace the NA value
+d[ d == "-" ] <- NA
+
 # select high impact variants
 d %>% select(IMPACT) %>% unique()
 
@@ -69,4 +72,3 @@ d_high %>% filter(SYMBOL == "CYP2C19" & CANONICAL == "YES") %>% select(SYMBOL, C
 #References: De Morais SM, Wilkinson GR, Blaisdell J, Meyer UA, Nakamura K, Goldstein JA: Identification of a new genetic defect responsible for the polymorphism of (S)-mephenytoin metabolism in Japanese. Mol Pharmacol. 1994 Oct;46(4):594-8. [Article]
 
 # The other varirants include a stop-gained and therefore may be compound-het.
-

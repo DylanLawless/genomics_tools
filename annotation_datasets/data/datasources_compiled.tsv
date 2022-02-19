@@ -1,269 +1,161 @@
-dataset	URL	Info	Name	number	Source
-lawless	http://www.ensembl.org/info/website/index.html	General genomics	Ensembl	0	
-lawless	http://www.ncbi.nlm.nih.gov/refseq/	General genomics	RefSeq	0	
-lawless	http://www.genenames.org/	General genomics	HGNC	0	
-lawless	https://www.proteinatlas.org/about	General genomics	The Human Protein Atlas	0	
-lawless	https://gtexportal.org/home/	General genomics	GTEx	0	
-lawless	https://ghr.nlm.nih.gov/gene	General genomics	GHR Genes	0	
-lawless	http://www.uniprot.org/	General genomics	UniProt	0	
-lawless	https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways	General genomics	BioCarta	0	
-lawless	https://www.ebi.ac.uk/gxa/home	General genomics	GNF/Atlas	0	
-lawless	http://geneontology.org/	General genomics	Gene Ontology	0	
-lawless	https://www.genome.jp/kegg/	General genomics	KEGG	0	
-lawless	https://grch37.ensembl.org/info/data/biomart/index.html	General genomics	BioMart	0	
-lawless	https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways	General genomics	BioCarta	0	
-lawless	https://www.ebi.ac.uk/gxa/home	General genomics	GNF/Atlas	0	
-lawless	http://geneontology.org/	General genomics	Gene Ontology	0	
-lawless	https://grch37.ensembl.org/info/data/biomart/index.html	General genomics	BioMart	0	
-lawless	http://pmglab.top/kggseq/	General genomics	KGGSeq	0	
-lawless	https://pubs.broadinstitute.org/mammals/haploreg/haploreg.php	General genomics	HaploReg	0	
-lawless	https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbNSFP	0	
-lawless	https://annovar.openbioinformatics.org/en/latest/	Annotation resources	ANNOVAR	0	
-lawless	https://genome.ucsc.edu/cgi-bin/	Annotation resources	UCSC hgVai	0	
-lawless	https://www.ensembl.org/info/docs/tools/vep/index.html	Annotation resources	Ensembl VEP	0	
-lawless	http://pcingola.github.io/SnpEff/	Annotation resources	"SnpEff, SnpSift"	0	 
-lawless	http://zzz.bwh.harvard.edu/plink/	Genotype analysis	PLINK	0	
-lawless	https://www.kingrelatedness.com/manual.shtml	Genotype analysis	KING	0	
-lawless	https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html	Genotype analysis	SHAPEIT2	0	
-lawless	https://mathgen.stats.ox.ac.uk/impute/impute_v2.html	Genotype analysis	IMPUTE2	0	
-lawless	https://cnsgenomics.com/software/gcta/	Genotype analysis	GCTA	0	
-lawless	http://locuszoom.org	Genotype analysis	LocusZoom	0	
-lawless	https://ldlink.nci.nih.gov	Genotype analysis	LDLink	0	
-lawless	https://fuma.ctglab.nl	Genotype analysis	FUMA	0	
-lawless	https://www.sanger.ac.uk/tool/sanger-imputation-service/	imputation	Sanger	0	
-lawless	http://csg.sph.umich.edu/abecasis/MACH/tour/imputation.html	imputation	MACH	0	
-lawless	https://imputation.biodatacatalyst.nhlbi.nih.gov	imputation	TOPMed 	0	
-lawless	http://exac.broadinstitute.org/	Population/conservation data	Exac	0	
-lawless	http://gnomad.broadinstitute.org/	Population/conservation data	gnomAD	0	
-lawless	http://compgen.cshl.edu/phast/	Population/conservation data	PHAST	0	
-lawless	https://www.mitomap.org/foswiki/bin/view/MITOMAP/WebHome	Population/conservation data	Mitomap	0	
-lawless	http://compgen.bscb.cornell.edu/fitCons/	Population/conservation data	fitCons	0	
-lawless	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/	Population/conservation data	phastCons	0	
-lawless	http://db.systemsbiology.net/kaviar/Kaviar.downloads.html	Population/conservation data	kaviar3	0	
-lawless	http://www.ncbi.nlm.nih.gov/snp	Population/conservation data	dbSNP	0	
-lawless	https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/	Population/conservation data	dbVar	0	
-lawless	https://evs.gs.washington.edu/EVS/	Population/conservation data	"EVS, NHLBI ESP6500"	0	
-lawless	http://dgv.tcag.ca/dgv/app/home	Population/conservation data	DGV	0	
-lawless	https://bravo.sph.umich.edu/freeze5/hg38/	Population/conservation data	Bravo	0	
-lawless	https://r4.finngen.fi	Population/conservation data	FinnGen	0	
-lawless	https://www.internationalgenome.org/data	Population/conservation data	1000 Genomes Project (1KG)	0	
-lawless	https://www.ukbiobank.ac.uk	Population/conservation data	UKBB 	0	
-lawless	https://cpicpgx.org/genes-drugs/	Drug-gene	CPIC Genes-Drugs	0	
-lawless	https://clinicaltrials.gov	Drug-gene	AACT	0	
-lawless	https://www.ema.europa.eu/en	Drug-gene	EMA Approved Drugs	0	
-lawless	https://www.fda.gov/drugs/informationondrugs/ucm079750.htm	Drug-gene	FDA Approved Drugs	0	
-lawless	https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling	Drug-gene	FDA Pharmacogenomics	0	
-lawless	https://www.pharmgkb.org/	Drug-gene	PharmGKB	0	
-lawless	http://dgidb.genome.wustl.edu/	Drug-gene	DGI 	0	
-lawless	https://tp53.isb-cgc.org	Cancer	TP53	0	
-lawless	https://icgc.org/	Cancer	ICGC somatic	0	
-lawless	https://www.cancerhotspots.org	Cancer	CancerHotspots	0	
-lawless	http://oncotree.mskcc.org/#/home	Cancer	OncoTree	0	
-lawless	https://www.cbioportal.org/	Cancer	cBioPortal	0	
-lawless	https://gdc.cancer.gov/	Cancer	GDC	0	
-lawless	https://cancer.sanger.ac.uk/census	Cancer	Cancer Gene Census	0	
-lawless	http://cancer.sanger.ac.uk/cosmic	Cancer	COSMIC	0	
-lawless	https://ccsm.uth.edu/FusionGDB/	Cancer	FusionGDB	0	
-lawless	https://civic.genome.wustl.edu/#/home	Cancer	CIViC 	0	
-lawless	https://www.ncbi.nlm.nih.gov/clinvar/	Association	ClinVar	0	
-lawless	https://ftp.clinicalgenome.org/	Association	ClinGen	0	
-lawless	http://www.ebi.ac.uk/	Association	GWAS Catalog	0	
-lawless	https://www.ebi.ac.uk/gene2phenotype/about	Association	gene2phenotype	0	
-lawless	https://thegencc.org/	Association	GenCC	0	
-lawless	https://mastermind.genomenon.com	Association	Mastermind	0	
-lawless	https://panelapp.genomicsengland.co.uk/	Association	GE PanelApp	0	
-lawless	https://ckb.jax.org/	Association	CKB	0	
-lawless	https://monarchinitiative.org/	Association	Mondo	0	
-lawless	http://research.nhgri.nih.gov/CGD/	Association	CGD	0	
-lawless	https://hpo.jax.org/app/	Association	HPO	0	
-lawless	https://dailymed.nlm.nih.gov	Association	DailyMed	0	
-lawless	https://decipher.sanger.ac.uk/	Association	DECIPHER	0	
-lawless	https://pmkb.weill.cornell.edu/	Association	PMKB	0	
-lawless	http://cpdb.molgen.mpg.de/	Association	Consensus	0	
-lawless	http://www.hgmd.cf.ac.uk/ac/index.php	Association	HGMD 	0	
-lawless	https://www.huge-man-linux.net/man1/asn2fsa.html	Viral genetics	asn2fsa	0	
-lawless	qiagenbioinformatics.com	Viral genetics	clc novo assemble	0	
-lawless	https://www.ebi.ac.uk/Tools/msa/clustalo/	Viral genetics	ClustalO	0	
-lawless	https://www.ncbi.nlm.nih.gov/genbank/	Viral genetics	GenBank	0	
-lawless	https://www.iqtree.org/	Viral genetics	IQ-Tree	0	
-lawless	https://mafft.cbrc.jp/alignment/software	Viral genetics	MAFFT	0	
-lawless	https://clades.nextstrain.org	Viral genetics	NextClade CLI	0	
-lawless	https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/	Viral genetics	Tbl2asn	0	
-lawless	https://sourceforge.net/projects/jcvi-vigor/files/	Viral genetics	VIGOR	0	
-lawless	https://www.rcsb.org	Protein structure	RCSB PDB	0	
-lawless	https://alphafold.com	Protein structure	alphafold	0	
-lawless	https://new.rosettacommons.org/docs/latest/Home	Protein structure	RoseTTA	0	
-lawless	http://foldxsuite.crg.eu	Protein structure	FoldX	0	
-lawless	https://pubmed.ncbi.nlm.nih.gov/32881105/	Protein structure	DynaMut 	0	
-lawless	http://mendel.stanford.edu/SidowLab/downloads/gerp/	Prediction	GERP	0	
-lawless	https://cbcl.ics.uci.edu/doku.php/data#dann_data	Prediction	DANN SNVs	0	
-lawless	https://wwwfbm.unil.ch/domino/index.php	Prediction	Domino	0	
-lawless	https://cadd.gs.washington.edu/	Prediction	CADD	0	
-lawless	http://www.liulab.science/dbscsnv.html	Prediction	dbscSNV	0	
-lawless	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484	Prediction	Essential Genes	0	
-lawless	https://www.pnas.org/content/112/44/13615	Prediction	GDI	0	
-lawless	https://academic.oup.com/nar/article/43/15/e101/2414292	Prediction	GHIS	0	
-lawless	https://academic.oup.com/bioinformatics/article/33/12/1751/2964486	Prediction	HIPred	0	
-lawless	https://academic.oup.com/bioinformatics/article/33/4/471/2525582	Prediction	LoFTool	0	
-lawless	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154	Prediction	P(HI) Score	0	
-lawless	https://science.sciencemag.org/content/335/6070/823	Prediction	P(rec) Score	0	
-lawless	http://genic-intolerance.org/	Prediction	RVIS	0	
-lawless	http://aloft.gersteinlab.org/	Prediction	ALoFT	0	
-lawless	http://fengbj-laboratory.org/BayesDel/BayesDel.html	Prediction	BayesDel	0	
-lawless	https://deogen2.mutaframe.com/	Prediction	DEOGEN2	0	
-lawless	http://www.columbia.edu/~ii2135/eigen.html	Prediction	Eigen	0	
-lawless	http://fathmm.biocompute.org.uk	Prediction	FATHMM	0	
-lawless	http://fathmm.biocompute.org.uk/fathmmMKL.htm	Prediction	FATHMM	0	
-lawless	https://academic.oup.com/bioinformatics/article/33/12/1751/2964486	Prediction	HIPred	0	
-lawless	https://www.genome.jp/kegg/	Prediction	KEGG	0	
-lawless	https://precomputed.list-s2.msl.ubc.ca/	Prediction	LIST-S2	0	
-lawless	http://www.genetics.wustl.edu/jflab/lrt_query.html	Prediction	LRT	0	
-lawless	https://academic.oup.com/bioinformatics/article/33/4/471/2525582	Prediction	LoFTool	0	
-lawless	http://bejerano.stanford.edu/MCAP/	Prediction	M-CAP	0	
-lawless	https://www.biorxiv.org/content/10.1101/148353v1	Prediction	MPC	0	
-lawless	https://github.com/ShenLab/missense	Prediction	MVP	0	
-lawless	http://www.liulab.science	Prediction	"MetaLR,SVM,RNN"	0	
-lawless	http://mutpred.mutdb.org/	Prediction	MutPred	0	
-lawless	http://mutationassessor.org/	Prediction	MutationAssessor	0	
-lawless	http://www.mutationtaster.org/	Prediction	MutationTaster	0	
-lawless	http://provean.jcvi.org/index.php	Prediction	PROVEAN	0	
-lawless	https://github.com/Illumina/PrimateAI	Prediction	PrimateAI	0	
-lawless	https://sites.google.com/site/revelgenomics/	Prediction	REVEL	0	
-lawless	https://sift.bii.a-star.edu.sg	Prediction	SIFT	0	
-lawless	https://www.broadinstitute.org/mammals-models/29-mammals-project-supplementary-info	Prediction	SiPhy	0	
-lawless	http://cadd.gs.washington.edu/	Prediction	bStatistic	0	
-lawless	http://genetics.bwh.harvard.edu/pph2/	Prediction	Polyphen-2	0	
-lawless	https://evemodel.org/	Prediction	EVE	0	
-varsome	http://exac.broadinstitute.org/	Exome Aggregation Consortium gene database	Exac genes	1	Broad
-varsome	http://exac.broadinstitute.org/	Exome Aggregation Consortium CNVs	ExacCNV	2	Broad
-varsome	https://gnomad.broadinstitute.org	gnomAD mtDNA variants	gnomAD Mitochondrial	3	Broad
-varsome	http://gnomad.broadinstitute.org/	Genome Aggregation Database	gnomAD exomes	4	Broad
-varsome	ftp://ftp.broadinstitute.org/pub/ExAC_release/current/coverage	gnomAD exome coverage data	gnomAD exomes coverage	5	Broad
-varsome	https://gnomad.broadinstitute.org/downloads/#v2-constraint	gnomAD gene constraints	gnomAD gene constraints	6	Broad
-varsome	http://gnomad.broadinstitute.org/	Genome Aggregation Database	gnomAD genomes	7	Broad
-varsome	/external.data/Variants/gnomAD.WGS/release-170228/genomes/coverage	gnomAD genome coverage data	gnomAD genomes coverage	8	Broad
-varsome	https://gnomad.broadinstitute.org/downloads#v2-structural-variants	gnomAD structural variants	gnomAD structural variants	9	Broad
-varsome	https://www.mitomap.org/foswiki/bin/view/MITOMAP/WebHome	Human Mitochondrial Genome Database	Mitomap	10	CHOP
-varsome	https://cpicpgx.org/genes-drugs/	Gene Drugs Interactions and Levels	CPIC Genes-Drugs	11	CPIC
-varsome	http://compgen.cshl.edu/phast/	Conservation scoring and identification of conserved elements	phastCons100way	12	CSH
-varsome	http://compgen.cshl.edu/phast/	Computation of p-values for conservation or acceleration	phyloP100way	13	CSH
-varsome	https://clinicaltrials.gov	Aggregate Analysis of ClincalTrials.gov	AACT	14	CTTI
-varsome	http://www.ebi.ac.uk/	The NHGRI-EBI Catalog of published genome-wide association studies	GWAS Catalog	15	EBI
-varsome	https://www.ebi.ac.uk/gene2phenotype/about	gene2phenotype	gene2phenotype	16	EBI
-varsome	https://www.ema.europa.eu/en	EMA Approved Drugs	EMA Approved Drugs	17	EMA
-varsome	http://www.ensembl.org/info/website/index.html	Ensemble transcript database	Ensembl	18	EMBL
-varsome	https://www.fda.gov/drugs/informationondrugs/ucm079750.htm	FDA Approved Drugs	FDA Approved Drugs	19	FDA
-varsome	https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling	Table of Pharmacogenomic Biomarkers in Drug Labeling	Pharmacogenomic Biomarkers	20	FDA
-varsome	http://mendel.stanford.edu/SidowLab/downloads/gerp/	Germline Variants	GERP	21	GERP
-varsome	https://thegencc.org/	GenCC	GenCC	22	GenCC
-varsome	https://mastermind.genomenon.com	Genomenon's Mastermind engine		23	Genomenon
-varsome	https://panelapp.genomicsengland.co.uk/	Genomics England PanelApp	PanelApp	24	Genomics England
-varsome	http://charite.github.io/compbio-onto.html / https://hpo.jax.org/app/	Human Phenotype Ontology	HPO	25	HPO
-varsome	http://www.genenames.org/	HUGO gene nomenclature committee	HGNC	26	HUGO
-varsome	https://tp53.isb-cgc.org	IARC TP53 germline database		27	IARC
-varsome	https://tp53.isb-cgc.org	IARC TP53 somatic database 		28	IARC
-varsome	https://icgc.org/	ICGC somatic mutations database	ICGC somatic	29	ICGC
-varsome	http://db.systemsbiology.net/kaviar/Kaviar.downloads.html	"Known Variants, allele count &gt; 3"	kaviar3	30	ISB
-varsome	https://ckb.jax.org/	The Clinical Knowledgebase	CKB	31	JAX
-varsome	https://www.proteinatlas.org/about	The Human Protein Atlas	The Human Protein Atlas	32	KAW
-varsome	https://www.cancerhotspots.org	A resource for statistically significant mutations in cancer	CancerHotspots	33	MSK
-varsome	http://oncotree.mskcc.org/#/home	OncoTree	OncoTree	34	MSK
-varsome	https://www.cbioportal.org/	cBioPortal for Cancer Genomics	cBioPortal	35	MSK
-varsome	https://monarchinitiative.org/	Mondo Disease Ontology	Mondo	36	Monarch
-varsome	ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_...gz	ClinVar CNV Regions	ClinVar CNVs	37	NCBI
-varsome	ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited	ClinVar v2 populated from TSV files	ClinVar2	38	NCBI
-varsome	http://www.ncbi.nlm.nih.gov/refseq/	NCBI transcript database	RefSeq	39	NCBI
-varsome	http://www.ncbi.nlm.nih.gov/snp	NCBI SNP variant database	dbSNP	40	NCBI
-varsome	https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/	dbVar	dbVar	41	NCBI
-varsome	http://research.nhgri.nih.gov/CGD/	Clinical Genomic Database	CGD	42	NHGRI
-varsome	https://ftp.clinicalgenome.org/	ClinGen	ClinGen	43	NIH
-varsome	https://ftp.clinicalgenome.org/	ClinGen CNVs	ClinGen CNVs	44	NIH
-varsome	https://ftp.clinicalgenome.org/	ClinGen Disease Validity	ClinGen Disease Validity	45	NIH
-varsome	https://ftp.clinicalgenome.org/	ClinGen Regions	ClinGen Regions	46	NIH
-varsome	https://dailymed.nlm.nih.gov	DailyMed	DailyMed	47	NIH
-varsome	https://gdc.cancer.gov/	Genomic Data Commons	GDC	48	NIH
-varsome	https://gtexportal.org/home/	Genotype-Tissue Expression (GTEx) Program	GTEx	49	NIH
-varsome	https://ghr.nlm.nih.gov/gene	GHR Genes Index	GHR Genes	50	NLM
-varsome	https://www.pharmgkb.org/	PharmGKB	PharmGKB	51	PharmGKB
-varsome	https://cancer.sanger.ac.uk/census	Cancer Gene Census	Cancer Gene Census	52	Sanger
-varsome	http://cancer.sanger.ac.uk/cosmic	Catalogue of Somatic Mutations in Cancer (Available to users with a separate COSMIC license)	COSMIC	53	Sanger
-varsome	https://decipher.sanger.ac.uk/	Sanger DECIPHER	DECIPHER	54	Sanger
-varsome	http://dgv.tcag.ca/dgv/app/home	Database of Genomic Variants	DGV	55	TCAG
-varsome	https://cbcl.ics.uci.edu/doku.php/data#dann_data	Deleterious Annotation of genetic variants using Neural Networks	DANN SNVs	56	UCI
-varsome	https://bravo.sph.umich.edu/freeze5/hg38/	Bravo Aggregation Database	Bravo	57	UMICH
-varsome	https://wwwfbm.unil.ch/domino/index.html	Domino Gene Scores	Domino	58	UNIL
-varsome	http://www.uniprot.org/	Uniprot Regions	UniProt Regions	59	UNIPROT
-varsome	http://www.uniprot.org/	UniProt Variants Database	UniProt Variants	60	UNIPROT
-varsome	https://ccsm.uth.edu/FusionGDB/	Fusion Gene annotation DataBase	FusionGDB	61	UTexas
-varsome	https://cadd.gs.washington.edu/	Combined Annotation Dependent Depletion	CADD	62	UW
-varsome	https://civic.genome.wustl.edu/#/home	Clinical Interpretation of Variants in Cancer	CIViC	63	WUSTL
-varsome	http://dgidb.genome.wustl.edu/	Drug Gene Interaction Database	DGI	64	WUSTL
-varsome	https://pmkb.weill.cornell.edu/	Precision Medicine Knowledge Base	PMKB	65	Weill Cornell Medicine
-varsome	https://sites.google.com/site/jpopgen/dbNSFP	dbNSFP expression and other gene-based data	dbNSFP genes	66	dbNSFP
-varsome	https://sites.google.com/site/jpopgen/dbNSFP	dbNSFP license-free data	dbNSFP-c	67	dbNSFP
-varsome	https://sites.google.com/site/jpopgen/dbNSFP	dbNSFP licensed data for premium	dbNSFP-p	68	dbNSFP
-varsome		dbNSFP splice site variant database	dbscSNV	69	dbNSFP
-varsome	https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways	Gene	BioCarta	70	dbNSFP genes
-varsome	http://cpdb.molgen.mpg.de/	Gene	Consensus	71	dbNSFP genes
-varsome	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484	Gene	Essential Genes	72	dbNSFP genes
-varsome	https://www.pnas.org/content/112/44/13615	Gene	GDI	73	dbNSFP genes
-varsome	https://academic.oup.com/nar/article/43/15/e101/2414292	Gene	GHIS	74	dbNSFP genes
-varsome	https://www.ebi.ac.uk/gxa/home	Gene	GNF/Atlas	75	dbNSFP genes
-varsome	http://geneontology.org/	Gene	Gene Ontology	76	dbNSFP genes
-varsome	https://academic.oup.com/bioinformatics/article/33/12/1751/2964486	Gene	HIPred	77	dbNSFP genes
-varsome	https://www.genome.jp/kegg/	Gene	KEGG	78	dbNSFP genes
-varsome	https://academic.oup.com/bioinformatics/article/33/4/471/2525582	Gene	LoFTool	79	dbNSFP genes
-varsome	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154	Gene	P(HI) Score	80	dbNSFP genes
-varsome	https://science.sciencemag.org/content/335/6070/823	Gene	P(rec) Score	81	dbNSFP genes
-varsome	http://genic-intolerance.org/	Gene	RVIS	82	dbNSFP genes
-varsome	https://www.uniprot.org/	Gene	UniProt Genes	83	dbNSFP genes
-varsome	BioMart	Gene	egenetics	84	dbNSFP genes
-varsome	http://aloft.gersteinlab.org/	Functional prediction	ALoFT	85	dbNSFP-c
-varsome	http://fengbj-laboratory.org/BayesDel/BayesDel.html	Functional prediction	BayesDel	86	dbNSFP-c
-varsome	https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways	Gene	BioCarta	87	dbNSFP-c
-varsome	http://cpdb.molgen.mpg.de/	Gene	Consensus	88	dbNSFP-c
-varsome	https://deogen2.mutaframe.com/	Functional prediction	DEOGEN2	89	dbNSFP-c
-varsome	http://www.columbia.edu/~ii2135/eigen.html	Functional prediction	Eigen	90	dbNSFP-c
-varsome	http://www.columbia.edu/~ii2135/eigen.html	Functional prediction	Eigen-PC	91	dbNSFP-c
-varsome	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484	Gene	Essential Genes	92	dbNSFP-c
-varsome	http://fathmm.biocompute.org.uk	Functional prediction	FATHMM	93	dbNSFP-c
-varsome	http://fathmm.biocompute.org.uk/fathmmMKL.htm	Functional prediction	FATHMM-MKL	94	dbNSFP-c
-varsome	http://fathmm.biocompute.org.uk/fathmm-xf/	Functional prediction	FATHMM-XF	95	dbNSFP-c
-varsome	https://www.pnas.org/content/112/44/13615	Gene	GDI	96	dbNSFP-c
-varsome	https://academic.oup.com/nar/article/43/15/e101/2414292	Gene	GHIS	97	dbNSFP-c
-varsome	https://www.ebi.ac.uk/gxa/home	Gene	GNF/Atlas	98	dbNSFP-c
-varsome	http://geneontology.org/	Gene	Gene Ontology	99	dbNSFP-c
-varsome	https://academic.oup.com/bioinformatics/article/33/12/1751/2964486	Gene	HIPred	100	dbNSFP-c
-varsome	https://www.genome.jp/kegg/	Gene	KEGG	101	dbNSFP-c
-varsome	https://precomputed.list-s2.msl.ubc.ca/	Functional prediction	LIST-S2	102	dbNSFP-c
-varsome	http://www.genetics.wustl.edu/jflab/lrt_query.html	Functional prediction	LRT	103	dbNSFP-c
-varsome	https://academic.oup.com/bioinformatics/article/33/4/471/2525582	Gene	LoFTool	104	dbNSFP-c
-varsome	http://bejerano.stanford.edu/MCAP/	Functional prediction	M-CAP	105	dbNSFP-c
-varsome	https://www.biorxiv.org/content/10.1101/148353v1	Functional prediction	MPC	106	dbNSFP-c
-varsome	https://github.com/ShenLab/missense	Functional prediction	MVP	107	dbNSFP-c
-varsome	https://academic.oup.com/hmg/article/24/8/2125/651446	Functional prediction	MetaLR	108	dbNSFP-c
-varsome	http://www.liulab.science/metarnn.html	Functional prediction	MetaRNN	109	dbNSFP-c
-varsome	https://academic.oup.com/hmg/article/24/8/2125/651446	Functional prediction	MetaSVM	110	dbNSFP-c
-varsome	http://mutpred.mutdb.org/	Functional prediction	MutPred	111	dbNSFP-c
-varsome	http://mutationassessor.org/	Functional prediction	MutationAssessor	112	dbNSFP-c
-varsome	http://www.mutationtaster.org/	Functional prediction	MutationTaster	113	dbNSFP-c
-varsome	https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154	Gene	P(HI) Score	114	dbNSFP-c
-varsome	https://science.sciencemag.org/content/335/6070/823	Gene	P(rec) Score	115	dbNSFP-c
-varsome	http://provean.jcvi.org/index.php	Functional prediction	PROVEAN	116	dbNSFP-c
-varsome	https://github.com/Illumina/PrimateAI	Functional prediction	PrimateAI	117	dbNSFP-c
-varsome	https://sites.google.com/site/revelgenomics/	Functional prediction	REVEL	118	dbNSFP-c
-varsome	http://genic-intolerance.org/	Gene	RVIS	119	dbNSFP-c
-varsome	https://sift.bii.a-star.edu.sg	Functional prediction	SIFT	120	dbNSFP-c
-varsome	https://sift.bii.a-star.edu.sg/sift4g/	Functional prediction	SIFT4G	121	dbNSFP-c
-varsome	https://www.broadinstitute.org/mammals-models/29-mammals-project-supplementary-info	Conservation score	SiPhy	122	dbNSFP-c
-varsome	https://www.uniprot.org/	Gene	UniProt Genes	123	dbNSFP-c
-varsome	http://cadd.gs.washington.edu/	Conservation score	bStatistic	124	dbNSFP-c
-varsome	BioMart	Gene	egenetics	125	dbNSFP-c
-varsome	http://compgen.bscb.cornell.edu/fitCons/	Functional prediction	fitCons	126	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons100way/	Conservation score	phastCons100way Vertebrate	127	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons17way/	Conservation score	phastCons17way Primate	128	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons30way/	Conservation score	phastCons30way Mammalian	129	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP100way/	Conservation score	phyloP100way Vertebrate	130	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP17way/	Conservation score	phyloP17way Primate	131	dbNSFP-c
-varsome	http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP30way/	Conservation score	phyloP30way Mammalian	132	dbNSFP-c
-varsome	http://genetics.bwh.harvard.edu/pph2/	Functional prediction	Polyphen-2	133	dbNSFP-p
+URL	Database_category	Name	Usage	Source	Description
+https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbNSFP	Yes		dbNSFP
+https://annovar.openbioinformatics.org/en/latest/	Annotation resources	ANNOVAR	Yes		
+https://genome.ucsc.edu/cgi-bin/	Annotation resources	UCSC hgVai	Yes		
+https://www.ensembl.org/info/docs/tools/vep/index.html	Annotation resources	Ensembl VEP	Yes		
+http://pcingola.github.io/SnpEff/	Annotation resources	"SnpEff, SnpSift"	Yes	 	
+https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbNSFP genes	Yes	dbNSFP	dbNSFP expression and other gene-based data
+https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbNSFP-c	Yes	dbNSFP	dbNSFP license-free data
+https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbNSFP-p	Yes	dbNSFP	dbNSFP licensed data for premium
+https://sites.google.com/site/jpopgen/dbNSFP	Annotation resources	dbscSNV	Yes	dbNSFP	dbNSFP splice site variant database
+https://www.ncbi.nlm.nih.gov/clinvar/	Association	ClinVar	Yes		
+https://hpo.jax.org/app/	Association	HPO	Yes		
+http://www.hgmd.cf.ac.uk/ac/index.php	Association	HGMD 	Yes		
+http://www.ebi.ac.uk/	Association	GWAS Catalog	Yes	EBI	
+https://www.ebi.ac.uk/gene2phenotype/about	Association	gene2phenotype	Yes	EBI	
+https://thegencc.org/	Association	GenCC	Yes	GenCC	
+https://mastermind.genomenon.com	Association	Mastermind	Yes	Genomenon	
+https://panelapp.genomicsengland.co.uk/	Association	GE PanelApp	Yes	Genomics England	
+https://ckb.jax.org/	Association	CKB	Yes	JAX	
+https://monarchinitiative.org/	Association	Mondo Disease Ontology	Yes	Monarch	
+ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/ClinVarFullRelease_...gz	Association	ClinVar CNVs	Yes	NCBI	ClinVar CNV Regions
+ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/tab_delimited	Association	ClinVar2	Yes	NCBI	ClinVar v2 populated from TSV files
+http://research.nhgri.nih.gov/CGD/	Association	CGD	Yes	NHGRI	
+https://ftp.clinicalgenome.org/	Association	ClinGen	Yes	NIH	
+https://ftp.clinicalgenome.org/	Association	ClinGen CNVs	Yes	NIH	
+https://ftp.clinicalgenome.org/	Association	ClinGen Disease Validity	Yes	NIH	
+https://ftp.clinicalgenome.org/	Association	ClinGen Regions	Yes	NIH	
+https://dailymed.nlm.nih.gov	Association	DailyMed	Yes	NIH	
+https://decipher.sanger.ac.uk/	Association	DECIPHER	Yes	Sanger	
+https://pmkb.weill.cornell.edu/	Association	PMKB Precision Medicine Knowledge Base	Yes	Weill Cornell Medicine	
+http://cpdb.molgen.mpg.de/	Association	Consensus	Yes	dbNSFP	
+https://tp53.isb-cgc.org	Cancer	TP53	Yes		
+http://cancer.sanger.ac.uk/cosmic	Cancer	COSMIC	Yes	Sanger	
+https://tp53.isb-cgc.org	Cancer	IARC TP53 germline database	Yes	IARC	
+https://tp53.isb-cgc.org	Cancer	IARC TP53 somatic database 	Yes	IARC	
+https://icgc.org/	Cancer	ICGC somatic	Yes	ICGC	
+https://www.cancerhotspots.org	Cancer	CancerHotspots	Yes	MSK	
+http://oncotree.mskcc.org/#/home	Cancer	OncoTree	Yes	MSK	
+https://www.cbioportal.org/	Cancer	cBioPortal	Yes	MSK	
+https://gdc.cancer.gov/	Cancer	GDC	Yes	NIH	
+https://cancer.sanger.ac.uk/census	Cancer	Cancer Gene Census	Yes	Sanger	
+https://ccsm.uth.edu/FusionGDB/	Cancer	FusionGDB	Yes	UTexas	
+https://civic.genome.wustl.edu/#/home	Cancer	CIViC	Yes	WUSTL	
+https://www.broadinstitute.org/mammals-models/29-mammals-project-supplementary-info	Conservation score	SiPhy	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons100way/	Conservation score	phastCons100way Vertebrate	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons17way/	Conservation score	phastCons17way Primate	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons30way/	Conservation score	phastCons30way Mammalian	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP100way/	Conservation score	phyloP100way Vertebrate	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP17way/	Conservation score	phyloP17way Primate	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phyloP30way/	Conservation score	phyloP30way Mammalian	Yes	dbNSFP	
+http://dgidb.genome.wustl.edu/	Drug-gene	DGI 	Yes	WUSTL	
+https://cpicpgx.org/genes-drugs/	Drug-gene	CPIC Genes-Drugs	Yes	CPIC	
+https://clinicaltrials.gov	Drug-gene	AACT	Yes	CTTI	
+https://www.ema.europa.eu/en	Drug-gene	EMA Approved Drugs	Yes	EMA	
+https://www.fda.gov/drugs/informationondrugs/ucm079750.htm	Drug-gene	FDA Approved Drugs	Yes	FDA	
+https://www.fda.gov/drugs/science-and-research-drugs/table-pharmacogenomic-biomarkers-drug-labeling	Drug-gene	FDA Pharmacogenomic Biomarkers	Yes	FDA	
+https://www.pharmgkb.org/	Drug-gene	PharmGKB	Yes	PharmGKB	
+https://grch37.ensembl.org/info/data/biomart/index.html	General genomics	BioMart	Yes	ensembl	
+http://pmglab.top/kggseq/	General genomics	KGGSeq	Yes		
+https://pubs.broadinstitute.org/mammals/haploreg/haploreg.php	General genomics	HaploReg	Yes		
+http://www.ensembl.org/info/website/index.html	General genomics	Ensembl	Yes	EMBL	
+http://www.genenames.org/	General genomics	HGNC	Yes	HUGO	
+https://www.proteinatlas.org/about	General genomics	The Human Protein Atlas	Yes	KAW	
+http://www.ncbi.nlm.nih.gov/refseq/	General genomics	RefSeq	Yes	NCBI	
+https://gtexportal.org/home/	General genomics	GTEx	Yes	NIH	
+https://ghr.nlm.nih.gov/gene	General genomics	GHR Genes	Yes	NLM	
+http://www.uniprot.org/	General genomics	UniProt Regions	Yes	UNIPROT	
+http://www.uniprot.org/	General genomics	UniProt Variants	Yes	UNIPROT	
+http://geneontology.org/	General genomics	Gene Ontology	Yes	dbNSFP	
+https://maayanlab.cloud/Harmonizome/dataset/Biocarta+Pathways	General genomics	BioCarta	Yes	dbNSFP	
+https://www.ebi.ac.uk/gxa/home	General genomics	GNF/Atlas	Yes	dbNSFP	
+https://www.genome.jp/kegg/	General genomics	KEGG	Yes	dbNSFP	
+https://www.uniprot.org/	General genomics	UniProt Genes	Yes	dbNSFP	
+http://zzz.bwh.harvard.edu/plink/	Genotype analysis	PLINK	Yes		
+https://www.kingrelatedness.com/manual.shtml	Genotype analysis	KING	Yes		
+https://mathgen.stats.ox.ac.uk/genetics_software/shapeit/shapeit.html	Genotype analysis	SHAPEIT2	Yes		
+https://mathgen.stats.ox.ac.uk/impute/impute_v2.html	Genotype analysis	IMPUTE2	Yes		
+https://cnsgenomics.com/software/gcta/	Genotype analysis	GCTA	Yes		
+http://locuszoom.org	Genotype analysis	LocusZoom	Yes		
+https://ldlink.nci.nih.gov	Genotype analysis	LDLink	Yes		
+https://fuma.ctglab.nl	Genotype analysis	FUMA	Yes		
+ftp://ftp.broadinstitute.org/pub/ExAC_release/current/coverage	gnomAD exome coverage data	gnomAD exomes coverage	Yes	Broad	
+https://gnomad.broadinstitute.org/downloads/#v2-constraint	gnomAD gene constraints	gnomAD gene constraints	Yes	Broad	
+https://gnomad.broadinstitute.org	gnomAD mtDNA variants	gnomAD Mitochondrial	Yes	Broad	
+https://gnomad.broadinstitute.org/downloads#v2-structural-variants	gnomAD structural variants	gnomAD structural variants	Yes	Broad	
+http://charite.github.io/compbio-onto.html / https://hpo.jax.org/app/	Human Phenotype Ontology	HPO	Yes	HPO	
+https://www.sanger.ac.uk/tool/sanger-imputation-service/	Imputation	Sanger	Yes		
+http://csg.sph.umich.edu/abecasis/MACH/tour/imputation.html	Imputation	MACH	Yes		
+https://imputation.biodatacatalyst.nhlbi.nih.gov	Imputation	TOPMed 	Yes		
+http://exac.broadinstitute.org/	Population - conservation	Exac	No	Broad	
+http://compgen.bscb.cornell.edu/fitCons/	Population - conservation	fitCons	Yes	dbNSFP	
+http://hgdownload.soe.ucsc.edu/goldenPath/hg38/	Population - conservation	phastCons	Yes		
+http://db.systemsbiology.net/kaviar/Kaviar.downloads.html	Population - conservation	kaviar3	Yes	ISB	
+https://evs.gs.washington.edu/EVS/	Population - conservation	"EVS, NHLBI ESP6500"	Yes		
+http://dgv.tcag.ca/dgv/app/home	Population - conservation	DGV	Yes	TCAG	
+https://r4.finngen.fi	Population - conservation	FinnGen	Yes		
+https://www.internationalgenome.org/data	Population - conservation	1000 Genomes Project (1KG)	Yes		
+https://www.ukbiobank.ac.uk	Population - conservation	UKBB 	No		
+http://gnomad.broadinstitute.org/	Population - conservation	gnomAD exomes	Yes	Broad	
+http://gnomad.broadinstitute.org/	Population - conservation	gnomAD genomes	Yes	Broad	
+https://www.mitomap.org/foswiki/bin/view/MITOMAP/WebHome	Population - conservation	Mitomap	Yes	CHOP	
+http://compgen.cshl.edu/phast/	Population - conservation	phastCons100way	Yes	CSH	Conservation scoring and identification of conserved elements
+http://compgen.cshl.edu/phast/	Population - conservation	phyloP100way	Yes	CSH	Computation of p-values for conservation or acceleration
+http://www.ncbi.nlm.nih.gov/snp	Population - conservation	dbSNP	Yes	NCBI	
+https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/Homo_sapiens/by_assembly/	Population - conservation	dbVar	Yes	NCBI	
+https://bravo.sph.umich.edu/freeze5/hg38/	Population - conservation	Bravo	Yes	UMICH	
+https://wwwfbm.unil.ch/domino/index.php	Prediction	Domino	Yes		
+http://www.liulab.science/dbscsnv.html	Prediction	dbscSNV	Yes		
+http://aloft.gersteinlab.org/	Prediction	ALoFT	Yes	dbNSFP	
+http://www.genetics.wustl.edu/jflab/lrt_query.html	Prediction	LRT	Yes	dbNSFP	
+http://bejerano.stanford.edu/MCAP/	Prediction	M-CAP	Yes	dbNSFP	
+http://www.liulab.science	Prediction	"MetaLR,SVM,RNN"	Yes		
+http://cadd.gs.washington.edu/	Prediction	bStatistic	Yes	dbNSFP	
+https://evemodel.org/	Prediction	EVE	No		
+http://mendel.stanford.edu/SidowLab/downloads/gerp/	Prediction	GERP	Yes	GERP	
+https://cbcl.ics.uci.edu/doku.php/data#dann_data	Prediction	DANN SNVs	Yes	UCI	
+https://wwwfbm.unil.ch/domino/index.html	Prediction	Domino	Yes	UNIL	Domino Gene Scores
+https://cadd.gs.washington.edu/	Prediction	CADD	Yes	UW	
+http://genic-intolerance.org/	Prediction	RVIS	Yes	dbNSFP	
+http://fengbj-laboratory.org/BayesDel/BayesDel.html	Prediction	BayesDel	Yes	dbNSFP	
+https://deogen2.mutaframe.com/	Prediction	DEOGEN2	Yes	dbNSFP	
+http://www.columbia.edu/~ii2135/eigen.html	Prediction	Eigen-PC	Yes	dbNSFP	
+https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1003484	Prediction	Essential Genes	Yes	dbNSFP	
+http://fathmm.biocompute.org.uk	Prediction	FATHMM	Yes	dbNSFP	
+http://fathmm.biocompute.org.uk/fathmmMKL.htm	Prediction	FATHMM-MKL	Yes	dbNSFP	
+http://fathmm.biocompute.org.uk/fathmm-xf/	Prediction	FATHMM-XF	Yes	dbNSFP	
+https://www.pnas.org/content/112/44/13615	Prediction	GDI	Yes	dbNSFP	
+https://academic.oup.com/nar/article/43/15/e101/2414292	Prediction	GHIS	Yes	dbNSFP	
+https://academic.oup.com/bioinformatics/article/33/12/1751/2964486	Prediction	HIPred	Yes	dbNSFP	
+https://precomputed.list-s2.msl.ubc.ca/	Prediction	LIST-S2	Yes	dbNSFP	
+https://academic.oup.com/bioinformatics/article/33/4/471/2525582	Prediction	LoFTool	Yes	dbNSFP	
+https://www.biorxiv.org/content/10.1101/148353v1	Prediction	MPC	Yes	dbNSFP	
+https://github.com/ShenLab/missense	Prediction	MVP	Yes	dbNSFP	
+https://academic.oup.com/hmg/article/24/8/2125/651446	Prediction	MetaLR	Yes	dbNSFP	
+http://www.liulab.science/metarnn.html	Prediction	MetaRNN	Yes	dbNSFP	
+https://academic.oup.com/hmg/article/24/8/2125/651446	Prediction	MetaSVM	Yes	dbNSFP	
+http://mutpred.mutdb.org/	Prediction	MutPred	Yes	dbNSFP	
+http://mutationassessor.org/	Prediction	MutationAssessor	Yes	dbNSFP	
+http://www.mutationtaster.org/	Prediction	MutationTaster	Yes	dbNSFP	
+https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1001154	Prediction	P(HI) Score	Yes	dbNSFP	
+https://science.sciencemag.org/content/335/6070/823	Prediction	P(rec) Score	Yes	dbNSFP	
+http://provean.jcvi.org/index.php	Prediction	PROVEAN	Yes	dbNSFP	
+https://github.com/Illumina/PrimateAI	Prediction	PrimateAI	Yes	dbNSFP	
+https://sites.google.com/site/revelgenomics/	Prediction	REVEL	Yes	dbNSFP	
+https://sift.bii.a-star.edu.sg	Prediction	SIFT	Yes	dbNSFP	
+https://sift.bii.a-star.edu.sg/sift4g/	Prediction	SIFT4G	Yes	dbNSFP	
+http://genetics.bwh.harvard.edu/pph2/	Prediction	Polyphen-2	Yes	dbNSFP	
+https://www.rcsb.org	Protein structure	RCSB PDB	Yes		
+https://alphafold.com	Protein structure	alphafold	Yes		
+https://new.rosettacommons.org/docs/latest/Home	Protein structure	RoseTTA	Yes		
+http://foldxsuite.crg.eu	Protein structure	FoldX	Yes		
+https://pubmed.ncbi.nlm.nih.gov/32881105/	Protein structure	DynaMut 	Yes		
+https://www.huge-man-linux.net/man1/asn2fsa.html	Viral genetics	asn2fsa	Yes		
+https://www.qiagenbioinformatics.com	Viral genetics	clc novo assemble	Yes		
+https://www.ebi.ac.uk/Tools/msa/clustalo/	Viral genetics	ClustalO	Yes		
+https://www.ncbi.nlm.nih.gov/genbank/	Viral genetics	GenBank	Yes		
+https://www.iqtree.org/	Viral genetics	IQ-Tree	Yes		
+https://mafft.cbrc.jp/alignment/software	Viral genetics	MAFFT	Yes		
+https://clades.nextstrain.org	Viral genetics	NextClade CLI	Yes		
+https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/	Viral genetics	Tbl2asn	Yes		
+https://sourceforge.net/projects/jcvi-vigor/files/	Viral genetics	VIGOR	Yes		
