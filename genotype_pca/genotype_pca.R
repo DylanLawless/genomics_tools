@@ -2,6 +2,7 @@
 # Row = Individuals, Col = Position
 set.seed(3)
 mm <- matrix(0, 10, 5)
+# mm <- matrix(0, 10, 50) # more variants
 d <- apply(mm, c(1, 2), function(x) sample(c(0, 1), 1))
 d
 
@@ -27,6 +28,7 @@ library(dplyr)
 pca_res_x <- pca_res$x %>% as.data.frame()
 pca_res_x$Var <- as.numeric( row.names(pca_res_x))
 
+library(ggplot2)
 p2A <- pca_res_x %>% 
 	ggplot(aes(x=PC1,y=PC2, label=Var)) +
 	geom_label(aes(fill = Var), colour = "white", size = 2, alpha=0.7, 
@@ -86,5 +88,7 @@ bottom_row <- plot_grid(p3A, p3B, p3C, labels = c('C'), ncol = 3)
 plot <- plot_grid(p1, mid_row, bottom_row, labels = c('A', '', ''), ncol = 1)
 
 ggdraw(add_sub(vjust = 0.5, plot,
-					"(A) Genotyope matrix.\n(B) PCA variance explained per Individual [typical]\n(C) PCA variance explained per Position [rotated matrix].\nPCAs (left) are manually derived from pca_res$sdev^2/sum(pca_res$sdev^2).\nPCAs (center) are made by fviz_pca_ind."))
+					"(A) Genotyope matrix.\n(B) PCA variance explained per Individual [typical]\n(C) PCA variance explained per Position [rotated matrix].\nPCAs (left) are manually derived from pca_res$sdev^2/sum(pca_res$sdev^2).\nPCAs (center) are made by fviz_pca_ind. (jitter added)"))
 
+# genotype_pca_10x5.pdf 10x12
+# genotype_pca_10x50.pdf 10x12

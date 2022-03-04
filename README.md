@@ -45,6 +45,31 @@ How do we test something like SKAT-O or linear regression such that we can see t
 ## Somatic risk
 Plots for somatic variant risk with individual events and cumulative risk.
 
+## Genotype PCA
+An example binary genotype matrix is explored with PCA.
+First the typical PCA usages checks variance explained. Note, these are not PCA plots of data that would be used as GWAS covariates - instead they are the variance explained per _indivual_.
+The genotype matrix is then rotated 90 degress, and the process repeated to show the variance explained per _variant_.
+These plots are useful to view which variants causes the largest separation within a cohort. 
+i.e. a variant associated with an outcome may be a false positive if it explains a large proportion of variation within the sample cohort. 
+
+Example matrix: Row = 10 Individuals, Col = 5 variant positions.
+
+| [,1] | [,2] | [,3] | [,4] | [,5] |
+|---|---|---|---|---|---|
+| [1,] | 0 | 1 | 1 | 1 | 0 |
+| [2,] | 1 | 1 | 0 | 1 | 1 |
+| [3,] | 1 | 0 | 0 | 0 | 0 |
+| [4,] | 0 | 1 | 1 | 1 | 0 |
+| [5,] | 1 | 1 | 0 | 1 | 0 |
+| [6,] | 1 | 1 | 0 | 1 | 0 |
+| [7,] | 1 | 1 | 0 | 1 | 1 |
+| [8,] | 0 | 0 | 1 | 0 | 0 |
+| [9,] | 0 | 1 | 1 | 1 | 0 |
+| [10,] | 1 | 0 | 1 | 1 | 0 |
+
+The output PDFs show a 10x5 and 10x50 random genotype matrix.
+In real data, variable and conserved variants are more recognisable.
+
 ## Other links
 This samtools repo contains useful data including VCF
 <https://github.com/samtools/hts-specs>
