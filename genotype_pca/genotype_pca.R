@@ -88,7 +88,7 @@ bottom_row <- plot_grid(p3A, p3B, p3C, labels = c('C'), ncol = 3)
 plot <- plot_grid(p1, mid_row, bottom_row, labels = c('A', '', ''), ncol = 1)
 
 ggdraw(add_sub(vjust = 0.5, plot,
-					"(A) Genotyope matrix.\n(B) PCA variance explained per Individual [typical]\n(C) PCA variance explained per Position [rotated matrix].\nPCAs (left) are manually derived from pca_res$sdev^2/sum(pca_res$sdev^2).\nPCAs (center) are made by fviz_pca_ind. (jitter added)"))
+					"(A) Genotype matrix.\n(B) PCA variance explained per Individual [typical]\n(C) PCA variance explained per Position [rotated matrix].\nPCAs (left) are manually derived from pca_res$sdev^2/sum(pca_res$sdev^2).\nPCAs (center) are made by fviz_pca_ind. (jitter added)"))
 
 # genotype_pca_10x5.pdf 10x12
 # genotype_pca_10x50.pdf 10x12
