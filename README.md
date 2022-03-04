@@ -46,6 +46,8 @@ How do we test something like SKAT-O or linear regression such that we can see t
 Plots for somatic variant risk with individual events and cumulative risk.
 
 ## Genotype PCA
+[genotype-pca](https://github.com/DylanLawless/genomics_tools#genotype-pca)
+
 An example binary genotype matrix is explored with PCA.
 First the typical PCA usages checks variance explained. Note, these are not PCA plots of data that would be used as GWAS covariates - instead they are the variance explained per _indivual_.
 The genotype matrix is then rotated 90 degress, and the process repeated to show the variance explained per _variant_.
@@ -67,8 +69,9 @@ Example matrix: Row = 10 Individuals, Col = 5 variant positions.
 | [9,] | 0 | 1 | 1 | 1 | 0 |
 | [10,] | 1 | 0 | 1 | 1 | 0 |
 
-The output PDFs show a 10x5 and 10x50 random genotype matrix.
+The output [PDFs show a 10x5](https://github.com/DylanLawless/genomics_tools/blob/master/genotype_pca/genotype_pca_10x5.pdf) and [10x50](https://github.com/DylanLawless/genomics_tools/blob/master/genotype_pca/genotype_pca_10x50.pdf) random genotype matrix.
 In real data, variable and conserved variants are more recognisable.
+
 
 ## Other links
 This samtools repo contains useful data including VCF
