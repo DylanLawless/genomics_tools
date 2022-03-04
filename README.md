@@ -49,8 +49,8 @@ Plots for somatic variant risk with individual events and cumulative risk.
 [genotype-pca](https://github.com/DylanLawless/genomics_tools#genotype-pca)
 
 An example binary genotype matrix is explored with PCA.
-First the typical PCA usages checks variance explained. Note, these are not PCA plots of data that would be used as GWAS covariates - instead they are the variance explained per _indivual_.
-The genotype matrix is then rotated 90 degress, and the process repeated to show the variance explained per _variant_.
+First the typical PCA usage checks variance explained. Note, these are not PCA plots of data that would be used as GWAS covariates - instead they are the variance explained per _indivual_.
+The genotype matrix is then rotated 90 degrees, and the process repeated to show the variance explained per _variant_.
 These plots are useful to view which variants causes the largest separation within a cohort. 
 i.e. a variant associated with an outcome may be a false positive if it explains a large proportion of variation within the sample cohort. 
 
