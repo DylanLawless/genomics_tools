@@ -54,7 +54,7 @@ i.e. a variant associated with an outcome may be a false positive if it explains
 
 Example matrix: Row = 10 Individuals, Col = 5 variant positions.
 
-| [,1] | [,2] | [,3] | [,4] | [,5] |
+| | [,1] | [,2] | [,3] | [,4] | [,5] |
 |---|---|---|---|---|---|
 | [1,] | 0 | 1 | 1 | 1 | 0 |
 | [2,] | 1 | 1 | 0 | 1 | 1 |
