@@ -1,0 +1,72 @@
+##gff-version 3
+##sequence-region Q2TBE0 1 894
+Q2TBE0	UniProtKB	Chain	1	894	.	.	.	ID=PRO_0000315648;Note=CWF19-like protein 2	
+Q2TBE0	UniProtKB	Region	1	147	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Region	270	483	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Region	561	583	.	.	.	Note=Disordered;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Coiled coil	13	107	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+Q2TBE0	UniProtKB	Coiled coil	166	281	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+Q2TBE0	UniProtKB	Coiled coil	502	530	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+Q2TBE0	UniProtKB	Coiled coil	644	675	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+Q2TBE0	UniProtKB	Compositional bias	14	76	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	77	100	.	.	.	Note=Basic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	107	121	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	123	147	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	270	292	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	293	307	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	314	328	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	329	347	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	348	362	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	368	383	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	385	407	.	.	.	Note=Polar residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	408	477	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Compositional bias	569	583	.	.	.	Note=Basic and acidic residues;Ontology_term=ECO:0000256;evidence=ECO:0000256|SAM:MobiDB-lite	
+Q2TBE0	UniProtKB	Modified residue	75	75	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0007744;evidence=ECO:0007744|PubMed:23186163;Dbxref=PMID:23186163	
+Q2TBE0	UniProtKB	Modified residue	360	360	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0007744;evidence=ECO:0007744|PubMed:23186163;Dbxref=PMID:23186163	
+Q2TBE0	UniProtKB	Modified residue	372	372	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0007744;evidence=ECO:0007744|PubMed:23186163;Dbxref=PMID:23186163	
+Q2TBE0	UniProtKB	Modified residue	479	479	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0007744,ECO:0007744,ECO:0007744;evidence=ECO:0007744|PubMed:17081983,ECO:0007744|PubMed:19690332,ECO:0007744|PubMed:23186163;Dbxref=PMID:17081983,PMID:19690332,PMID:23186163	
+Q2TBE0	UniProtKB	Modified residue	484	484	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0007744;evidence=ECO:0007744|PubMed:21406692;Dbxref=PMID:21406692	
+Q2TBE0	UniProtKB	Cross-link	171	171	.	.	.	Note=Glycyl lysine isopeptide (Lys-Gly) (interchain with G-Cter in SUMO2);Ontology_term=ECO:0007744;evidence=ECO:0007744|PubMed:28112733;Dbxref=PMID:28112733	
+Q2TBE0	UniProtKB	Cross-link	604	604	.	.	.	Note=Glycyl lysine isopeptide (Lys-Gly) (interchain with G-Cter in SUMO2);Ontology_term=ECO:0007744,ECO:0007744;evidence=ECO:0007744|PubMed:25772364,ECO:0007744|PubMed:28112733;Dbxref=PMID:25772364,PMID:28112733	
+Q2TBE0	UniProtKB	Alternative sequence	625	672	.	.	.	ID=VSP_030590;Note=In isoform 3. FMGKTDGDYYTLDDMFVSKAAERERLGEEEENQRKKAIAEHRSLAAQM->QLRENVLVKRKRTKGKKLLLSIGVLLHKWKNVCIVLTALNFPSILLLQ;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:15489334;Dbxref=PMID:15489334	
+Q2TBE0	UniProtKB	Alternative sequence	673	894	.	.	.	ID=VSP_030591;Note=In isoform 3. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:15489334;Dbxref=PMID:15489334	
+Q2TBE0	UniProtKB	Alternative sequence	735	742	.	.	.	ID=VSP_030592;Note=In isoform 2. MFRKSLVK->IKSRTVIQ;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:15489334;Dbxref=PMID:15489334	
+Q2TBE0	UniProtKB	Alternative sequence	743	894	.	.	.	ID=VSP_030593;Note=In isoform 2. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:15489334;Dbxref=PMID:15489334	
+Q2TBE0	UniProtKB	Natural variant	210	210	.	.	.	ID=VAR_038268;Note=P->T;Dbxref=dbSNP:rs608634	
+Q2TBE0	UniProtKB	Natural variant	443	443	.	.	.	ID=VAR_038269;Note=H->Y;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15489334;Dbxref=dbSNP:rs659040,PMID:15489334	
+Q2TBE0	UniProtKB	Natural variant	445	445	.	.	.	ID=VAR_038270;Note=H->Q;Dbxref=dbSNP:rs35968518	
+Q2TBE0	UniProtKB	Natural variant	537	537	.	.	.	ID=VAR_038271;Note=G->R;Dbxref=dbSNP:rs17106909	
+Q2TBE0	UniProtKB	Natural variant	894	894	.	.	.	ID=VAR_038272;Note=Y->C;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:15489334;Dbxref=dbSNP:rs3758911,PMID:15489334	
+Q2TBE0	UniProtKB	Sequence conflict	584	584	.	.	.	Note=E->K;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q2TBE0	UniProtKB	Sequence conflict	626	626	.	.	.	Note=M->G;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q2TBE0	UniProtKB	Sequence conflict	819	819	.	.	.	Note=P->L;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q2TBE0	UniProtKB	Beta strand	549	551	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	557	559	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	582	587	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Turn	592	596	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	599	608	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	615	621	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	623	625	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID0	
+Q2TBE0	UniProtKB	Beta strand	631	634	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	637	642	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	648	650	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	651	660	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	662	673	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	676	683	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	686	688	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID0	
+Q2TBE0	UniProtKB	Beta strand	694	699	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	702	704	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	711	717	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	727	746	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	753	756	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	768	770	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	775	778	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	781	790	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	806	808	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Turn	811	813	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	821	825	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Beta strand	828	833	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	846	853	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Turn	858	861	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Turn	869	875	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	
+Q2TBE0	UniProtKB	Helix	876	882	.	.	.	Ontology_term=ECO:0007829;evidence=ECO:0007829|PDB:6ID1	

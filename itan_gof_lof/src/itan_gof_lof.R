@@ -10,13 +10,11 @@ library(plotly)
 
 df <-
   read.csv("../data/goflof_HGMD2019_v032021_allfeat.csv",
-           stringsAsFactors = FALSE, header = TRUE) %>%
-  na.omit()
+           stringsAsFactors = FALSE, header = TRUE) #%>% na.omit()
 
 df_clivar <-
   read.csv("../data/goflof_ClinVar_v062021.csv",
-           stringsAsFactors = FALSE, header = TRUE) %>%
-  na.omit()
+           stringsAsFactors = FALSE, header = TRUE) # %>% na.omit()
 
 names(df_clivar)
 names(df)
