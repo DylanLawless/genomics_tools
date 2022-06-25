@@ -34,6 +34,12 @@ df$Inheritance %>% unique()
 
 df$OMIM_ID <- df$OMIM
 df <- df %>% select(-OMIM)
+
+df$OMIM_ID <- str_replace_all(df$OMIM_ID," ","") # stupid white spaces
+df$OMIM_ID <- str_replace_all(df$OMIM_ID,"Not yet attributed","NA") # (-_-) 
+df$OMIM_ID <- str_replace_all(df$OMIM_ID,"614602 \r\n" ,"614602") # (-_-) 
+df$OMIM_ID <- str_replace_all(df$OMIM_ID,"· 612411" ,"612411") # (-_-) 
+
 # column names
 colnames(df)[colnames(df) == 'Genetic defect'] <- 'Gene symbol'
 
