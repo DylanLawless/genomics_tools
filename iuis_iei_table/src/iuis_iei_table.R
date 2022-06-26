@@ -71,7 +71,7 @@ options(reactable.theme = reactableTheme(
 	highlightColor = "#fcf0e6",
 	cellPadding = "8px 12px",
 	style = list(fontFamily = "-apple-system, Arial, BlinkMacSystemFont, Segoe UI, Helvetica,  sans-serif",
-					 fontSize = "0.8rem"),
+					 fontSize = "1.0rem"),
 	searchInputStyle = list(width = "50%")
 ))
 
@@ -89,6 +89,9 @@ df_t <-
 				  	"Inheritance detail" = colDef(minWidth = 140), 
 				  	"Major category" = colDef(minWidth = 200), 
 				  	"Associated features" = colDef(minWidth = 200), 
+				  	"T cell count" = colDef(minWidth = 200), 
+				  	"B cell count" = colDef(minWidth = 200), 
+				  	"Immunoglobulin levels" = colDef(minWidth = 200), 
 				  	"Subcategory" = colDef(minWidth = 200), 
 				  	 "OMIM_ID" = colDef(cell = function(value, index) {
 				  	 	url <- sprintf("https://www.omim.org/entry/%s", df[index, "OMIM_ID"], value)
