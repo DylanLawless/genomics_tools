@@ -47,21 +47,21 @@ colnames(df)[colnames(df) == 'Genetic defect'] <- 'Gene symbol'
 # These URLs are only to show the text, but do not get used for the actual hyperlink. I add those within
 # When using % for url, we nee to escape it for sprintf. Use doulbe (%%).
 # We also have to escape for the reactable, and therefore use quadruple (%%%%).
-df$UniProt <- sprintf('https://www.uniprot.org/...%s', df$`Gene symbol`)
-df$Ensembl <- sprintf('https://www.ensembl.org/...%s', df$`Gene symbol`)
-df$OMIM <- sprintf('https://www.omim.org/...%s', df$`Gene symbol`)
-df$omni <- sprintf('https://omni.institutimagine.org/...%s', df$`Gene symbol`)
-df$'gnomAD r2 GRCh37' <- sprintf('https://gnomad.broadinstitute.org/r2_1...%s', df$`Gene symbol`)
-df$'gnomAD r3 GRCh38' <- sprintf('https://gnomad.broadinstitute.org/r3...%s', df$`Gene symbol`)
-df$pdb <- sprintf('https://www.rcsb.org/...%s', df$`Gene symbol`)
-df$HGNC <- sprintf('https://www.genenames.org/...%s', df$`Gene symbol`)
-df$ORPHA <- sprintf('https://hpo.jax.org/ORPHA/...%s', df$`Gene symbol`)
-df$HPO <- sprintf('https://hpo.jax.org/...%s', df$`Gene symbol`)
-df$DisProt <- sprintf('https://disprot.org/...%s', df$`Gene symbol`)
-df$AmiGo <- sprintf('http://amigo.geneontology.org/...%s', df$`Gene symbol`)
-df$'Alpha Fold' <-  sprintf('https://www.alphafold.ebi.ac.uk/...%s', df$`Gene symbol`)
-df$Gemma <- sprintf('https://gemma.msl.ubc.ca/...%s', df$`Gene symbol`)
-df$ClinGen <- sprintf('https://search.clinicalgenome.org/...%s', df$`Gene symbol`)
+df$UniProt <- sprintf('uniprot.org/%s', df$`Gene symbol`)
+df$Ensembl <- sprintf('ensembl.org/%s', df$`Gene symbol`)
+df$OMIM <- sprintf('omim.org/%s', df$`Gene symbol`)
+df$omni <- sprintf('omni/%s', df$`Gene symbol`)
+df$'gnomAD r2 GRCh37' <- sprintf('gnomad.org/r2%s', df$`Gene symbol`)
+df$'gnomAD r3 GRCh38' <- sprintf('gnomad.org/r3%s', df$`Gene symbol`)
+df$pdb <- sprintf('rcsb.org/%s', df$`Gene symbol`)
+df$HGNC <- sprintf('genenames.org/%s', df$`Gene symbol`)
+df$ORPHA <- sprintf('hpo/ORPHA/%s', df$`Gene symbol`)
+df$HPO <- sprintf('hpo.jax.org/%s', df$`Gene symbol`)
+# df$DisProt <- sprintf('disprot.org/%s', df$`Gene symbol`)
+df$AmiGo <- sprintf('amigo.org/%s', df$`Gene symbol`)
+df$'Alpha Fold' <-  sprintf('alphafold/%s', df$`Gene symbol`)
+df$Gemma <- sprintf('gemma/%s', df$`Gene symbol`)
+df$ClinGen <- sprintf('clinicalgenome.org/%s', df$`Gene symbol`)
 
 # reactable ----
 library(reactable)
@@ -81,19 +81,30 @@ df_t <-
 	reactable( df,
 				  compact = TRUE,
 				  searchable = TRUE,
+				  resizable = TRUE, 
+				  # wrap = FALSE,
 				  #elementId = "download-table",
 				  defaultPageSize = 10,
-				  defaultColDef = colDef(minWidth = 100),
+				  filterable = TRUE,
+				  showSortable = TRUE,
+				  showPageSizeOptions = TRUE,
+				  striped = TRUE,
+				  highlight = TRUE,
+				  defaultColDef = colDef(minWidth = 200),
 				  columns = list(
-				  	"Disease" = colDef(minWidth = 260), 
+				  	"Disease" = colDef(minWidth = 200), 
+				  	"Inheritance" = colDef(minWidth = 140), 
 				  	"Inheritance detail" = colDef(minWidth = 140), 
-				  	"Major category" = colDef(minWidth = 200), 
+				  	"Major category" = colDef(minWidth = 300), 
 				  	"Associated features" = colDef(minWidth = 200), 
 				  	"T cell count" = colDef(minWidth = 200), 
 				  	"B cell count" = colDef(minWidth = 200), 
 				  	"Immunoglobulin levels" = colDef(minWidth = 200), 
 				  	"Subcategory" = colDef(minWidth = 200), 
-				  	 "OMIM_ID" = colDef(cell = function(value, index) {
+				  	"HPO table" = colDef(minWidth = 140), 				  	
+				  	"HPO subtable" = colDef(minWidth = 140), 
+				  	 "OMIM_ID" = colDef(minWidth = 140,
+				  	                    cell = function(value, index) {
 				  	 	url <- sprintf("https://www.omim.org/entry/%s", df[index, "OMIM_ID"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
@@ -128,25 +139,27 @@ df_t <-
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
 				  	 "pdb" = colDef(cell = function(value, index) {
-				  	 	url <- sprintf("https://www.rcsb.org/search?request=%%%%7B%%%%22query%%%%22%%%%3A%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22group%%%%22%%%%2C%%%%22nodes%%%%22%%%%3A%%%%5B%%%%7B%%%%22type%%%%22%%%%3A%%%%22terminal%%%%22%%%%2C%%%%22service%%%%22%%%%3A%%%%22full_text%%%%22%%%%2C%%%%22parameters%%%%22%%%%3A%%%%7B%%%%22value%%%%22%%%%3A%%%%22%s%%%%22%%%%7D%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%2C%%%%22label%%%%22%%%%3A%%%%22full_text%%%%22%%%%7D%%%%5D%%%%2C%%%%22logical_operator%%%%22%%%%3A%%%%22and%%%%22%%%%7D%%%%2C%%%%22return_type%%%%22%%%%3A%%%%22entry%%%%22%%%%2C%%%%22request_options%%%%22%%%%3A%%%%7B%%%%22pager%%%%22%%%%3A%%%%7B%%%%22start%%%%22%%%%3A0%%%%2C%%%%22rows%%%%22%%%%3A25%%%%7D%%%%2C%%%%22scoring_strategy%%%%22%%%%3A%%%%22combined%%%%22%%%%2C%%%%22sort%%%%22%%%%3A%%%%5B%%%%7B%%%%22sort_by%%%%22%%%%3A%%%%22score%%%%22%%%%2C%%%%22direction%%%%22%%%%3A%%%%22desc%%%%22%%%%7D%%%%5D%%%%7D%%%%2C%%%%22request_info%%%%22%%%%3A%%%%7B%%%%22query_id%%%%22%%%%3A%%%%228fb30ed1650bdcc2f59067e304229b28%%%%22%%%%7D%%%%7D", df[index, "Gene symbol"], value)
+				  	   url <- sprintf("https://www.rcsb.org/search?request=%%7B%%22query%%22%%3A%%7B%%22type%%22%%3A%%22group%%22%%2C%%22nodes%%22%%3A%%5B%%7B%%22type%%22%%3A%%22group%%22%%2C%%22nodes%%22%%3A%%5B%%7B%%22type%%22%%3A%%22group%%22%%2C%%22nodes%%22%%3A%%5B%%7B%%22type%%22%%3A%%22terminal%%22%%2C%%22service%%22%%3A%%22full_text%%22%%2C%%22parameters%%22%%3A%%7B%%22value%%22%%3A%%22%s%%22%%7D%%7D%%5D%%2C%%22logical_operator%%22%%3A%%22and%%22%%7D%%5D%%2C%%22logical_operator%%22%%3A%%22and%%22%%2C%%22label%%22%%3A%%22full_text%%22%%7D%%5D%%2C%%22logical_operator%%22%%3A%%22and%%22%%7D%%2C%%22return_type%%22%%3A%%22entry%%22%%2C%%22request_options%%22%%3A%%7B%%22paginate%%22%%3A%%7B%%22start%%22%%3A0%%2C%%22rows%%22%%3A25%%7D%%2C%%22scoring_strategy%%22%%3A%%22combined%%22%%2C%%22sort%%22%%3A%%5B%%7B%%22sort_by%%22%%3A%%22score%%22%%2C%%22direction%%22%%3A%%22desc%%22%%7D%%5D%%7D%%2C%%22request_info%%22%%3A%%7B%%22query_id%%22%%3A%%2203e25d3f3eddbc329e8a3c568558431b%%22%%7D%%7D", df[index, "Gene symbol"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
 				  	 "ORPHA" = colDef(cell = function(value, index) {
-				  	 	url <- sprintf("https://hpo.jax.org/app/browse/disease/ORPHA:%s", df[index, "Gene symbol"], value)
+				  	 	url <- sprintf(#"https://hpo.jax.org/app/browse/disease/ORPHA:%s"
+				  	 	               "https://hpo.jax.org/app/browse/search?q=%s&navFilter=all", df[index, "Gene symbol"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
 				  	 "HPO" = colDef(cell = function(value, index) {
-				  	 	url <- sprintf("https://hpo.jax.org/app/browse/search?q=%s&navFilter=all", df[index, "Gene symbol"], value)
+				  	 	url <- sprintf("https://hpo.jax.org/app/browse/search?q=%s&navFilter=gene", df[index, "Gene symbol"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
 				  	 "HGNC" = colDef(cell = function(value, index) {
-				  	 	url <- sprintf("https://www.genenames.org/tools/search/#!/?query=HGNC:%s", df[index, "Gene symbol"], value)
+				  	 	url <- sprintf("https://hpo.jax.org/app/browse/search?q=%s&navFilter=disease", df[index, "Gene symbol"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
 				  	 }),
-				  	 "DisProt" = colDef(cell = function(value, index) {
-				  	 	url <- sprintf("https://disprot.org/browse?sort_field=disprot_id&sort_value=asc&page_size=20&page=0&release=current&show_ambiguous=true&show_obsolete=false&free_text=%s", df[index, "Gene symbol"], value)
-				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
-				  	 }),
+				  	# disprot does not recognise gene symbols
+				  	 # "DisProt" = colDef(cell = function(value, index) {
+				  	 # 	url <- sprintf("https://disprot.org/browse?sort_field=disprot_id&sort_value=asc&page_size=20&page=0&release=current&show_ambiguous=true&show_obsolete=false&free_text=%s", df[index, "Gene symbol"], value)
+				  	 # 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
+				  	 # }),
 				  	 "AmiGo" = colDef(cell = function(value, index) {
 				  	 	url <- sprintf("http://amigo.geneontology.org/amigo/search/bioentity?q=%s&searchtype=geneproduct", df[index, "Gene symbol"], value)
 				  	 	htmltools::tags$a(href = url, target = "_blank", as.character(value))
@@ -180,12 +193,7 @@ df_t <-
 				  												  	} else if (value == "NA") {color <- "#339900" # green
 				  												  	} else { color <- "black"}
 				  												  	list(color = color) })
-				  ),
-				  filterable = TRUE,
-				  showSortable = TRUE,
-				  showPageSizeOptions = TRUE,
-				  striped = TRUE,
-				  highlight = TRUE
+				  )
 	)
 
 df_t
