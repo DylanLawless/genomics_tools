@@ -202,3 +202,46 @@ df_t
 # library(reactablefmtr)
 # save_reactable(df_t, "../output/iusis_iei_table_2022.html")
 
+
+# Table of tables ----
+
+df_sub <- df %>% select(`Major category`, Subcategory) %>% unique()
+
+
+
+df_sub_t <- 
+	reactable( df_sub,
+				  groupBy = "Major category",
+				  #defaultExpanded = TRUE,
+				  compact = TRUE,
+				  searchable = TRUE,
+				  resizable = TRUE, 
+				  # wrap = FALSE,
+				  #elementId = "download-table",
+				  defaultPageSize = 50,
+				  filterable = TRUE,
+				  showSortable = TRUE,
+				  showPageSizeOptions = TRUE,
+				  striped = TRUE,
+				  highlight = TRUE,
+				  defaultColDef = colDef(minWidth = 640),
+				  # columns = list(
+				  # 	"Major category" = colDef( 
+				  # 									style = function(value) {
+				  # 											if (value == "Table 1 Immunodeficiencies affecting cellular and humoral immunity" ) {color <-  "#67074e"
+				  # 										} else if (value == "Table 2 Combined immunodeficiencies with associated or syndromic features") {color <- "#69241b"
+				  # 										} else if (value == "Table 3 Predominantly Antibody Deficiencies") {color <- "#1b3d49"
+				  # 										} else if (value == "Table 4 Diseases of Immune Dysregulation") {color <- "#00567b"
+				  # 										} else if (value == "Table 5 Congenital defects of phagocyte number or function" ) {color <- "#05878a"
+				  # 										} else if (value == "Table 6 Defects in intrinsic and innate immunity" ) {color <- "#074e67"
+				  # 										} else if (value == "Table 7 Autoinflammatory Disorders") {color <- "#5a175d"
+				  # 										} else if (value == "Table 8 Complement Deficiencies") {color <- "#dd9933"
+				  # 										} else if (value == "Table 9 Bone marrow failure") {color <- "#812b2f"
+				  # 										} else { color <- "black"}
+				  # 										list(color = color) })
+				  # )
+	)
+
+df_sub_t
+
+# Color pallets are arbitrary, "Deep Autumn" and "Jewel Tones" from color-hex.com
