@@ -1,0 +1,140 @@
+## Genetics & Genomics Resources				
+## Genetics & Genomics Resources Cheatsheet				
+## Last updated by Evonne McArthur 10/31/2022				
+## Special acknowledgment to members of the Capra Lab who helped develop and aggregate many of these resources				
+## Additional credit to Vanderbilt Genetics Institute, Vanderbilt Human Genetics Graduate Program, and Vanderbilt Genetics and Genomic Medicine				
+## Source https://docs.google.com/document/d/1QSjDJCXqhtt6Dzc10vHs8LHGenrpurTSInlzsp8Chy4/edit#				
+## Source @EvonneMcArthur				
+Database_category	Function	Name	URL	Notes
+Overview resources	What does the genome look like at this location?	UCSC genome browser	https://genome.ucsc.edu/	
+		Integrative genomics viewer - IGV	https://igv.org/app/	
+		DECIPHER genome browser	https://www.deciphergenomics.org/browser	
+		gnomAD	https://gnomad.broadinstitute.org/	
+		WashU Epigenome Browser	https://epigenomegateway.wustl.edu	
+	Where can I get broad information about this gene/variant/protein? 	GeneCards [for genes]	https://www.genecards.org/	
+		Ensembl [for genes & variants]	https://www.ensembl.org/	
+		Uniprot [for proteins]	https://www.uniprot.org/	
+	Where can I download information for a set of variants/genes/regions?	BioMART on Ensembl	https://www.ensembl.org/biomart/martview	
+		Table Browser on UCSC	https://genome.ucsc.edu/cgi-bin/hgTables	
+Population genetics & variation	What is the frequency of a variant across populations? 	Geography of Genetic Variants Browser	https://popgen.uchicago.edu/ggv	
+		Ensembl allele frequency pie charts	https://www.ensembl.org/	click on population genetics after searching for an rsID or variant
+		gnomAD	https://gnomad.broadinstitute.org/	
+	Where and what type of variation exists in this gene?	gnomAD	https://gnomad.broadinstitute.org/	
+	What does the haplotype structure look like at this locus? How does this align with functional or disease annotations?	Locus zoom	http://locuszoom.org/	
+		Haploreg	https://pubs.broadinstitute.org/mammals/haploreg/haploreg.php	
+		SNiPA	https://snipa.helmholtz-muenchen.de/snipa3/	
+	Are these variants in LD? Can you prune my list of variants?	LDlink	https://ldlink.nci.nih.gov	
+	Other data & resources	1000 Genomes	http://www.internationalgenome.org/	
+		Simons diversity project	https://www.simonsfoundation.org/simons-genome-diversity-project/	
+		TOPMED	https://topmed.nhlbi.nih.gov/	
+		dbSNP	https://www.ncbi.nlm.nih.gov/snp/	"contains information about single nucleotide polymorphisms (SNPs) and multiple small-scale variations that include insertions/deletions, microsatellites, and non-polymorphic variants."
+		dbVar	https://www.ncbi.nlm.nih.gov/dbvar/	"contains records of larger (>50 bp)genomic structural variation, including insertions, deletions, duplications, inversions, multinucleotide substitutions, mobile element insertions, translocations, and complex chromosomal rearrangements."
+Evolutionary & comparative genomics	How old is my allele or gene? 	Human genome dating	https://human.genome.dating	
+	How old or conserved is my sequence/region? 	UCSC genome browser	https://genome.ucsc.edu/	"toggle 46-way alignment, 100-way alignment, and/or PhastCons tracks"
+	How is my gene expressed across species? 	ACEview	https://www.ncbi.nlm.nih.gov/ieb/research/acembly/	shows RNA-seq gene expression profile across 16 selected tissues from the Non-Human Primates Reference Transcriptome Resource
+	What orthologs or paralogs exist for my gene/sequence?	Metaphors	http://orthology.phylomedb.org/	
+		PhylomedDB	http://phylomedb.org/search_phylome	
+		HCOP: Orthology Predictions Search	https://www.genenames.org/tools/hcop/	
+	How do two genomes or genome assemblies compare?	Comparative Genome Viewer	https://www.ncbi.nlm.nih.gov/genome/cgv	
+Trait & disease associations	Rare disease/variant: How are these genes & phenotypes associated?	OMIM	https://www.omim.org/	
+		DECIPHER [from gene]	https://www.deciphergenomics.org/genes	
+		DECIPHER [from phenotype]	https://www.deciphergenomics.org/phenogram	
+		UniProt https://www.uniprot.org/ 		
+	Common disease/trait: How are these genes & phenotypes associated?	Open Targets Genetics	https://genetics.opentargets.org/	
+		PheWAS Catalog	https://phewascatalog.org/phewas	
+		PheWAS from GWAS Atlas	https://atlas.ctglab.nl/PheWAS	
+		ExWAS from Genebass	https://genebass.org	
+		ExWAS from AstraZeneca	https://azphewas.com/	
+		Polygenic risk score catalog	https://www.pgscatalog.org/	
+	Both rare & common disease/variant perspective: How are these genes & phenotypes associated?	Phenotype-Genotype Integrator - PheGenI	https://www.ncbi.nlm.nih.gov/gap/phegeni	"combines genome-wide association study (GWAS) data from dbGAP and an NHGRI project with genetic, phenotype, expression, and polymorphism data from the NCBI databases"
+		GeneCards	https://www.genecards.org/	
+	How does genetically-regulated expression of this gene associate with phenotypes (TWAS)?	TWAS hub	http://twas-hub.org/	
+		webTWAS	http://www.webtwas.net/	
+	What does this CNV overlap?	CNVxplorer	http://cnvxplorer.com/	"shows overlap of CNVs with regulatory elements, genes, SNVs, and clinical data"
+	Other data & resources	dbGAP	https://www.ncbi.nlm.nih.gov/gap/	is the database of genotypes and phenotypes which contains data regarding  the interaction of genotype and phenotype in Humans
+		ClinVar	https://www.ncbi.nlm.nih.gov/clinvar/	"reports of the relationships among human variations and phenotypes, with supporting evidence"
+		Fine map locus plot	http://locuszoom.org/	
+		Pharmacogenomics resources	https://www.pharmgkb.org/	
+Clinical genetics & patient information	Where can I get a comprehensive overview of a particular genetic disorder?	GeneReviews	https://www.ncbi.nlm.nih.gov/books/NBK1116/	
+		OMIM	https://www.omim.org/	
+		MedlinePlus.gov	https://medlineplus.gov/genetics/	
+	What tools can help create a differential diagnosis based on observed traits?	OMIM clinical synopsis	https://www.omim.org/search/advanced/clinicalSynopsis	One particular feature is the clinical synopsis table to compare features of similar syndromes: Access from the Disorder's Page > Phenotypic Series > View corresponding clinical synopses as a table
+		Phenomizer	https://compbio.charite.de/phenomizer/	
+		Face2Gene	https://www.face2gene.com/	allows input input of patient face photo or manually added search terms
+		Paid: SimulConsult	https://simulconsult.com/	
+		PhenoTips	https://phenotips.com/	
+	Where can I aggregate information to assess a variant of uncertain clinical significance (VUS)?	DECIPHER	https://www.deciphergenomics.org/	
+		Varsome	https://varsome.com/	
+		Ensembl VEP	https://www.ensembl.org/vep	
+	Where can I learn more clinical information about a particular gene?	ClinGen	https://clinicalgenome.org/	
+		GeneCards	www.genecards.org	
+		Open Targets	https://platform.opentargets.org/	
+		The Gene Curation Coalition - GenCC	https://search.thegencc.org/	
+		Pharmacogenomics resources	https://www.pharmgkb.org/	
+	What information can I give to my patient about genetics broadly? 	Unique RareChromo practical guides	https://rarechromo.org/practical-guides-for-families/	
+		About newborn screening	 https://www.p2pusa.org/	
+		About newborn screening	https://www.babysfirsttest.org/	
+	What information can I give to my patient about their genetic disorder in accessible language?	Unique RareChromo chromosome disorder guides	https://rarechromo.org/disorder-guides/	
+		Rare disease database from National Organization for Rare Disorders - NORD	https://rarediseases.org/for-patients-and-families/information-resources/rare-disease-information/	
+		Rare disease video library from NORD	https://rarediseases.org/for-patients-and-families/information-resources/rare-disease-video-library/	
+		NIH Genetics and rare diseases information center - GARD	https://rarediseases.info.nih.gov	
+		Visualize results from a CMA or karyotype	http://cydas.org/OnlineAnalysis/index.html	
+		For newborn screen results/disorders via STAR-G	https://www.newbornscreening.info/disorder_fact_sheet/	
+	Where can I find clinical trials opportunities/research studies?	ClinicalTrials.gov	https://www.clinicaltrials.gov/	
+		OrphaNet	https://www.orpha.net/consor/cgi-bin/ResearchTrials_ClinicalTrials.php?lng=EN	
+		Disease Info Search	https://www.diseaseinfosearch.org/	
+	Where can I look for specific genetic tests or panels available? 	GeneDx	https://www.genedx.com/tests	
+		Invitae	https://www.invitae.com/en/providers/test-catalog	
+		OrphaNet	https://www.orpha.net/consor/cgi-bin/ClinicalLabs.php?lng=EN	
+		GTR genetic test registry	https://www.ncbi.nlm.nih.gov/gtr/	
+	What are some good resources for learning clinical genetics?	ACMG Genetics 101	https://www.acmgeducation.net/URL/Genetics101	videoseries for introductory genomics for healthcare providers
+		Vademecium Metabolism	http://evm.health2media.com/#/start	book and corresponding website
+		Oxford Handbook of Genetics	https://academic.oup.com/book/38754	
+		Medical Biochemical Genetics Clinical Core Seminar Series	https://www.simd.org/MBG-CCSS/index.asp	
+	Other resources	Pedigree drawing	https://pedigree.progenygenetics.com/	
+		Matchmaker exchange	https://www.matchmakerexchange.org/	
+Gene regulation & functional genomics	Which tissues is this gene expressed in? Is this variant associated with gene expression or splicing (eQTL/sQTL)? 	Genotype-tissue expression project - GTEx	https://www.gtexportal.org/home/	
+		Gene co-expression	https://coxpresdb.jp	
+		Allen Brain Map	https://portal.brain-map.org/	has brain-focused transcriptional landscape and connectivity
+	What regulatory elements overlap my variant/region of interest?	ENCODE SCREEN	https://screen.encodeproject.org/	
+		FANTOM Slidebase	https://slidebase.binf.ku.dk/	
+		UCSC genome browser	https://genome.ucsc.edu/	
+		WashU Epigenome Browser	https://epigenomegateway.wustl.edu	
+	"Can you tell me about TFBS motifs, peaks, locations, and functions?"	FactorBook	https://factorbook.org/	
+		JASPAR	http://jaspar.genereg.net/	
+		HOCOMOCO	https://hocomoco11.autosome.ru/	
+		Tomtom	https://meme-suite.org/meme/tools/tomtom	
+	What does the 3D genome organization look like at this locus? 	4D nucleome	https://www.4dnucleome.org/	
+		3D genome browser	http://3dgenome.fsm.northwestern.edu/	
+		JuiceBox	http://aidenlab.org/juicebox/	
+	Other datasets	FANTOM	https://fantom.gsc.riken.jp	
+		Vierstra TF motifs	https://www.vierstra.org/resources/motif_clustering	
+Protein structure & function	What is the overview of the function and structure of my protein of interest?	Uniprot	https://www.uniprot.org/	
+		Human Protein Atlas	https://www.proteinatlas.org/	"IHC, FISH, tissues"
+		SWISS-MODEL	https://swissmodel.expasy.org/repository	
+		Interactive PDB viewer	https://www.molsoft.com/pdbv.html	
+		AlphaFold	https://alphafold.ebi.ac.uk/	
+	"What processes, phenotypes, networks are my gene set enriched for? "	Ontology enrichment GREAT	http://great.stanford.edu/	
+		Ontology enrichment Enrichr	https://maayanlab.cloud/Enrichr/	
+		Ontology enrichment WebGestalt	http://www.webgestalt.org/	
+		GnomAD	https://gnomad.broadinstitute.org/	highlights were there is variation in the protein
+		Gene ORGANizer	http://geneorganizer.huji.ac.il/	highlights organs/systems affected
+	What networks or interactions are involved?	KEGG	https://www.genome.jp/kegg/	
+		Reactome	https://reactome.org	
+		STRING (PPIs)	https://string-db.org	
+		SPOKE	https://spoke.rbvi.ucsf.edu/neighborhood.html	shows anything associated with a gene - drugs, proteins, etc
+Variant effect prediction & annotation		Ensembl VEP	https://www.ensembl.org/vep	
+		Open Targets	https://platform.opentargets.org/	
+		CADD	https://cadd.gs.washington.edu/snv	
+		ANNOVAR	http://annovar.openbioinformatics.org/	[no webinterface]
+		SnpEFF	http://pcingola.github.io/SnpEff/	[no web interface]
+		Nirvana	https://illumina.github.io/NirvanaDocumentation/	[no web interface]
+Data & annotation wrangling	"How can I convert IDs (eg. transcript to gene, gene symbol to Ensembl ID, variant identifiers)? "	Uniprot ID converter	https://www.uniprot.org/id-mapping	
+		Ensembl gene ID mapper	https://useast.ensembl.org/Homo_sapiens/Tools/IDMapper	
+		Ensembl variant recoder	https://useast.ensembl.org/Homo_sapiens/Tools/VR	
+		HGNC	https://www.genenames.org/tools/multi-symbol-checker/	
+		biotools.fr	https://www.biotools.fr/human/ucsc_id_converter	converts IDs
+	How can I liftover between genome assemblies? 	UCSC liftover	https://genome.ucsc.edu/cgi-bin/hgLiftOver	
+		Ensembl assembly converter	https://useast.ensembl.org/Homo_sapiens/Tools/AssemblyConverter	
+	"Where can I do some basic genomic file manipulations, analyses, statistics, visualization, etc? "	Galaxy	https://usegalaxy.org/	
+		NHGRI's AnVIL platform	https://anvilproject.org/	
