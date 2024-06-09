@@ -92,7 +92,19 @@ dft <- df %>%
 
 df <- dft 
 
-write.table((df), file='../data/10875_2022_1289_MOESM2_ESM_DLcleaned.tsv', sep="\t",  quote=FALSE, row.names=FALSE)
+# safety clean
+# Replace tabs and newlines in all character columns
+df[] <- lapply(df, function(x) {
+	if (is.character(x)) {
+		x <- gsub("\t", " ", x) # Replace tabs with a space
+		x <- gsub("\r?\n|\r", " ", x) # Replace newlines with a space
+	}
+	x
+})
+
+# write.table((df), file='../data/10875_2022_1289_MOESM2_ESM_DLcleaned.tsv', sep="\t",  quote=FALSE, row.names=FALSE)
+write.table(df, file='../data/10875_2022_1289_MOESM2_ESM_DLcleaned.tsv', sep="\t", quote=FALSE, row.names=FALSE, col.names=TRUE)
+
 
 # reactable ----
 library(reactable)

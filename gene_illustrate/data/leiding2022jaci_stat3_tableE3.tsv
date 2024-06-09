@@ -1,0 +1,194 @@
+symbol	Patient Number	Country	Sex	Mutation	Protein Change	Domain	Alive or Dead	protein_position	amino_acids	Reference
+STAT3	1	Turkey	F	209C>A	Arg70His	N-terminal	Alive	70	Arg/His	
+STAT3	2	U.S.A.	M	307C>T	Arg103Trp	N-terminal	Alive	103	Arg/Trp	
+STAT3	3	U.S.A.	M	307C>T	Arg103Trp	N-terminal	Alive	103	Arg/Trp	
+STAT3	4	U.S.A.	F	307C>T	Arg103Trp	N-terminal	Alive	103	Arg/Trp	P8 Maffucci et al21
+STAT3	5	U.S.A.	F	307C>T	Arg103Trp	N-terminal	Alive	103	Arg/Trp	
+STAT3	6	U.S.A.	F	307C>T	Arg103Trp	N-terminal	Alive	103	Arg/Trp	
+STAT3	7	Germany	F	308G>A	Arg103Gln	N-terminal	Alive	103	Arg/Gln	Jagle et al19
+STAT3	8	Denmark	M	319C>T	Arg107Trp	N-terminal	Alive	107	Arg/Trp	
+STAT3	9	Germany	M	320G>A	Arg107Gln	N-terminal	Alive	107	Arg/Gln	Jagle et al19
+STAT3	10	Sweden	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	11	U.S.A.	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	12	U.S.A.	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	P3 Milner et al13
+STAT3	13	Australia	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	14	Australia	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	15	U.S.A.	M	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	P12 Forbes et al3
+STAT3	16	Greece	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	P4 Mauracher et al22
+STAT3	17	Spain	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	18	Belarus	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	19	Brazil	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	20	France	Missing	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	21	U.S.A.	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	22	U.S.A.	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	23	U.S.A.	F	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	24	U.S.A.	Missing	454C>T	Arg152Trp	CCD	Alive	152	Arg/Trp	
+STAT3	25	Spain	M	485T>G	Met162Arg	CCD	Alive	162	Met/Arg	
+STAT3	26	Belarus	M	498G>C	Glu166Asp	CCD	Alive	166	Glu/Asp	
+STAT3	27	U.S.A.	F	496G>A	Glu166Lys	CCD	Dead	166	Glu/Lys	
+STAT3	28	U.S.A.	M	496G>A	Glu166Lys	CCD	Alive	166	Glu/Lys	
+STAT3	29	France	NA	498G>C	Glu166Asp	CCD	Alive	166	Glu/Asp	
+STAT3	30	U.S.A.	F	521T>C	Phe174Ser	CCD	Alive	174	Phe/Ser	
+STAT3	31	U.S.A.	F	521T>C	Phe174Ser	CCD	Dead	174	Phe/Ser	P13 Forbes et al3
+STAT3	32	Germany	M	617T>G	Met206Arg	CCD	Alive	206	Met/Arg	Jagle et al19
+STAT3	33	Germany	M	617T>G	Met206Arg	CCD	Alive	206	Met/Arg	Jagle et al19
+STAT3	34	Germany	M	653T>C	Val218Ala	CCD	Alive	218	Val/Ala	
+STAT3	35	U.S.A.	F	737G>A	Arg246Gln	CCD	Alive	246	Arg/Gln	P6 Maffucci21
+STAT3	36	Belarus	M	779T>C	Leu260Pro	CCD	Alive	260	Leu/Pro	
+STAT3	37	U.S.A.	F	832C>T	Arg278Cys	CCD	Alive	278	Arg/Cys	
+STAT3	38	U.S.A.	M	832C>T	Arg278Cys	CCD	Dead	278	Arg/Cys	
+STAT3	39	France	F	832C>T	Arg278Cys	CCD	Alive	278	Arg/Cys	
+STAT3	40	U.S.A.	M	832C>T	Arg278Cys	CCD	Alive	278	Arg/Cys	
+STAT3	41	U.S.A.	M	832C>T	Arg278Cys	CCD	Alive	278	Arg/Cys	
+STAT3	42	U.S.A.	F	833G>A	Arg278His	CCD	Alive	278	Arg/His	
+STAT3	43	Israel	F	833G>A	Arg278His	CCD	Alive	278	Arg/His	P1 Nabhani et al23
+STAT3	44	Brazil	M	833G>A	Arg278His	CCD	Alive	278	Arg/His	
+STAT3	45	Finland	M	833G>A	Arg278His	CCD	Alive	278	Arg/His	
+STAT3	46	Germany	F	839A>C	Gln280Pro	CCD	Alive	280	Gln/Pro	Jagle et al19
+STAT3	47	Germany	M	857A>C	Glu286Ala	CCD	Alive	286	Glu/Ala	Jagle et al19
+STAT3	48	Japan	M	857A>G	Glu286Gly	CCD	Alive	286	Glu/Gly	P1.1 Tanita et al30
+STAT3	49	U.S.A.	M	857A>G	Glu286Gly	CCD	Dead	286	Glu/Gly	P14 Forbes et al3
+STAT3	50	Germany	F	859T>G	Leu287Val	CCD	Alive	287	Leu/Val	Jagle et al19
+STAT3	51	Germany	M	863A>C	Gln288Pro	CCD	Alive	288	Gln/Pro	Jagle et al19
+STAT3	52	England	F	870A>T	Lys290Asn	CCD	Dead	290	Lys/Asn	Russell et al25
+STAT3	53	Germany	F	905G>A	Arg302Gln	CCD	Alive	302	Arg/Gln	
+STAT3	54	U.S.A.	M	937T>C	Phe313Leu	CCD	Alive	313	Phe/Leu	P7 Maffucci et al21
+STAT3	55	U.S.A.	M	973C>T	Arg325Trp	CCD	Alive	325	Arg/Trp	
+STAT3	56	U.S.A.	F	973C>T	Arg325Trp	DBD	Alive	325	Arg/Trp	
+STAT3	57	U.S.A.	M	986T>A	Met329Lys	DBD	Alive	329	Met/Lys	P4 Silva-Carmona27
+STAT3	58	Italy	M	986T>G	Met329Arg	DBD	Alive	329	Met/Arg	Todaro et al31
+STAT3	59	Spain	F	988C>T	Pro330Ser	DBD	Alive	330	Pro/Ser	Velayos et al32
+STAT3	60	U.S.A.	F	992T>G	Met331Arg	DBD	Alive	331	Met/Arg	
+STAT3	61	U.S.A.	F	1032G>C	Gln344His	DBD	Alive	344	Gln/His	 P5 Milner et al13 P15 Forbes et al3 P3 Silva Carmona27
+STAT3	62	U.S.A.	M	1032G>C	Gln344His	DBD	Alive	344	Gln/His	
+STAT3	63	Turkey	F	1032G>C	Gln344His	DBD	Alive	344	Gln/His	
+STAT3	64	U.S.A.	M	1057G>T	Val353Phe	DBD	Alive	353	Val/Phe	P4 Milner et al13
+STAT3	65	U.S.A.	M	1057G>T	Val353Phe	DBD	Alive	353	Val/Phe	
+STAT3	66	Netherlands	F	1079A>G	Thr360Cys	DBD	Alive	360	Thr/Cys	
+STAT3	67	Netherlands	F	1079A>G	Thr360Cys	DBD	Dead	360	Thr/Cys	
+STAT3	68	Australia	M	1079A>G	Thr360Cys	DBD	Dead	360	Thr/Cys	
+STAT3	69	France	F	1082A>G	Gln361Arg	DBD	Alive	361	Gln/Arg	
+STAT3	70	Netherlands	F	1160T>G	Leu387Arg	DBD	Alive	387	Leu/Arg	
+STAT3	71	Netherlands	F	1160T>G	Leu387Arg	DBD	Alive	387	Leu/Arg	
+STAT3	72	Netherlands	M	1160T>G	Leu387Arg	DBD	Dead	387	Leu/Arg	
+STAT3	73	U.S.A.	M	1165A>G	Thr389Ala	DBD	Alive	389	Thr/Ala	
+STAT3	74	U.S.A.	M	1165A>G	Thr389Ala	DBD	Alive	389	Thr/Ala	
+STAT3	75	U.S.A.	M	1165A>T	Thr389Ser	DBD	Alive	389	Thr/Ser	
+STAT3	76	Turkey	M	1166C>G	Thr389Arg	DBD	Alive	389	Thr/Arg	
+STAT3	77	Russia	M	1166C>G	Thr389Arg	DBD	Alive	389	Thr/Arg	
+STAT3	78	Finland	F	1175A>G	Lys392Arg	DBD	Alive	392	Lys/Arg	P2 in Flanagan et al11 P2 Haapaniemi et al12
+STAT3	79	France	F	1178T>C	Val393Ala	DBD	Alive	393	Val/Ala	Giovanni-Chami et al16 P2 Silva-Carmona 27
+STAT3	80	Australia	M	1181T>C	Met394Thr	DBD	Dead	394	Met/Thr	
+STAT3	81	Israel	F	1181T>C	Met394Thr	DBD	Alive	394	Met/Thr	P2 Nabhani et al23
+STAT3	82	Finland	F	1181T>C	Met394Thr	DBD	Alive	394	Met/Thr	P3 Haapaniemi et al12
+STAT3	83	France	F	1201A>G	Asn401Asp	DBD	Alive	401	Asn/Asp	Parlato et al 24
+STAT3	84	Germany	M	1201A>G	Asn401Asp	DBD	Alive	401	Asn/Asp	Jagle et al19
+STAT3	85	Australia	M	1222T>C	Phe408Leu	DBD	Alive	408	Phe/Leu	
+STAT3	86	Israel	M	1243G>A	Glu415Lys	DBD	Alive	415	Glu/Lys	
+STAT3	87	Portugal	M	1244A>G	Glu415Gly	DBD	Alive	415	Glu/Gly	
+STAT3	88	Japan	F	1244A>G	Glu415Gly	DBD	Alive	415	Glu/Gly	P3 Tanita et al30
+STAT3	89	U.S.A.	F	1243G>A	Glu415Lys	DBD	Alive	415	Glu/Lys	P6 Milner et al13
+STAT3	90	France	F	1243_1244delinsTT	Glu415Leu	DBD	Alive	415	Glu/Leu	Fabre et al15 P1 Silva-Carmona27 Jagle et al19
+STAT3	91	U.S.A.	F	1243G>C	Glu415Gln	DBD	Alive	415	Glu/Gln	
+STAT3	92	Germany	M	1255G>A	Gly419Arg	DBD	Alive	419	Gly/Arg	
+STAT3	93	France	F	1255G>C	Gly419Arg	DBD	Alive	419	Gly/Arg	P18 Hadjadj4
+STAT3	94	U.S.A.	M	1255G>C	Gly419Arg	DBD	Alive	419	Gly/Arg	
+STAT3	95	U.S.A.	M	1255G>C	Gly419Arg	DBD	Alive	419	Gly/Arg	Weinreich et al33
+STAT3	96	Ireland	F	1260T>G	Asn420Lys	DBD	Alive	420	Asn/Lys	
+STAT3	97	Ireland	F	1260T>G	Asn420Lys	DBD	Dead	420	Asn/Lys	P8 in Milner et al13 Jagle et al19
+STAT3	98	Ireland	M	1260T>G	Asn420Lys	DBD	Alive	420	Asn/Lys	
+STAT3	99	U.S.A.	M	1261G>A	Gly421Arg	DBD	Dead	421	Gly/Arg	
+STAT3	100	U.S.A.	M	1261G>A	Gly421Arg	DBD	Alive	421	Gly/Arg	P1 Milner et al13 P16 Forbes et al3
+STAT3	101	Israel	M	1261G>A	Gly421Arg	DBD	Alive	421	Gly/Arg	Khoury et al20
+STAT3	102	Switzerland	M	1261G>A	Gly421Arg	DBD	Alive	421	Gly/Arg	P5 Mauracher et al22
+STAT3	103	Australia	M	1261G>A	Gly421Arg	DBD	Alive	421	Gly/Arg	
+STAT3	104	France	NA	1261G>A	Gly421Arg	DBD	Alive	421	Gly/Arg	P17 Hadjadj4
+STAT3	105	U.S.A.	F	1261G>A	Gly421Arh	DBD	Alive	421	Gly/Arg	
+STAT3	106	Brazil	M	1264C>G	Gly422Arg	DBD	Alive	422	Gly/Arg	
+STAT3	107	U.S.A.	M	1276T>C	Cys426Arg	DBD	Dead	426	Cys/Arg	P2 Gutierrez et al18
+STAT3	108	Germany	M	1276T>C	Cys426Arg	DBD	Dead	426	Cys/Arg	Jagle et al19
+STAT3	109	U.S.A.	F	1328C>T	Thr443Ile	DBD	Alive	443	Thr/Ile	
+STAT3	110	U.S.A.	F	1328C>T	Thr443Ile	DBD	Alive	443	Thr/Ile	
+STAT3	111	Spain	M	1339C>G	His447Asp	DBD	Alive	447	His/Asp	
+STAT3	112	Argentina	M	1342C>G	Gln448Glu	DBD	Alive	448	Gln/Glu	
+STAT3	113	Netherlands	F	1412C>G	Pro471Arg	DBD	Alive	471	Pro/Arg	Wienke et al34
+STAT3	114	Canada	M	1516G>A	Glu506Lys	DBD	Alive	506	Glu/Lys	
+STAT3	115	New Zealand	M	1636T>C	Trp546Arg	DBD	Alive	546	Trp/Arg	
+STAT3	116	Scotland	F	1708G>A	Asp570Asn	DBD	Alive	570	Asp/Asn	Jagle et al19
+STAT3	117	Argentina	F	1847_1849del AAG	Glu616del	SH2	Dead	616	Glu/del	Gutierrez et al18
+STAT3	118	Canada	M	1874A>G	Glu616Gly	SH2	Alive	616	Glu/Gly	
+STAT3	119	Scotland	M	1904A>T	Gln635Leu	SH2	Alive	635	Gln/Leu	Jagle et al19
+STAT3	120	Chile	F	1919A>T	Tyr640Phe	SH2	Alive	640	Tyr/Phe	
+STAT3	121	France	M	1919A>T	Tyr640Phe	SH2	Alive	640	Tyr/Phe	P19 Hadjadj4
+STAT3	122	Argentina	M	1928A>G	Gln643Arg	SH2	Alive	643	Gln/Arg	
+STAT3	123	Turkey	M	1938C>G	Asn646Lys	SH2	Alive	646	Asn/Lys	
+STAT3	124	Wales 	M	1938C>G	Asn646Lys	SH2	Alive	646	Asn/Lys	P3 Flanagan et al11
+STAT3	125	 Ireland	M	1938C>G	Asn646Lys	SH2	Alive	646	Asn/Lys	P4 Flanagan et al11
+STAT3	126	France	M	1973A>T	Lys658Met	SH2	Alive	658	Lys/Met	
+STAT3	127	France	F	1973A>G	Lys658Arg	SH2	Alive	658	Lys/Arg	
+STAT3	128	Finland	F	1974G>C	Lys658Asn	SH2	Dead	658	Lys/Asn	P5 Flanagan11 P1 Haapaniemi et al12
+STAT3	129	U.S.A.	M	1988C>T	Thr663Ile	SH2	Alive	663	Thr/Ile	
+STAT3	130	U.S.A.	M	1988C>T	Thr663Ile	SH2	Alive	663	Thr/Ile	P2 Milner et al13 
+STAT3	131	France	M	1988C>T	Thr663Ile	SH2	Alive	663	Thr/Ile	P15 Hadjadj 4
+STAT3	132	U.S.A.	F	1988C>T	Thr663Ile	SH2	Alive	663	Thr/Ile	
+STAT3	133	England	M	1990A>T	Asn664Tyr	SH2	Alive	664	Asn/Tyr	
+STAT3	134	U.S.A.	F	2107G>A	Ala703Thr	TAD	Alive	703	Ala/Thr	P10 Milner et al13 
+STAT3	135	U.S.A.	F	2107G>A	Ala703Thr	TAD	Alive	703	Ala/Thr	P9 Milner et al13 
+STAT3	136	U.S.A.	F	2107G>A	Ala703Thr	TAD	Alive	703	Ala/Thr	P11 Milner et al13
+STAT3	137	U.S.A.	M	2144C>T	Pro715Leu	TAD	Dead	715	Pro/Leu	P17 Forbes et al3
+STAT3	138	U.S.A.	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	139	U.S.A.	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	140	Switzerland	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	P1 Mauracher et al22
+STAT3	141	Argentina	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	142	England	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	143	England	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	144	England	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	145	Italy	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	146	Ireland	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	147	Czech Republic	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	Sediva et al26 P2 Mauracher et al22
+STAT3	148	Czech Republic	M	2144C>T	Pro715Leu	TAD	Dead	715	Pro/Leu	Sediva et al26
+STAT3	149	U.S.A.	M	2144C>T	Pro715Leu	TAD	Dead	715	Pro/Leu	
+STAT3	150	England	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	151	Spain	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	152	U.S.A.	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	153	France	F	2144C>T	Pro715Leu	TAD	NA	715	Pro/Leu	P6 Besnard et al14 P20 Hadjadj 4
+STAT3	154	U.S.A.	F	2144C>T	Pro715Leu	TAD	Dead	715	Pro/Leu	P1 Suh et al28
+STAT3	155	U.S.A.	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	Gonzales-Mancera et al17
+STAT3	156	U.S.A	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	157	U.S.A.	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	158	U.S.A.	F	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	159	Brazil	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	160	U.S.A.	M	2144C>T	Pro715Leu	TAD	Alive	715	Pro/Leu	
+STAT3	161	Germany	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	Jagle et al19
+STAT3	162	Germany	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	163	Germany	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	164	Mexico	NA	2144C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	165	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	P2 Suh et al28
+STAT3	166	U.S.A.	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	167	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	168	U.S.A.	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	169	Wales	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	170	France	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	171	France	M	2147C>T	Thr716Met	TAD	Dead	716	Thr/Met	P5 Besnard14 P16 Hadjadj 4
+STAT3	172	Russia	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	173	England	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	P7 Milner et al13
+STAT3	174	Germany	M	2146C>T	Thr716Met	TAD	Alive	716	Thr/Met	Jagle et al19
+STAT3	175	Ukraine	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	176	Japan	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	Takagi et al29
+STAT3	177	Germany	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	Jagle et al19 P3 Mauracher et al22
+STAT3	178	New Zealand	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	179	New Zealand	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	180	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	181	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	182	Scotland	M	2147C>T	Thr716Met	TAD	Dead	716	Thr/Met	Jagle et al19
+STAT3	183	Scotland	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	Jagle et al19
+STAT3	184	New Zealand	F	2147C>T	Thr716Met	TAD	Dead	716	Thr/Met	
+STAT3	185	Serbia	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	P1 Flanagan11
+STAT3	186	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	P12 Milner et al13 
+STAT3	187	U.S.A.	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	P13 Milner et al13
+STAT3	188	India	M	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	189	France	NA	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	190	U.S.A.	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+STAT3	191	U.S.A.	F	2147C>T	Thr716Met	TAD	Alive	716	Thr/Met	
+										
+	"F, female; M, male; CCD, coiled-coil domain; DBD, DNA binding domain; TAD, trans-activating domain. "									
